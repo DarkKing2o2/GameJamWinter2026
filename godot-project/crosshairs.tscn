@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bnf5ltfbi6xao"]
+
+[ext_resource type="Texture2D" uid="uid://ccouv0n1smhjo" path="res://assets/Crosshairs/ReticuleRed.png" id="1_i1jcy"]
+[ext_resource type="Texture2D" uid="uid://cbv0pgnt635be" path="res://assets/Crosshairs/ReticuleBlue.png" id="2_y18ne"]
+
+[node name="Node2D" type="Node2D" unique_id=50308110]
+
+[node name="P1_cross" type="Sprite2D" parent="." unique_id=203610376]
+position = Vector2(261, 278)
+texture = ExtResource("1_i1jcy")
+
+[node name="P2_cross" type="Sprite2D" parent="." unique_id=485334043]
+position = Vector2(1545, 288)
+texture = ExtResource("2_y18ne")
