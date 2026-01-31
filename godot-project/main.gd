@@ -22,5 +22,4 @@ func _ready():
 
 func _process(delta):
 	for clique in clique_container.get_children():
-		for boid in clique.get_children():
-			boid.set_prey_position(TARGET_DIRECTION)
+		clique.target = TARGET_DIRECTION

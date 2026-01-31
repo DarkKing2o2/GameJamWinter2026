@@ -29,6 +29,13 @@ size = Vector3(1000, 1000, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q0tn4"]
 size = Vector3(2, 1000, 1000)
 
+[sub_resource type="Curve3D" id="Curve3D_av4hy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 29.686527, 0, 0, 0, 0, 0, 0, 0, 0, -30.546818, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cb1p0")
 
@@ -59,17 +66,20 @@ size = 98.768715
 
 [node name="Cliques" type="Node" parent="." unique_id=625637828]
 
-[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320]
+[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320 node_paths=PackedStringArray("path")]
 script = ExtResource("3_v1o7i")
 boid_scene = ExtResource("4_3j17g")
+path = NodePath("../../FountainPath/Path3D")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870]
+visible = false
 script = ExtResource("3_v1o7i")
 boid_scene = ExtResource("5_av4hy")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
+visible = false
 script = ExtResource("3_v1o7i")
 boid_scene = ExtResource("6_hihnx")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
@@ -117,3 +127,8 @@ debug_color = Color(1, 1, 1, 0.41960785)
 [node name="Crosshair_overlay" type="CanvasLayer" parent="." unique_id=280428861]
 
 [node name="Node2D" parent="Crosshair_overlay" unique_id=50308110 instance=ExtResource("4_v1o7i")]
+
+[node name="FountainPath" type="Node3D" parent="." unique_id=999605553]
+
+[node name="Path3D" type="Path3D" parent="FountainPath" unique_id=2122229667]
+curve = SubResource("Curve3D_av4hy")

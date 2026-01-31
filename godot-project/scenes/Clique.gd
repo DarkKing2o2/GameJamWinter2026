@@ -7,6 +7,10 @@ class_name Clique
 @export var separation_force: float = 1.0
 @export var centralization_force: float = 0.5
 @export var perception_radius: float = 200
+@export var path: Path3D
+@export var target = Vector3(1, 0, 0) 
+@export var pathNodeTolerance = 10.0
+var pointCurrentlyAt: Vector3
 
 var boids: Array = []
 
@@ -21,8 +25,29 @@ func _ready():
 		boids.push_back(boid)
 
 func _process(delta):
+	if path != null:
+		var points = path.get_curve().get_baked_points()
+		if points.size() > 0:
+			if pointCurrentlyAt == null:
+				pointCurrentlyAt = points[0]  # Start at the first point
+
+			# Check if enough boids are near the current target
+			var near_count = 0
+			for boid in boids:
+				if boid.position.distance_to(pointCurrentlyAt) < pathNodeTolerance:
+					near_count += 1
+
+			if near_count >= boid_count / 2:  # Move to the next point if half the boids are near
+				var current_index = points.find(pointCurrentlyAt)
+				if current_index < points.size() - 1:
+					pointCurrentlyAt = points[current_index + 1]  # Move to the next point
+				else:
+					pointCurrentlyAt = points[0]  # Loop back to the start
+
+			target = pointCurrentlyAt  # Update the target for the boids
+
 	for boid in boids:
-		boid.set_prey_position(Vector3(1, 0, 0))  # Example target direction
+		boid.set_prey_position(target)
 
 func get_neighbors(boid: Boid, view_radius: float) -> Array:
 	var neighbors = []
