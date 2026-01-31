@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://cm374rqu48qut"]
 
+[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(120, 2, 120)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
 size = Vector3(120, 2, 120)
 
-[node name="Node3D" type="Node3D" unique_id=1660226733]
+[node name="Node3D" type="Node" unique_id=1150443290]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4964981, 0)
@@ -23,3 +25,12 @@ mesh = SubResource("BoxMesh_4fixh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.12432, 0)
 shadow_enabled = true
 sky_mode = 1
+
+[node name="Player" parent="." unique_id=307269424 instance=ExtResource("1_4fixh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1146093866]
+transform = Transform3D(1, 0, 0, 0, 0.75225395, 0.6588733, 0, -0.6588733, 0.75225395, 3.6121802, 7.497019, 3.261467)
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D" unique_id=1053675484]
+transform = Transform3D(1, 0, 0, 0, 0.9946164, 0.10362598, 0, -0.10362598, 0.9946164, 0.14490461, -0.8412454, 7.8557653)
