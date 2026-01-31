@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://c2wwe7bh8ex7t"]
 
+[ext_resource type="Script" uid="uid://klg2tl65agr5" path="res://scenes/player.gd" id="1_3vyb7"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ybfi"]
 resource_name = "Body"
 cull_mode = 2
@@ -123,6 +125,7 @@ radius = 2.0874023
 height = 4.294159
 
 [node name="Player" type="CharacterBody3D" unique_id=307269424]
+script = ExtResource("1_3vyb7")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=717763032]
 
