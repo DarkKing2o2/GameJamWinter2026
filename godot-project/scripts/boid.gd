@@ -3,7 +3,7 @@ class_name Boid
 
 
 var boids = []
-var move_speed = 6
+var move_speed = 14
 var perception_radius = 50
 var centralization_force_radius = 10
 var direction = Vector3.ZERO
