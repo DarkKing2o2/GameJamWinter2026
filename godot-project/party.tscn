@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cm374rqu48qut"]
+
+[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
+[ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cb1p0"]
+[ext_resource type="PackedScene" uid="uid://dupje4q71u3o8" path="res://assets/Environment/Palace.blend" id="3_q0tn4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
+size = Vector3(120, 2, 120)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
+size = Vector3(120, 2, 120)
+
+[node name="Root" type="Node" unique_id=1150443290]
+script = ExtResource("1_cb1p0")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
+transform = Transform3D(0.72657466, 0, 0.6870875, 0, 1, 0, -0.6870875, 0, 0.72657466, 0, -1.4964981, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=43832264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26710728, -0.056479573)
+shape = SubResource("BoxShape3D_qxq04")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1805015175]
+mesh = SubResource("BoxMesh_4fixh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=616759355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.12432, 0)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Player" parent="." unique_id=307269424 instance=ExtResource("1_4fixh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
+transform = Transform3D(1, 0, 0, 0, 0.8541957, 0.51995164, 0, -0.51995164, 0.8541957, -0.11647463, 34.309414, 64.44693)
+projection = 1
+current = true
+fov = 20.3
+size = 98.768715
+
+[node name="Boids" type="Node" parent="." unique_id=625637828]
+
+[node name="Palace" type="Node3D" parent="." unique_id=932818946]
+
+[node name="Pivot" type="Node" parent="Palace" unique_id=571003520]
+
+[node name="Palace2" parent="Palace/Pivot" unique_id=1960468880 instance=ExtResource("3_q0tn4")]
+transform = Transform3D(0.00687649, 0, -0.99997634, 0, 1, 0, 0.99997634, 0, 0.00687649, 0, 0, -45.386642)

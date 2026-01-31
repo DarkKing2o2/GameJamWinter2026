@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c2wwe7bh8ex7t"]
+
+[ext_resource type="Script" uid="uid://klg2tl65agr5" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://bew52ds47fc4j" path="res://assets/Characters/pcAvatar.blend" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+radius = 2.0874023
+height = 4.294159
+
+[node name="Player" type="CharacterBody3D" unique_id=307269424]
+script = ExtResource("1_3vyb7")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=717763032]
+
+[node name="pcAvatar" parent="Pivot" unique_id=754838165 instance=ExtResource("2_g2els")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.025947, 0)
+shape = SubResource("CapsuleShape3D_u8vuu")
