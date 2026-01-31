@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cb1p0"]
 [ext_resource type="PackedScene" uid="uid://dupje4q71u3o8" path="res://assets/Environment/Palace.blend" id="3_q0tn4"]
+[ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="3_v1o7i"]
+[ext_resource type="PackedScene" uid="uid://hnn52d5t5jfl" path="res://scenes/boidA.tscn" id="4_3j17g"]
+[ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="5_av4hy"]
+[ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="6_hihnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -53,6 +57,21 @@ fov = 21.8
 size = 98.768715
 
 [node name="Cliques" type="Node" parent="." unique_id=625637828]
+
+[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320]
+script = ExtResource("3_v1o7i")
+boid_scene = ExtResource("4_3j17g")
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870]
+script = ExtResource("3_v1o7i")
+boid_scene = ExtResource("5_av4hy")
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
+script = ExtResource("3_v1o7i")
+boid_scene = ExtResource("6_hihnx")
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="Palace" type="Node3D" parent="." unique_id=932818946]
 

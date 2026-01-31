@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cefuahlwt0arn"]
+
+[ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="1_t0v7s"]
+
+[node name="Clique" type="Node3D" unique_id=1086894942]
+script = ExtResource("1_t0v7s")
+boid_count = null
+cohesion_force = null
+separation_force = null
+centralization_force = null
+perception_radius = null

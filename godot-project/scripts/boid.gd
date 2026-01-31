@@ -1,8 +1,6 @@
 extends CharacterBody3D
 class_name Boid
 
-
-var boids = []
 var move_speed = 14
 var perception_radius = 50
 var centralization_force_radius = 10
@@ -27,7 +25,7 @@ func _ready():
 
 func _process(delta):
 	var target_velocity = Vector3.ZERO
-	var neighbors = get_neighbors(perception_radius)
+	var neighbors = self.get_parent().get_neighbors(self, perception_radius)
 	
 	direction += process_alignments(neighbors) * alignment_force
 	direction += process_cohesion(neighbors) * cohesion_force
@@ -101,13 +99,3 @@ func steer(target):
 	steer = steer.normalized() * steer_force
 	
 	return steer
-	
-
-func get_neighbors(view_radius):
-	var neighbors = []
-
-	for boid in boids:
-		if position.distance_to(boid.position) <= view_radius and not boid == self:
-			neighbors.push_back(boid)
-			
-	return neighbors

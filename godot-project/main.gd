@@ -18,19 +18,7 @@ var cliques = []
 ]
 
 func _ready():
-	for i in CLIQUES_COUNT:
-		var boids_container = Node3D.new()
-		var boids = []
-		for j in BOIDS_COUNT:
-			var boid = CLIQUE_VALUES[i]["scene"].instantiate()
-			boid.cohesion_force = CLIQUE_VALUES[i]["cohesion"]
-			boid.seperation_force = CLIQUE_VALUES[i]["separation"]
-			boid.centralization_force = CLIQUE_VALUES[i]["centralization"]
-			boids_container.add_child(boid)
-			boids.push_back(boid)
-		clique_container.add_child(boids_container)
-		for boid in boids_container.get_children():
-			boid.boids = boids
+	pass
 
 func _process(delta):
 	for clique in clique_container.get_children():
