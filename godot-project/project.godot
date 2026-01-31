@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="cmpt_306_lab_godot_project"
-run/main_scene="uid://cxo076mv66ckl"
+run/main_scene="uid://cm374rqu48qut"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
