@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cb1p0"]
-[ext_resource type="PackedScene" uid="uid://dupje4q71u3o8" path="res://assets/Environment/Palace.blend" id="3_q0tn4"]
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="3_v1o7i"]
 [ext_resource type="PackedScene" uid="uid://hnn52d5t5jfl" path="res://scenes/boidA.tscn" id="4_3j17g"]
+[ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="4_v1o7i"]
 [ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="5_av4hy"]
 [ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="6_hihnx"]
-[ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="4_v1o7i"]
+[ext_resource type="PackedScene" uid="uid://42iuyccqe6pt" path="res://assets/Environment/Palace.glb" id="7_av4hy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -78,8 +78,8 @@ metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="Pivot" type="Node" parent="Palace" unique_id=571003520]
 
-[node name="Palace2" parent="Palace/Pivot" unique_id=1960468880 instance=ExtResource("3_q0tn4")]
-transform = Transform3D(0.00687649, 0, -0.99997634, 0, 1, 0, 0.99997634, 0, 0.00687649, 0, 0, -45.386642)
+[node name="Palace2" parent="Palace/Pivot" unique_id=629293051 instance=ExtResource("7_av4hy")]
+transform = Transform3D(-0.034201793, 0, -0.99941504, -0.08785193, 0.99612904, 0.0030064522, 0.99554634, 0.087903365, -0.0340694, 0, 0, -31.91912)
 
 [node name="WallLeft" type="StaticBody3D" parent="." unique_id=1403890510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 0)
