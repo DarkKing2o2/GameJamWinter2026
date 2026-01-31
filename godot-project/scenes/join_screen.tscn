@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cwhf44n30gmg5"]
+
+[node name="JoinScreen" type="Control" unique_id=49713822]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel-Holder" type="HBoxContainer" parent="." unique_id=107867071]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GamePad1-Panel" type="PanelContainer" parent="Panel-Holder" unique_id=2096203969]
+custom_minimum_size = Vector2(480, 1080)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel-Holder/GamePad1-Panel" unique_id=807047240]
+layout_mode = 2

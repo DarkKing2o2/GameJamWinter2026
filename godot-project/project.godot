@@ -23,23 +23,16 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://bk3n2uu272keo"
 
-[autoload]
-
-SceneManager="*res://scripts/scene_manager.gd"
-MusicManager="*res://old_scenes/music_manager.tscn"
-Enums="*res://scripts/enums.gd"
-RefVendor="*res://scripts/Static/reference_vendor.gd"
-
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=800
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg")
 
 [global_group]
 
@@ -166,7 +159,6 @@ Move_Right-GamePad3={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":3,"axis":0,"axis_value":1.0,"script":null)
 ]
 }
-
 
 [layer_names]
 
