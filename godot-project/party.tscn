@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cb1p0"]
 [ext_resource type="PackedScene" uid="uid://dupje4q71u3o8" path="res://assets/Environment/Palace.blend" id="3_q0tn4"]
+[ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="4_v1o7i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -93,3 +94,7 @@ physics_material_override = SubResource("PhysicsMaterial_q0tn4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.07387, 0, 0)
 shape = SubResource("BoxShape3D_q0tn4")
 debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Crosshair_overlay" type="CanvasLayer" parent="." unique_id=280428861]
+
+[node name="Node2D" parent="Crosshair_overlay" unique_id=50308110 instance=ExtResource("4_v1o7i")]
