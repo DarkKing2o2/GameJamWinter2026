@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dupje4q71u3o8" path="res://assets/Environment/Palace.blend" id="3_q0tn4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
-size = Vector3(120, 2, 120)
+size = Vector3(1000, 2, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
-size = Vector3(120, 2, 120)
+size = Vector3(1000, 2, 1000)
 
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cb1p0")
