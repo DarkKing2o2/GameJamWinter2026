@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GoDot 4.6
+Comment=Game engine, version 4.6.
+Exec=<Enter Path To Godot Exec ie /home/user/Downloads/Godot4.6>
+Icon=<If you want a app icon, add path to the png>
+Terminal=false
+Type=Application
+Categories=Utility;Development;
+StartupNotify=true
+Name[en_CA]=GoDot 4.6
