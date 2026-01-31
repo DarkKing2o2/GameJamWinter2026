@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://d0v1ws4dyyhr3"]
+
+[ext_resource type="Script" uid="uid://f3xsmrgcubk2" path="res://old_scenes/loading_screen.gd" id="1_ep5rh"]
+[ext_resource type="Texture2D" uid="uid://bx3uyoep6wlt3" path="res://assets/ui/uipackSpace_sheet.png" id="2_hprjd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndlxt"]
+font_size = 48
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku3bi"]
+atlas = ExtResource("2_hprjd")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5phy8"]
+texture = SubResource("AtlasTexture_ku3bi")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djmwj"]
+bg_color = Color(0.45882353, 0.63529414, 0.6901961, 1)
+
+[sub_resource type="Theme" id="Theme_qygbf"]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_5phy8")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_djmwj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ep5rh"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ep5rh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -209.5
+offset_right = 171.0
+offset_bottom = -142.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Now Loading..."
+label_settings = SubResource("LabelSettings_ndlxt")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = 95.0
+offset_right = 213.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qygbf")
+show_percentage = false
+
+[node name="ProgressLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 49.5
+offset_right = 21.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "00%"
+label_settings = SubResource("LabelSettings_ep5rh")
