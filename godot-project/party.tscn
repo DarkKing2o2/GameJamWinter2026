@@ -39,7 +39,7 @@ current = true
 fov = 20.3
 size = 98.768715
 
-[node name="Boids" type="Node" parent="." unique_id=625637828]
+[node name="Cliques" type="Node" parent="." unique_id=625637828]
 
 [node name="Palace" type="Node3D" parent="." unique_id=932818946]
 
