@@ -10,6 +10,20 @@ size = Vector3(1000, 2, 1000)
 [sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
 size = Vector3(1000, 2, 1000)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0tn4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1o7i"]
+size = Vector3(2, 1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjem8"]
+size = Vector3(1000, 1000, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2ddg"]
+size = Vector3(1000, 1000, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q0tn4"]
+size = Vector3(2, 1000, 1000)
+
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cb1p0")
 
@@ -46,3 +60,36 @@ size = 98.768715
 
 [node name="Palace2" parent="Palace/Pivot" unique_id=1960468880 instance=ExtResource("3_q0tn4")]
 transform = Transform3D(0.00687649, 0, -0.99997634, 0, 1, 0, 0.99997634, 0, 0.00687649, 0, 0, -45.386642)
+
+[node name="WallLeft" type="StaticBody3D" parent="." unique_id=1403890510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 0)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft" unique_id=655097700]
+shape = SubResource("BoxShape3D_v1o7i")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallBottom" type="StaticBody3D" parent="." unique_id=1507913582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 68.63933)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBottom" unique_id=1665518802]
+shape = SubResource("BoxShape3D_vjem8")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallTop" type="StaticBody3D" parent="." unique_id=1036025485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, -79.18242)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallTop" unique_id=55186816]
+shape = SubResource("BoxShape3D_f2ddg")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallRight" type="StaticBody3D" parent="." unique_id=256672466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 0)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight" unique_id=329806588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.07387, 0, 0)
+shape = SubResource("BoxShape3D_q0tn4")
+debug_color = Color(1, 1, 1, 0.41960785)
