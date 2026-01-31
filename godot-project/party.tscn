@@ -5,10 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://dupje4q71u3o8" path="res://assets/Environment/Palace.blend" id="3_q0tn4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
-size = Vector3(120, 2, 120)
+size = Vector3(1000, 2, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
-size = Vector3(120, 2, 120)
+size = Vector3(1000, 2, 1000)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0tn4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1o7i"]
+size = Vector3(2, 1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjem8"]
+size = Vector3(1000, 1000, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2ddg"]
+size = Vector3(1000, 1000, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q0tn4"]
+size = Vector3(2, 1000, 1000)
 
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cb1p0")
@@ -33,13 +47,12 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
-transform = Transform3D(1, 0, 0, 0, 0.8541957, 0.51995164, 0, -0.51995164, 0.8541957, -0.11647463, 34.309414, 64.44693)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.92718387, 0.37460658, 0, -0.37460658, 0.92718387, -0.11647463, 75.98929, 174.44693)
 current = true
-fov = 20.3
+fov = 21.8
 size = 98.768715
 
-[node name="Boids" type="Node" parent="." unique_id=625637828]
+[node name="Cliques" type="Node" parent="." unique_id=625637828]
 
 [node name="Palace" type="Node3D" parent="." unique_id=932818946]
 
@@ -47,3 +60,36 @@ size = 98.768715
 
 [node name="Palace2" parent="Palace/Pivot" unique_id=1960468880 instance=ExtResource("3_q0tn4")]
 transform = Transform3D(0.00687649, 0, -0.99997634, 0, 1, 0, 0.99997634, 0, 0.00687649, 0, 0, -45.386642)
+
+[node name="WallLeft" type="StaticBody3D" parent="." unique_id=1403890510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 0)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft" unique_id=655097700]
+shape = SubResource("BoxShape3D_v1o7i")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallBottom" type="StaticBody3D" parent="." unique_id=1507913582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 68.63933)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBottom" unique_id=1665518802]
+shape = SubResource("BoxShape3D_vjem8")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallTop" type="StaticBody3D" parent="." unique_id=1036025485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, -79.18242)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallTop" unique_id=55186816]
+shape = SubResource("BoxShape3D_f2ddg")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallRight" type="StaticBody3D" parent="." unique_id=256672466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 0)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight" unique_id=329806588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.07387, 0, 0)
+shape = SubResource("BoxShape3D_q0tn4")
+debug_color = Color(1, 1, 1, 0.41960785)

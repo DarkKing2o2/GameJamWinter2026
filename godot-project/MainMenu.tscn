@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dw3w1ws3hsgr2"]
+
+[ext_resource type="Script" uid="uid://bcfjlkf4unkdc" path="res://button.gd" id="1_i26rj"]
+
+[sub_resource type="SystemFont" id="SystemFont_kjwba"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i26rj"]
+font = SubResource("SystemFont_kjwba")
+font_size = 300
+font_color = Color(0.6784314, 0.627451, 1, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[node name="MainMenu" type="Node2D" unique_id=48811155]
+
+[node name="Button" type="Button" parent="." unique_id=604611999]
+offset_left = 512.0
+offset_top = 568.0
+offset_right = 1292.0
+offset_bottom = 985.0
+theme_override_font_sizes/font_size = 200
+text = "PLAY
+"
+script = ExtResource("1_i26rj")
+
+[node name="Label" type="Label" parent="." unique_id=333531002]
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 1764.0
+offset_bottom = 417.0
+text = "Maskerade"
+label_settings = SubResource("LabelSettings_i26rj")
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

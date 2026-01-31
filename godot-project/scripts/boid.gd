@@ -15,6 +15,8 @@ var avoidance_force = 30.0
 var centralization_force = 0.5
 var prey_position: Vector3 = Vector3.ZERO
 
+var model = null
+
 @export var fall_acceleration = 75
 
 func _ready():
@@ -64,7 +66,6 @@ func process_cohesion(neighbors):
 	
 	return steer((vector - position).normalized() * move_speed)
 	
-
 func process_alignments(neighbors):
 	var vector = Vector3()
 	if neighbors.is_empty():
