@@ -10,9 +10,9 @@ const TARGET_DIRECTION = Vector3(1, 0, 0)
 var cliques = []
 
 const CLIQUE_VALUES = [
-	{"cohesion": 0.5, "separation": 1.0, "centralization": 0.5},
-	{"cohesion": 0.8, "separation": 0.7, "centralization": 0.3},
-	{"cohesion": 0.3, "separation": 1.5, "centralization": 0.7}
+	{"cohesion": 0.1, "separation": 1.0, "centralization": 0.7, "model_path": "res://assets/Characters/pcAvatar.blend"},
+	{"cohesion": 0.1, "separation": 0.9, "centralization": 0.1, "model_path": "res://assets/Characters/pcAvatar.blend"},
+	{"cohesion": 0.9, "separation": 0.1, "centralization": 0.9, "model_path": "res://assets/Characters/pcAvatar.blend"}
 ]
 
 func _ready():
@@ -24,6 +24,8 @@ func _ready():
 			boid.cohesion_force = CLIQUE_VALUES[i]["cohesion"]
 			boid.seperation_force = CLIQUE_VALUES[i]["separation"]
 			boid.centralization_force = CLIQUE_VALUES[i]["centralization"]
+			var model = load(CLIQUE_VALUES[i]["model_path"])
+			boid.get_child(0).add_child(model)
 			boids_container.add_child(boid)
 			boids.push_back(boid)
 		clique_container.add_child(boids_container)

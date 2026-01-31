@@ -33,10 +33,9 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
-transform = Transform3D(1, 0, 0, 0, 0.8541957, 0.51995164, 0, -0.51995164, 0.8541957, -0.11647463, 34.309414, 64.44693)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, 0.92718387, 0.37460658, 0, -0.37460658, 0.92718387, -0.11647463, 75.98929, 174.44693)
 current = true
-fov = 20.3
+fov = 21.8
 size = 98.768715
 
 [node name="Cliques" type="Node" parent="." unique_id=625637828]
