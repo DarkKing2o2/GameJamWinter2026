@@ -11,7 +11,7 @@ size = Vector3(120, 2, 120)
 [node name="Node3D" type="Node" unique_id=1150443290]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4964981, 0)
+transform = Transform3D(0.72657466, 0, 0.6870875, 0, 1, 0, -0.6870875, 0, 0.72657466, 0, -1.4964981, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=43832264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26710728, -0.056479573)
@@ -29,8 +29,9 @@ sky_mode = 1
 [node name="Player" parent="." unique_id=307269424 instance=ExtResource("1_4fixh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
 
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1146093866]
-transform = Transform3D(1, 0, 0, 0, 0.75225395, 0.6588733, 0, -0.6588733, 0.75225395, 3.6121802, 7.497019, 3.261467)
-
-[node name="Camera3D" type="Camera3D" parent="Marker3D" unique_id=1053675484]
-transform = Transform3D(1, 0, 0, 0, 0.9946164, 0.10362598, 0, -0.10362598, 0.9946164, 0.14490461, -0.8412454, 7.8557653)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
+transform = Transform3D(1, 0, 0, 0, 0.8541957, 0.51995164, 0, -0.51995164, 0.8541957, -0.11647463, 18.309414, 0.17142296)
+projection = 1
+current = true
+fov = 20.3
+size = 55.963

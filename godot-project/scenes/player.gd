@@ -7,16 +7,11 @@ var target_velocity = Vector3.ZERO
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
+	
+	var inputVector = Input.get_vector("Move_Left-GamePad0", "Move_Right-GamePad0", "Move_Down-GamePad0", "Move_Up-GamePad0")
 
-	# GamePad 0 mappings
-	if Input.is_action_pressed("Move_Right-GamePad0"):
-		direction.x += 1
-	if Input.is_action_pressed("Move_Left-GamePad0"):
-		direction.x -= 1
-	if Input.is_action_pressed("Move_Down-GamePad0"):
-		direction.z += 1
-	if Input.is_action_pressed("Move_Up-GamePad0"):
-		direction.z -= 1
+	direction.x = inputVector.x
+	direction.z = -inputVector.y
 
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
