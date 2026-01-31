@@ -15,13 +15,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="GameJamWinter2026"
-run/main_scene="uid://cm374rqu48qut"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="uid://bk3n2uu272keo"
+buses/default_bus_layout=""
 
 [display]
 
@@ -29,10 +28,6 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg")
 
 [global_group]
 
