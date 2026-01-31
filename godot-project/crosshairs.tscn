@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bnf5ltfbi6xao"]
 
-[ext_resource type="Texture2D" uid="uid://ccouv0n1smhjo" path="res://assets/Crosshairs/ReticuleRed.png" id="1_i1jcy"]
+[ext_resource type="Texture2D" uid="uid://blgslr3pmx84n" path="res://assets/Crosshairs/ReticuleWhite.png" id="1_mim3n"]
 [ext_resource type="Script" uid="uid://bnivt6kti742x" path="res://p_1_cross.gd" id="2_y18ne"]
-[ext_resource type="Texture2D" uid="uid://cbv0pgnt635be" path="res://assets/Crosshairs/ReticuleBlue.png" id="3_jnwoj"]
 [ext_resource type="Script" uid="uid://dhrt1bvdekkpq" path="res://p_2_cross.gd" id="4_tkupw"]
 
 [node name="Node2D" type="Node2D" unique_id=50308110]
@@ -10,11 +9,11 @@
 [node name="P1_cross" type="Sprite2D" parent="." unique_id=1988180335]
 position = Vector2(392, 507)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_i1jcy")
+texture = ExtResource("1_mim3n")
 script = ExtResource("2_y18ne")
 
 [node name="P2_cross" type="Sprite2D" parent="." unique_id=1443868295]
 position = Vector2(1536, 525)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_jnwoj")
+texture = ExtResource("1_mim3n")
 script = ExtResource("4_tkupw")

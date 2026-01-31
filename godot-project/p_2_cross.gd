@@ -5,3 +5,8 @@ extends Sprite2D
 func _process(delta):
 	var input_vector = Input.get_vector("P2_cross_move_left", "P2_cross_move_right", "P2_cross_move_up", "P2_cross_move_down")
 	position += input_vector * speed * delta
+
+	if Input.is_action_pressed("P2_cross_shoot"):
+		modulate = Color.WHITE
+	else:
+		modulate = Color.BLUE
