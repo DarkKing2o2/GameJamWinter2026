@@ -1,9 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=25 format=3 uid="uid://g2wjqmkryvhc"]
-
-[ext_resource type="Script" uid="uid://cmlqxvnukucc4" path="res://ai/tasks/Detection/target_in_range.gd" id="1_a2yvw"]
-[ext_resource type="Script" uid="uid://dxkr7o2etlfr8" path="res://ai/tasks/Movement/Pursue.gd" id="2_wrjqh"]
-[ext_resource type="Script" uid="uid://d1lpey8hjh7jo" path="res://ai/tasks/Detection/target_in_attack_range.gd" id="3_md1nl"]
-[ext_resource type="Script" uid="uid://dwhptd8ns0ika" path="res://ai/tasks/Engage/melee_attack.gd" id="4_batpb"]
+[gd_resource type="BehaviorTree" format=3 uid="uid://g2wjqmkryvhc"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_jajy7"]
 var/target/name = &"target"
@@ -17,8 +12,51 @@ var/collisionVector/hint = 0
 var/collisionVector/hint_string = ""
 resource_local_to_scene = true
 
+[sub_resource type="GDScript" id="GDScript_cua5h"]
+script/source = "## Tool keyword added for _generate_name()
+@tool
+
+extends BTCondition
+## Checks if agent is in spotting range of target, returning [code]SUCCESS[/code]. [br]
+## Returns [code]FAILURE[/code] if [agent] is not within [member target] range.
+## Uses blackboard var target which comes from agents internal target var.
+
+## Store a local reference to the blackboard vars to save resources.
+var _target = \"target\"
+var _spotRange = \"spotRange\"
+var target
+var spotRange
+
+# Display a customized name (requires @tool).
+func _generate_name() -> String:
+	# Should print \"Is <TargetName> in range?\"
+	return \"Is target in spotting range?\"
+
+func _setup() -> void:
+	self.target = blackboard.get_var(self._target)
+	self.spotRange = blackboard.get_var(self._spotRange)
+
+
+## Called each time this task is ticked (aka executed).
+func _tick(_delta: float) -> Status:
+	# Update target var just in case.
+	target = blackboard.get_var(self._target)
+	# Check if it exists. If not, we can switch routine to something else vs
+	#	outright crashing.
+	if not is_instance_valid(target):
+		breakpoint
+		return FAILURE
+	# Calculate the distance from us to the target.
+	# TODO: refactor to call agents spot_range var when we create it.
+	var distance : float = target.global_position.x - agent.global_position.x
+	# If it's less than some factor x, return success, else failure
+	if distance < spotRange :
+		return SUCCESS
+	else : return FAILURE
+"
+
 [sub_resource type="BTCondition" id="BTCondition_wrjqh"]
-script = ExtResource("1_a2yvw")
+script = SubResource("GDScript_cua5h")
 
 [sub_resource type="BBNode" id="BBNode_71yjm"]
 saved_value = NodePath("AnimationPlayer")
@@ -28,8 +66,59 @@ resource_name = "AnimationPlayer"
 animation_player = SubResource("BBNode_71yjm")
 animation_name = &"idle"
 
+[sub_resource type="GDScript" id="GDScript_f85c6"]
+script/source = "## Tool keyword added for _generate_name()
+@tool
+
+
+extends BTAction
+## Move towards the target while not at desired postition or script is allowed to continue.  [br]
+## Returns [code]RUNNING[/code] while moving towards the target but not yet at the desired position. [br]
+## Returns [code]SUCCESS[/code] when at the desired position relative to the target. [br]
+## Returns [code]FAILURE[/code] if we cannot reach the target for some reason.[br]
+
+## Store a local reference to the blackboard vars to save resources.
+var _target = \"target\"
+var _spotRange = \"spotRange\"
+var _attackRange = \"attackRange\"
+var target
+var spotRange
+var attackRange
+
+func _setup() -> void:
+	self.target = blackboard.get_var(self._target)
+	self.spotRange = blackboard.get_var(self._spotRange)
+	self.attackRange = blackboard.get_var(self._attackRange)
+
+
+
+# Display a customized name (requires @tool).
+func _generate_name() -> String:
+	# Should print \"Is <TargetName> in range?\"
+	return \"Purse target until in attack range.\"
+
+
+# Called each time this task is ticked (aka executed).
+func _tick(_delta: float) -> Status:
+	target = blackboard.get_var(self._target)
+	if not is_instance_valid(target):
+		return FAILURE
+
+	# If distance to target is less than the agents attack range, we've successfully
+	#	pursed the target.
+	var desired_pos: Vector2 = target.global_position
+	if agent.global_position.distance_to(desired_pos) < attackRange: return SUCCESS
+
+	#print_debug()
+	#print(\"True dist to player: \", agent.global_position.distance_to(desired_pos) )
+	# Get the vector from agent to target = target-> minus agent->
+	var directionToMoveIn : Vector2 = ( self.target.global_position - self.agent.global_position).normalized()
+	agent.move(directionToMoveIn )
+	return RUNNING
+"
+
 [sub_resource type="BTAction" id="BTAction_md1nl"]
-script = ExtResource("2_wrjqh")
+script = SubResource("GDScript_f85c6")
 
 [sub_resource type="BTTimeLimit" id="BTTimeLimit_f85c6"]
 time_limit = 2.0
@@ -39,8 +128,53 @@ children = [SubResource("BTAction_md1nl")]
 custom_name = "Target_In_Spot_Range"
 children = [SubResource("BTCondition_wrjqh"), SubResource("BTPlayAnimation_86lse"), SubResource("BTTimeLimit_f85c6")]
 
+[sub_resource type="GDScript" id="GDScript_wrjqh"]
+script/source = "## Tool keyword added for _generate_name()
+@tool
+
+extends BTCondition
+## Checks if agent is in attack range of target, returning [code]SUCCESS[/code]. [br]
+## Returns [code]FAILURE[/code] if [agent] is not within [member target] range.
+## Uses blackboard var target which comes from agents internal target var.
+
+## Store a local reference to the blackboard vars to save resources.
+var _target = \"target\"
+var _attackRange = \"attackRange\"
+var target
+var attackRange
+
+# Display a customized name (requires @tool).
+func _generate_name() -> String:
+	# Should print \"Is <TargetName> in range?\"
+	return \"Is target within attacking range?\"
+
+func _setup() -> void:
+	self.target = blackboard.get_var(self._target)
+	self.attackRange = blackboard.get_var(self._attackRange)
+
+
+## Called each time this task is ticked (aka executed).
+func _tick(_delta: float) -> Status:
+	# Update target var just in case.
+	target = blackboard.get_var(self._target)
+	# Check if it exists. If not, we can switch routine to something else vs
+	#	outright crashing.
+	if not is_instance_valid(target):
+		breakpoint
+		return FAILURE
+
+	# Since all is valid, check that we are within the attack range
+	#	distance to the target.
+	# Calculate the distance from us to the target.
+	# TODO: refactor to call agents spot_range var when we create it.
+	var distance : float = target.global_position.x - agent.global_position.x
+	if distance < attackRange :
+		return SUCCESS
+	else : return FAILURE
+"
+
 [sub_resource type="BTCondition" id="BTCondition_batpb"]
-script = ExtResource("3_md1nl")
+script = SubResource("GDScript_wrjqh")
 
 [sub_resource type="BBNode" id="BBNode_batpb"]
 saved_value = NodePath("AnimationPlayer")
@@ -50,8 +184,48 @@ resource_name = "AnimationPlayer"
 animation_player = SubResource("BBNode_batpb")
 animation_name = &"attack"
 
+[sub_resource type="GDScript" id="GDScript_md1nl"]
+script/source = "## Tool keyword added for _generate_name()
+@tool
+
+extends BTAction
+## Attacks player, returning [code]SUCCESS[/code]. If player was hit. [br]
+## Returns [code]FAILURE[/code] if [agent] if player was not hit.
+## Uses blackboard var target which comes from agents internal target var.
+
+## Store a local reference to the blackboard vars to save resources.
+var _target = \"target\"
+var _attack = \"attack\"
+var target
+var attack
+
+# Display a customized name (requires @tool).
+func _generate_name() -> String:
+	# Should print \"Is <TargetName> in range?\"
+	return \"Attack target with melee attack\"
+
+func _setup() -> void:
+	self.target = blackboard.get_var(self._target)
+	self.attack = blackboard.get_var(self._attack)
+
+
+## Called each time this task is ticked (aka executed).
+func _tick(_delta: float) -> Status:
+	# Update target var just in case.
+	target = blackboard.get_var(self._target)
+	# Check if it exists. If not, we can switch routine to something else vs
+	#	outright crashing.
+	if not is_instance_valid(target):
+		breakpoint
+		return FAILURE
+
+	# Do the attack
+	self.attack.do_Attack()
+	return SUCCESS
+"
+
 [sub_resource type="BTAction" id="BTAction_7pbyg"]
-script = ExtResource("4_batpb")
+script = SubResource("GDScript_md1nl")
 
 [sub_resource type="BTCooldown" id="BTCooldown_7pbyg"]
 duration = 2.0
