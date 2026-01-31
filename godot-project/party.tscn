@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cm374rqu48qut"]
 
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
+[ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cb1p0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(120, 2, 120)
@@ -9,6 +10,7 @@ size = Vector3(120, 2, 120)
 size = Vector3(120, 2, 120)
 
 [node name="Node3D" type="Node" unique_id=1150443290]
+script = ExtResource("1_cb1p0")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
 transform = Transform3D(0.72657466, 0, 0.6870875, 0, 1, 0, -0.6870875, 0, 0.72657466, 0, -1.4964981, 0)
@@ -35,3 +37,5 @@ projection = 1
 current = true
 fov = 20.3
 size = 55.963
+
+[node name="Boids" type="Node" parent="." unique_id=625637828]
