@@ -1,0 +1,96 @@
+[gd_resource type="BehaviorTree" load_steps=25 format=3 uid="uid://g2wjqmkryvhc"]
+
+[ext_resource type="Script" uid="uid://cmlqxvnukucc4" path="res://ai/tasks/Detection/target_in_range.gd" id="1_a2yvw"]
+[ext_resource type="Script" uid="uid://dxkr7o2etlfr8" path="res://ai/tasks/Movement/Pursue.gd" id="2_wrjqh"]
+[ext_resource type="Script" uid="uid://d1lpey8hjh7jo" path="res://ai/tasks/Detection/target_in_attack_range.gd" id="3_md1nl"]
+[ext_resource type="Script" uid="uid://dwhptd8ns0ika" path="res://ai/tasks/Engage/melee_attack.gd" id="4_batpb"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_jajy7"]
+var/target/name = &"target"
+var/target/type = 24
+var/target/hint = 17
+var/target/hint_string = ""
+var/collisionVector/name = &"collisionVector"
+var/collisionVector/type = 5
+var/collisionVector/value = Vector2(0, 0)
+var/collisionVector/hint = 0
+var/collisionVector/hint_string = ""
+resource_local_to_scene = true
+
+[sub_resource type="BTCondition" id="BTCondition_wrjqh"]
+script = ExtResource("1_a2yvw")
+
+[sub_resource type="BBNode" id="BBNode_71yjm"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_86lse"]
+animation_player = SubResource("BBNode_71yjm")
+animation_name = &"idle"
+
+[sub_resource type="BTAction" id="BTAction_md1nl"]
+script = ExtResource("2_wrjqh")
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_f85c6"]
+time_limit = 2.0
+children = [SubResource("BTAction_md1nl")]
+
+[sub_resource type="BTSequence" id="BTSequence_jajy7"]
+custom_name = "Target_In_Spot_Range"
+children = [SubResource("BTCondition_wrjqh"), SubResource("BTPlayAnimation_86lse"), SubResource("BTTimeLimit_f85c6")]
+
+[sub_resource type="BTCondition" id="BTCondition_batpb"]
+script = ExtResource("3_md1nl")
+
+[sub_resource type="BBNode" id="BBNode_batpb"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_7pbyg"]
+animation_player = SubResource("BBNode_batpb")
+animation_name = &"attack"
+
+[sub_resource type="BTAction" id="BTAction_7pbyg"]
+script = ExtResource("4_batpb")
+
+[sub_resource type="BTCooldown" id="BTCooldown_7pbyg"]
+duration = 2.0
+children = [SubResource("BTAction_7pbyg")]
+
+[sub_resource type="BBNode" id="BBNode_7pbyg"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_71yjm"]
+animation_player = SubResource("BBNode_7pbyg")
+animation_name = &"attack"
+
+[sub_resource type="BTWait" id="BTWait_batpb"]
+duration = 0.2
+
+[sub_resource type="BTSequence" id="BTSequence_batpb"]
+custom_name = "Target_In_Attack_Range"
+children = [SubResource("BTCondition_batpb"), SubResource("BTPlayAnimation_7pbyg"), SubResource("BTCooldown_7pbyg"), SubResource("BTAwaitAnimation_71yjm"), SubResource("BTWait_batpb")]
+
+[sub_resource type="BBNode" id="BBNode_jajy7"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_a2yvw"]
+await_completion = 1.0
+animation_player = SubResource("BBNode_jajy7")
+animation_name = &"idle"
+
+[sub_resource type="BTSequence" id="BTSequence_wb8dk"]
+custom_name = "Idle"
+children = [SubResource("BTPlayAnimation_a2yvw")]
+
+[sub_resource type="BTSequence" id="BTSequence_7pbyg"]
+custom_name = "Logic_Root : Seqentially calls children so long as they return Success"
+children = [SubResource("BTSequence_jajy7"), SubResource("BTSequence_batpb"), SubResource("BTSequence_wb8dk")]
+
+[resource]
+description = "Behaviour tree for the flying monster. 
+Requires a reference to the target to be added to the blackboard before activating the behaviour tree."
+blackboard_plan = SubResource("BlackboardPlan_jajy7")
+root_task = SubResource("BTSequence_7pbyg")

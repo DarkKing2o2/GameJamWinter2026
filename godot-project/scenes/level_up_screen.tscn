@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://clppy7h37i8ph"]
+
+[ext_resource type="Texture2D" uid="uid://cs6hoy5cgn6wv" path="res://assets/ui/uipackSpace_sheet.png" id="1_16lk3"]
+[ext_resource type="PackedScene" uid="uid://cxb3ce18smeg0" path="res://scenes/level_up_screen_row.tscn" id="2_5l1el"]
+[ext_resource type="Script" uid="uid://dm3ld43wa65u7" path="res://scenes/level_up_screen.gd" id="2_502pc"]
+
+[node name="LevelUpScreen" type="NinePatchRect"]
+offset_right = 497.0
+offset_bottom = 378.0
+texture = ExtResource("1_16lk3")
+region_rect = Rect2(0, 400, 100, 100)
+patch_margin_left = 10
+patch_margin_top = 30
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("2_502pc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -20.0
+offset_right = 188.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelUpScreenRow1" parent="VBoxContainer" instance=ExtResource("2_5l1el")]
+layout_mode = 2
+
+[node name="LevelUpScreenRow2" parent="VBoxContainer" instance=ExtResource("2_5l1el")]
+layout_mode = 2
+
+[node name="LevelUpScreenRow3" parent="VBoxContainer" instance=ExtResource("2_5l1el")]
+layout_mode = 2
+
+[node name="LevelUpScreenRow4" parent="VBoxContainer" instance=ExtResource("2_5l1el")]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -51.0
+offset_right = 21.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Save
+"
+
+[node name="RemainingPointsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 49.0
+offset_right = 187.0
+offset_bottom = 72.0
+text = "Remaining Points"
+
+[node name="RemainingPointsValueLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 49.0
+offset_right = 377.0
+offset_bottom = 72.0
+text = "Remaining Points Value"

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://blb175ysw10ab"]
+
+[ext_resource type="Script" uid="uid://sn06jyrsue7t" path="res://scenes/Player/stat_box.gd" id="1_0mmdl"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0jfsv"]
+load_path = "res://.godot/imported/uipackSpace_sheet.png-14a1aaa17d180ac5cebecb4c89522843.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mmdl"]
+atlas = SubResource("CompressedTexture2D_0jfsv")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghgjy"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kv1yt"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="StatBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1130.0
+offset_bottom = -650.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0mmdl")
+
+[node name="StatBoxBackground" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+texture = SubResource("AtlasTexture_0mmdl")
+patch_margin_left = 10
+patch_margin_top = 31
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="StatNameLabel" type="Label" parent="StatBoxBackground"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_top = 4.0
+offset_right = 71.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "Stat Name"
+label_settings = SubResource("LabelSettings_ghgjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatDescLabel" type="Label" parent="StatBoxBackground"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 31.0
+offset_right = 145.0
+offset_bottom = 139.0
+text = "Increase"
+label_settings = SubResource("LabelSettings_kv1yt")
+autowrap_mode = 2

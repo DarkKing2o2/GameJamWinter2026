@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxo076mv66ckl"]
+
+[ext_resource type="PackedScene" uid="uid://c7cqaebjish5h" path="res://scenes/Player/Lightning_Wizard/Player-LightningWizard.tscn" id="1_uxrc4"]
+[ext_resource type="PackedScene" uid="uid://b4767700k2dqq" path="res://scenes/Enemies/Flying/Tongue_Monster/Tongue_Monster.tscn" id="2_uxrc4"]
+[ext_resource type="Script" uid="uid://dcv3ln56nuqsg" path="res://scenes/game_over_screen.gd" id="3_uxrc4"]
+[ext_resource type="Shader" uid="uid://cvpt8v61bpqsn" path="res://assets/VFX/Shaders/hit_flash.tres" id="4_noqoq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noqoq"]
+resource_local_to_scene = true
+shader = ExtResource("4_noqoq")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0
+
+[node name="CollisionTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_uxrc4")]
+position = Vector2(142, 213)
+scale = Vector2(3, 3)
+slide_on_ceiling = false
+godMode = true
+canShoot = false
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 7
+script = ExtResource("3_uxrc4")
+
+[node name="TongueMonster" parent="." instance=ExtResource("2_uxrc4")]
+material = SubResource("ShaderMaterial_noqoq")
+position = Vector2(594, 215)
+scale = Vector2(2, 2)
+godMode = true
+print_collisions = false

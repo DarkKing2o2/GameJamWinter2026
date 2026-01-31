@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://1dnai6v0g3"]
+
+[ext_resource type="Texture2D" uid="uid://bk6m7h16w1s81" path="res://assets/UI/pattern_0013.png" id="1_bswci"]
+[ext_resource type="Script" uid="uid://dvwdqbrf5plsa" path="res://scenes/level_1.gd" id="1_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://c7cqaebjish5h" path="res://scenes/Player/Lightning_Wizard/Player-LightningWizard.tscn" id="2_rus8k"]
+[ext_resource type="PackedScene" uid="uid://ioymqnehhh2i" path="res://scenes/pause_menu.tscn" id="5_4nkto"]
+[ext_resource type="Script" uid="uid://n8x6v00wnnks" path="res://scenes/grim_reaper_timer_label.gd" id="5_fcfvj"]
+
+[sub_resource type="Curve2D" id="Curve2D_pa8r4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -19, -8, 0, 0, 0, 0, 1291, -9, 0, 0, 0, 0, 1295, 804, 0, 0, 0, 0, -19, 803.00616, 0, 0, 0, 0, -20, -7.012225)
+}
+point_count = 5
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_fcfvj")
+
+[node name="BackgroundTile" type="TextureRect" parent="."]
+modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
+z_index = -9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5120.0
+offset_bottom = 3200.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_bswci")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_rus8k")]
+position = Vector2(599, 341)
+scale = Vector2(2, 2)
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_4nkto")]
+visible = false
+
+[node name="MobPath" type="Path2D" parent="."]
+position = Vector2(0, 0.055350304)
+scale = Vector2(1, 1.00615)
+curve = SubResource("Curve2D_pa8r4")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-19, -8)
+rotation = -0.0007633586
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.497
+autostart = true
+
+[node name="Grim_Reaper_Timer_Label" type="Label" parent="."]
+offset_left = 270.0
+offset_top = 17.0
+offset_right = 412.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+script = ExtResource("5_fcfvj")
+
+[node name="Grim_Reaper_Timer" type="Timer" parent="Grim_Reaper_Timer_Label"]
+wait_time = 600.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="Grim_Reaper_Timer_Label/Grim_Reaper_Timer" to="." method="_on_grim_reaper_timer_timeout"]
