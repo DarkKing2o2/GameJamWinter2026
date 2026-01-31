@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bes2oaepvtm8m"]
+
+[ext_resource type="PackedScene" uid="uid://42iuyccqe6pt" path="res://assets/Environment/Palace.glb" id="1_wutr8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xd05"]
+size = Vector3(21.391602, 20, 44.606934)
+
+[node name="Palace" type="Node3D" unique_id=1365196345]
+
+[node name="PalaceAsset" parent="." unique_id=629293051 instance=ExtResource("1_wutr8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=670902817]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1366743012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6958008, 0, 0)
+shape = SubResource("BoxShape3D_6xd05")
