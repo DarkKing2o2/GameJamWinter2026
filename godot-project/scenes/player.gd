@@ -100,9 +100,11 @@ func shoot():
 	projectile.set_ignore_nodes([self as CharacterBody3D] as Array[CharacterBody3D])
 
 	get_parent().add_child(projectile)
+	self.can_shoot = false
 	$Crosshair/reloading_lbl.visible = true
 	await get_tree().create_timer(5).timeout
 	$Crosshair/reloading_lbl.visible = false
+	self.can_shoot = true
 
 func hit(force):
 	print("Player", player_num, "hit!")
