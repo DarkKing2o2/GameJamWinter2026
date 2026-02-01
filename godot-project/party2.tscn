@@ -64,7 +64,7 @@ transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.8
 [node name="Ground3" parent="Ground" unique_id=2010876845 instance=ExtResource("2_4e4b1")]
 transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.86197954, 0.00066209154, 0.4151022, 0.003536883, 0.45979574, 117.576, -1.2296526, -118.77979)
 
-[node name="pcAvatarA" parent="Ground" unique_id=1656660398 instance=ExtResource("3_yg4fq")]
+[node name="pcAvatarA" parent="Ground" unique_id=1429358640 instance=ExtResource("3_yg4fq")]
 transform = Transform3D(-0.7799912, 0, 0.003689307, 0, 0.78, 0, -0.003689307, 0, -0.7799912, -29.235, 0, -0.189)
 
 [node name="pcAvatarB" parent="Ground" unique_id=477192606 instance=ExtResource("4_gg2h0")]
@@ -78,15 +78,11 @@ transform = Transform3D(1, 0, 0, 0, 0.4575945, 0.889161, 0, -0.889161, 0.4575945
 shadow_enabled = true
 sky_mode = 1
 
-[node name="Player_0" parent="." unique_id=307269424 node_paths=PackedStringArray("ignore_nodes") groups=["enemy"] instance=ExtResource("3_6cd6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
-player_color = Color(0.801582, 0.1534009, 0.101201005, 1)
-ignore_nodes = [NodePath("../WallBottom"), NodePath("../WallTop")]
+[node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.99827, -1.4305115e-06, 0.026323318)
 
-[node name="Player_1" parent="." unique_id=1198318810 node_paths=PackedStringArray("ignore_nodes") groups=["enemy"] instance=ExtResource("3_6cd6f")]
+[node name="Player_1" parent="." unique_id=2068567358 groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
-player_color = Color(0.29868627, 0.25811613, 1, 1)
-ignore_nodes = [NodePath("../WallBottom")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
 transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932044, 0, -0.62932044, 0.777146, -0.11648226, 61.269485, 81.024124)

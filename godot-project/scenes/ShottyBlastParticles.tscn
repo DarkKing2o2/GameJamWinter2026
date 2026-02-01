@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dv8xkwwqhp8hp"]
+
+[ext_resource type="Texture2D" path="res://assets/particles/muzzleflash.png" id="1_352m1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uotej"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_352m1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dfes2"]
+
+[node name="ShottyBlastParticles" type="Node3D" unique_id=1970677830]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=868366781]
+material_override = SubResource("StandardMaterial3D_uotej")
+draw_pass_1 = SubResource("QuadMesh_dfes2")
