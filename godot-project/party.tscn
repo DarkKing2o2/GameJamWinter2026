@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_hihnx"]
 [ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="9_hihnx"]
 [ext_resource type="PackedScene" uid="uid://08w021pl6r0m" path="res://scenes/CurvedHedge.tscn" id="10_oowc3"]
+[ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_gp6og"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -40,6 +41,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qsfla"]
+size = Vector3(21.263062, 3.1524048, 1)
 
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cb1p0")
@@ -438,3 +442,25 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 38
 
 [node name="CurvedHedge4" parent="." unique_id=740415927 instance=ExtResource("10_oowc3")]
 transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 38.985497, 0, 6.4756966)
+
+[node name="Fence" type="Node3D" parent="." unique_id=487257128]
+transform = Transform3D(1.49, 0, 0, 0, 1.49, 0, 0, 0, 1.49, 6.9391212, 0, 89.77408)
+
+[node name="Fence2" parent="Fence" unique_id=918195960 instance=ExtResource("11_gp6og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.75519, 3.3655243, 0)
+
+[node name="Fence3" parent="Fence" unique_id=1125023637 instance=ExtResource("11_gp6og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.769566, 3.3655243, 0)
+
+[node name="Fence4" parent="Fence" unique_id=1993898351 instance=ExtResource("11_gp6og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8263817, 3.3655243, 0)
+
+[node name="Fence5" parent="Fence" unique_id=607432704 instance=ExtResource("11_gp6og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.15924, 3.3655243, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Fence" unique_id=1242759535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.538026, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fence/StaticBody3D" unique_id=303141010]
+transform = Transform3D(7.749683, 0, 0, 0, 2.5948792, 0, 0, 0, 1.1442686, -11.573906, 1.0873499, 0)
+shape = SubResource("BoxShape3D_qsfla")
