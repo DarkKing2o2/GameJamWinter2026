@@ -43,6 +43,7 @@ func shoot():
 	if self._canShoot == true :
 		self._canShoot = false
 		particles.emitting = true
+		print("starting timer")
 		self.reloadTimer.start(5)
 	else :
 		return
