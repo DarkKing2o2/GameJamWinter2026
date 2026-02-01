@@ -21,6 +21,7 @@ var maskType = 'A'
 var model = null
 var fall_acceleration = 75
 @export var currentMask: MeshInstance3D = null
+@export var animation: AnimationPlayer
 
 func _ready():
 	randomize()
@@ -39,6 +40,11 @@ func _process(delta):
 
 	if direction != Vector3.ZERO:
 		$Pivot.basis = Basis.looking_at(direction)
+		if animation.current_animation != "Walk":
+			animation.play("Walk")
+	else: 
+		if animation.current_animation != "Idle":
+			animation.play("Idle")
 
 	target_velocity += direction * delta
 	target_velocity = target_velocity.limit_length(move_speed)

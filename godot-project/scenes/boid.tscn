@@ -7,25 +7,26 @@
 radius = 1.0043945
 height = 4.294159
 
-[node name="boid" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("maskA", "maskB", "maskC", "currentMask")]
+[node name="boid" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("maskA", "maskB", "maskC", "currentMask", "animation")]
 collision_layer = 5
 script = ExtResource("1_0n3de")
 maskA = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskA")
 maskB = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskB")
 maskC = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskC")
 currentMask = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskA")
+animation = NodePath("Pivot/Peep/AnimationPlayer")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=717763032]
 
 [node name="Peep" parent="Pivot" unique_id=105271952 instance=ExtResource("2_i32he")]
 
-[node name="MaskA" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1269653587) index="1" unique_id=2097611948]
+[node name="MaskA" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 813233115) index="1" unique_id=1234436727]
 visible = false
 
-[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1269653587) index="2" unique_id=90908123]
+[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 813233115) index="2" unique_id=1068016228]
 visible = false
 
-[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1269653587) index="3" unique_id=397906672]
+[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 813233115) index="3" unique_id=96595237]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
