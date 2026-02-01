@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="5_av4hy"]
 [ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="6_hihnx"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_hihnx"]
-[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="9_hihnx"]
-[ext_resource type="PackedScene" uid="uid://08w021pl6r0m" path="res://scenes/CurvedHedge.tscn" id="10_oowc3"]
+[ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="9_hihnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -66,6 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06,
 
 [node name="Attack_0" type="ShapeCast3D" parent="Player_0" unique_id=1197713913]
 shape = SubResource("SphereShape3D_hihnx")
+
+[node name="Attack_Timer_0" type="Timer" parent="Player_0" unique_id=1143150024]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
 transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932044, 0, -0.62932044, 0.777146, -0.11648226, 61.269485, 81.024124)
@@ -438,3 +439,4 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 38
 
 [node name="CurvedHedge4" parent="." unique_id=740415927 instance=ExtResource("10_oowc3")]
 transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 38.985497, 0, 6.4756966)
+[connection signal="timeout" from="Player_0/Attack_Timer_0" to="Player_0" method="_on_attack_timer_0_timeout"]

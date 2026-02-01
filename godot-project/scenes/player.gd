@@ -5,13 +5,18 @@ extends CharacterBody3D
 
 var target_velocity = Vector3.ZERO
 
+var can_shoot = true
+
 var player_num
 var attack
+var timer
+var crosshair
 
 func _ready() -> void:
 	player_num = self.name.right(1)
 	attack = get_node("Attack_" + player_num)
-
+	timer = get_node("Attack_Timer_" + player_num)
+	crosshair = get_node("P" + player_num + "_cross")
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	
@@ -36,8 +41,18 @@ func _physics_process(delta):
 	
 func _input(event):
 	if event.is_action_pressed("Attack-GamePad" + player_num):
-		for x in attack.get_collision_count():
-			if attack.get_collider(x).is_in_group("enemy"):
-				attack.get_collider(x).queue_free()
+		if can_shoot:
+			can_shoot = false
+			timer.start(3)
+			for x in attack.get_collision_count():
+				if attack.get_collider(x).is_in_group("enemy"):
+					#TODO: do the actual attack impact
+					attack.get_collider(x).queue_free()
 	if event.is_action_pressed("Ability-GamePad" + player_num):
 		pass
+
+
+
+
+func _on_attack_timer_0_timeout() -> void:
+	can_shoot = true
