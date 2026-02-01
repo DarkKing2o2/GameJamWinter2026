@@ -64,7 +64,12 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed("Ability-GamePad" + player_num):
-		pass
+		if currentMask == maskA:
+			switch_mask("B")
+		elif currentMask == maskB:
+			switch_mask("C")	
+		elif currentMask == maskC:
+			switch_mask("A")
 
 func shoot():
 	if not can_shoot:
