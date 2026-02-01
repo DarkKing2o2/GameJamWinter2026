@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cryew"]
 [ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
+[ext_resource type="AudioStream" uid="uid://dbytkhqfjqhid" path="res://audio/soundtrack.mp3" id="2_6cd6f"]
+[ext_resource type="AudioStream" uid="uid://1uhmyn2x5t57" path="res://audio/ambient.wav" id="2_cryew"]
+[ext_resource type="Script" path="res://audio_stream_player.gd" id="3_4e4b1"]
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_6cd6f"]
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
 [ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="5_yd7rt"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
 [ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
+[ext_resource type="Script" uid="uid://d0o1q4cjvnoc6" path="res://audio_stream_player_2.gd" id="12_4e4b1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0tn4"]
 
@@ -611,3 +615,12 @@ transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.8
 
 [node name="pcAvatarC" parent="Ground" unique_id=1418069688 instance=ExtResource("5_yd7rt")]
 transform = Transform3D(-0.4870408, 0, 0.60925466, 0, 0.78, 0, -0.60925466, 0, -0.4870408, -16.509, 0, 11.714)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=801124128]
+stream = ExtResource("2_6cd6f")
+script = ExtResource("3_4e4b1")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=33660159]
+stream = ExtResource("2_cryew")
+volume_db = -7.0
+script = ExtResource("12_4e4b1")
