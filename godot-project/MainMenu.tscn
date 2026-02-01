@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6y471ulo3tkw" path="res://logo.png" id="2_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://evbpf8k48kaw" path="res://assets/Environment/CherryTree2.png" id="4_qoqlk"]
 [ext_resource type="AudioStream" uid="uid://dl26jgh4jb5ed" path="res://audio/menu_music.mp3" id="5_7r1g0"]
-[ext_resource type="Script" uid="uid://pndvxow6js1a" path="res://audio_stream_player.gd" id="6_cqjrg"]
+[ext_resource type="Script" path="res://audio_stream_player.gd" id="6_cqjrg"]
 
 [node name="MainMenu" type="Node2D" unique_id=48811155]
 
