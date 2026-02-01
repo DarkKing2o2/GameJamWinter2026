@@ -80,9 +80,11 @@ sky_mode = 1
 
 [node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.99827, -1.4305115e-06, 0.026323318)
+player_color = Color(0.9980716, 0, 0.11335511, 1)
 
 [node name="Player_1" parent="." unique_id=2068567358 groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
+player_color = Color(0, 0, 1, 1)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
 transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932044, 0, -0.62932044, 0.777146, -0.11648226, 61.269485, 81.024124)

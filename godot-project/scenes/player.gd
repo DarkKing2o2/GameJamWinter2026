@@ -96,11 +96,12 @@ func hit():
 	can_shoot = true
 	
 func switch_mask(mask):
-	currentMask.visible = false
+	if currentMask != null:
+		currentMask.visible = false
 	if mask == "A":
 		currentMask = maskA
 	elif mask == "B":
-		currentMask = maskB
+		currentMask = maskB	
 	elif mask == "C":
 		currentMask = maskC
 	currentMask.visible = true
