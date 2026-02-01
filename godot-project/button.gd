@@ -17,6 +17,6 @@ func _on_pressed() -> void:
 	pass
 
 func _input(event) -> void:
-	if event.is_action_pressed("Attack-GamePad0"):
+	if event.is_action_pressed("Attack-GamePad0") || event.is_action_pressed("Attack-GamePad1"):
 		get_tree().change_scene_to_file("res://party2.tscn")
 	pass

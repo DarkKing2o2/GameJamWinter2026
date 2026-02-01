@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var player_color = Color(1, 1, 1)
 @export var ignore_nodes: Array[CollisionObject3D] = []
 @export var animation: AnimationPlayer
+@export var audio: AudioStreamPlayer
 @export var maskA: MeshInstance3D
 @export var maskB: MeshInstance3D
 @export var maskC: MeshInstance3D
@@ -24,6 +25,8 @@ var player_num
 var attack
 var timer
 var currentMask = maskA;
+
+signal winning_player()
 
 @onready var crosshair = self.get_node("Crosshair")
 
@@ -77,6 +80,7 @@ func _input(event):
 			switch_mask("C")
 		elif currentMask == maskC:
 			switch_mask("A")
+		play_masksfx()
 
 func shoot():
 	if not can_shoot:
@@ -124,6 +128,10 @@ func hit(force):
 	await get_tree().create_timer(3.0).timeout
 	queue_free()
 	can_shoot = true
+	#await get_tree().create_timer(3).timeout
+	emit_signal("winning_player")
+	get_tree().change_scene_to_file("res://EndScreen.tscn")
+	
 
 func switch_mask(mask):
 	for m in masks:
@@ -135,7 +143,12 @@ func switch_mask(mask):
 		currentMask = maskB
 	elif mask == "C":
 		currentMask = maskC
+	
 	currentMask.visible = true
+	
+func play_masksfx():
+	if audio and not audio.playing:
+		audio.play()
 
 func _END_OF_TIMER_RELOAD_LISTENER():
 	$Crosshair/reloading_lbl.visible = false

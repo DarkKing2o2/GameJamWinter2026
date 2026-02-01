@@ -11,6 +11,10 @@ func _ready():
 	modulate = player.player_color
 	player.add_child(debug_mesh)
 	debug_mesh.mesh = ImmediateMesh.new()
+	var positionX = randf_range(200,1200)
+	var positionY = randf_range(200,800)
+	position.x = positionX
+	position.y = positionY
 
 func _process(delta):
 
