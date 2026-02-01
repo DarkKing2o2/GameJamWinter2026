@@ -24,6 +24,8 @@ var attack
 var timer
 var currentMask = maskA;
 
+signal winning_player()
+
 @onready var crosshair = self.get_node("Crosshair")
 
 func _ready() -> void:
@@ -114,6 +116,10 @@ func hit(force):
 	print("Player", player_num, "hit!")
 	queue_free()
 	can_shoot = true
+	#await get_tree().create_timer(3).timeout
+	emit_signal("winning_player")
+	get_tree().change_scene_to_file("res://EndScreen.tscn")
+	
 
 func switch_mask(mask):
 	for m in masks:
