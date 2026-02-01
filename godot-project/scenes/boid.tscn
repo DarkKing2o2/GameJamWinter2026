@@ -18,15 +18,24 @@ animation = NodePath("Pivot/Peep/AnimationPlayer")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=717763032]
 
-[node name="Peep" parent="Pivot" unique_id=105271952 instance=ExtResource("2_i32he")]
+[node name="Peep" parent="Pivot" unique_id=982894376 instance=ExtResource("2_i32he")]
 
-[node name="MaskA" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 813233115) index="1" unique_id=1234436727]
+[node name="Skeleton3D" parent="Pivot/Peep/Armature" parent_id_path=PackedInt32Array(982894376, 1030520946) index="1" unique_id=1786053995]
+bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
+bones/1/rotation = Quaternion(-3.5527103e-15, 1.7763568e-14, -4.0389676e-28, 1)
+bones/2/rotation = Quaternion(-4.923571e-07, -1.0587517e-07, 0.8842352, -0.46704188)
+bones/4/rotation = Quaternion(-3.5527103e-15, -1.0658141e-14, -3.0292256e-28, 1)
+bones/7/rotation = Quaternion(0.9842179, 5.6249796e-09, 2.6594066e-07, 0.1769611)
+bones/8/rotation = Quaternion(-0.024581544, 0.18188582, 0.9762396, -0.1151939)
+bones/9/rotation = Quaternion(0.050088823, -0.15965025, 0.9794223, 0.11284992)
+
+[node name="MaskA" parent="Pivot/Peep/Armature/Skeleton3D" index="1" unique_id=2134674929]
 visible = false
 
-[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 813233115) index="2" unique_id=1068016228]
+[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" index="2" unique_id=738282647]
 visible = false
 
-[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 813233115) index="3" unique_id=96595237]
+[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" index="3" unique_id=741301747]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
