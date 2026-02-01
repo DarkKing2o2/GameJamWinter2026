@@ -1,7 +1,6 @@
 extends Node3D
 class_name Clique
 
-@export var boid_scene: PackedScene
 @export var boid_count: int = 20
 @export var alignment_force: float = 1.2
 @export var centralization_force_radius: float = 10.0
@@ -12,6 +11,10 @@ class_name Clique
 @export var path: Node3D
 @export var target = Vector3(1, 0, 0)
 @export var pathNodeTolerance = 7.0
+@export var maskType = 'A'
+
+@onready var boid_scene = preload("res://scenes/boid.tscn")
+
 var movingToPoint: Vector3
 var current_index = 0
 
@@ -26,6 +29,7 @@ func _ready():
 		boid.seperation_force = separation_force
 		boid.centralization_force = centralization_force
 		boid.perception_radius = perception_radius
+		boid.set_current_mask(maskType)
 		add_child(boid)
 		boids.push_back(boid)
 	if path != null:

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ifdscbmwf5nh"]
+[gd_scene format=3 uid="uid://bslpqph7sdguq"]
 
 [ext_resource type="Script" uid="uid://0em3f0yni0vq" path="res://scripts/boid.gd" id="1_iqun0"]
 [ext_resource type="PackedScene" uid="uid://8ruao3nsie43" path="res://assets/Characters/pcAvatarB.blend" id="2_2kmy5"]
