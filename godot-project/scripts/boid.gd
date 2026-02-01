@@ -17,12 +17,14 @@ var avoidance_force = 30.0
 var centralization_force = 0.5
 var prey_position: Vector3 = Vector3.ZERO
 var maskType = 'A'
+var randomized = false
 
 var dead: bool = false
 
 var model = null
 var fall_acceleration = 75
 @export var currentMask: MeshInstance3D = null
+@export var animation: AnimationPlayer
 
 func _ready():
 	randomize()
@@ -44,6 +46,17 @@ func _process(delta):
 
 	if direction != Vector3.ZERO:
 		$Pivot.basis = Basis.looking_at(direction)
+		if animation.current_animation != "Walk":
+			animation.play("Walk")
+			# random phase offset
+			if !randomized:
+				print_debug('walk')
+				randomized = true
+				var len := animation.get_animation("Walk").length
+				animation.seek(randf() * len, false)  # true = update immediately
+	else:
+		if animation.current_animation != "Idle":
+			animation.play("Idle")
 
 	target_velocity += direction * delta
 	target_velocity = target_velocity.limit_length(move_speed)
