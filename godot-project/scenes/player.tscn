@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://klg2tl65agr5" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://bew52ds47fc4j" path="res://assets/Characters/pcAvatar.blend" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://blgslr3pmx84n" path="res://assets/Crosshairs/ReticuleWhite.png" id="3_qhqgy"]
+[ext_resource type="Material" uid="uid://bx4gxi3xptk2r" path="res://assets/Characters/Peep.tres" id="3_qlg0r"]
 [ext_resource type="Script" uid="uid://dabx86uwt2h44" path="res://scenes/crosshair.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
@@ -11,11 +12,28 @@ height = 4.294159
 
 [node name="Player" type="CharacterBody3D" unique_id=307269424]
 collision_layer = 5
+[node name="Player" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("animation", "maskA", "maskB", "maskC")]
+slide_on_ceiling = false
 script = ExtResource("1_3vyb7")
+animation = NodePath("Peep/AnimationPlayer")
+maskA = NodePath("Peep/Armature/Skeleton3D/MaskA")
+maskB = NodePath("Peep/Armature/Skeleton3D/MaskB")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=717763032]
+[node name="Peep" parent="." unique_id=1956553420 instance=ExtResource("2_dqkch")]
 
 [node name="pcAvatar" parent="Pivot" unique_id=754838165 instance=ExtResource("2_g2els")]
+[node name="Gun" parent="Peep/Armature" parent_id_path=PackedInt32Array(1956553420, 258331845) index="0" unique_id=305311057]
+visible = false
+surface_material_override/0 = ExtResource("3_qlg0r")
+
+[node name="MaskB" parent="Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1956553420, 1793743348) index="2" unique_id=735613856]
+visible = false
+
+[node name="MaskC" parent="Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1956553420, 1793743348) index="3" unique_id=1881769237]
+visible = false
+
+[node name="Pivot" type="Node3D" parent="." unique_id=717763032]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.025947, 0)
@@ -25,3 +43,5 @@ shape = SubResource("CapsuleShape3D_u8vuu")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qhqgy")
 script = ExtResource("4_dqkch")
+
+[editable path="Peep"]
