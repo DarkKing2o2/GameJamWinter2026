@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="6_hihnx"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_hihnx"]
 [ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="9_hihnx"]
+[ext_resource type="PackedScene" uid="uid://08w021pl6r0m" path="res://scenes/CurvedHedge.tscn" id="10_oowc3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -52,6 +53,7 @@ shape = SubResource("BoxShape3D_qxq04")
 debug_color = Color(1, 1, 1, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1805015175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23489124, -0.61740494, 0.9583994)
 mesh = SubResource("BoxMesh_4fixh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=616759355]
@@ -74,11 +76,10 @@ size = 98.768715
 
 [node name="Cliques" type="Node" parent="." unique_id=625637828]
 
-[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320 node_paths=PackedStringArray("path")]
+[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320]
 script = ExtResource("3_v1o7i")
 boid_scene = ExtResource("4_3j17g")
 boid_count = 30
-path = NodePath("../../FountainPath/Path3D")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870]
@@ -419,3 +420,21 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 57.8
 
 [node name="Palace5" parent="." unique_id=465412668 instance=ExtResource("9_hihnx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -32.041946, 0, -43.418644)
+
+[node name="CurvedHedge" parent="." unique_id=258500769 instance=ExtResource("10_oowc3")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.791977, 0, 7.724369)
+
+[node name="CurvedHedge5" parent="." unique_id=1479759179 instance=ExtResource("10_oowc3")]
+transform = Transform3D(2, 0, 0, 0, 1.4387329, 0, 0, 0, 2, 33.036026, 0, 24.218996)
+
+[node name="CurvedHedge7" parent="." unique_id=2100067982 instance=ExtResource("10_oowc3")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 1.4387329, 0, 1.7484555e-07, 0, -2, -28.405119, 0, 12.290924)
+
+[node name="CurvedHedge2" parent="." unique_id=1724015906 instance=ExtResource("10_oowc3")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -40.79573, 0, 27.759117)
+
+[node name="CurvedHedge3" parent="." unique_id=636437760 instance=ExtResource("10_oowc3")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 38.985497, 0, 27.759117)
+
+[node name="CurvedHedge4" parent="." unique_id=740415927 instance=ExtResource("10_oowc3")]
+transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 38.985497, 0, 6.4756966)
