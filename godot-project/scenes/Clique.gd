@@ -3,50 +3,60 @@ class_name Clique
 
 @export var boid_scene: PackedScene
 @export var boid_count: int = 20
+@export var alignment_force: float = 1.2
+@export var centralization_force_radius: float = 10.0
 @export var cohesion_force: float = 0.5
 @export var separation_force: float = 1.0
 @export var centralization_force: float = 0.5
 @export var perception_radius: float = 200
-@export var path: Path3D
+@export var path: Node3D
 @export var target = Vector3(1, 0, 0) 
-@export var pathNodeTolerance = 10.0
-var pointCurrentlyAt: Vector3
+@export var pathNodeTolerance = 7.0
+var movingToPoint: Vector3
+var current_index = 0
 
 var boids: Array = []
 
 func _ready():
 	for i in boid_count:
 		var boid = boid_scene.instantiate()
+		boid.alignment_force = alignment_force
+		boid.centralization_force_radius = centralization_force_radius
 		boid.cohesion_force = cohesion_force
 		boid.seperation_force = separation_force
 		boid.centralization_force = centralization_force
 		boid.perception_radius = perception_radius
 		add_child(boid)
 		boids.push_back(boid)
+	if path != null:
+		var points = path.get_children()
+		if points.size() > 0:
+			if movingToPoint == null || movingToPoint.is_equal_approx(Vector3()):
+				movingToPoint = points[0].position
+	target = movingToPoint
+	for boid in boids:
+		boid.set_prey_position(target)
 
 func _process(delta):
 	if path != null:
-		var points = path.get_curve().get_baked_points()
+		var points = path.get_children()
 		if points.size() > 0:
-			if pointCurrentlyAt == null:
-				pointCurrentlyAt = points[0]  # Start at the first point
-
-			# Check if enough boids are near the current target
+			if movingToPoint == null:
+				movingToPoint = points[0]
+			
 			var near_count = 0
 			for boid in boids:
 				if boid != null:
-					if boid.position.distance_to(pointCurrentlyAt) < pathNodeTolerance:
+					if boid.position.distance_to(movingToPoint) < pathNodeTolerance:
 						near_count += 1
 
-			if near_count >= boid_count / 2:  # Move to the next point if half the boids are near
-				var current_index = points.find(pointCurrentlyAt)
-				if current_index < points.size() - 1:
-					pointCurrentlyAt = points[current_index + 1]  # Move to the next point
-				else:
-					pointCurrentlyAt = points[0]  # Loop back to the start
+			if near_count >= (boid_count / 2.0):
+				near_count = 0
+				current_index = (current_index + 1) % points.size()
+				movingToPoint = points[current_index].position
 
-			target = pointCurrentlyAt  # Update the target for the boids
-
+			target = movingToPoint
+ 
 	for boid in boids:
 		if boid != null:
 			boid.set_prey_position(target)
