@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var speed = 14
 @export var fall_acceleration = 75
 @export var player_color = Color(1, 1, 1)
+@export var ignore_nodes: Array[CollisionObject3D] = []
 
 var target_velocity = Vector3.ZERO
 
@@ -11,13 +12,14 @@ var can_shoot = true
 var player_num
 var attack
 var timer
-var crosshair
+
+@onready var crosshair = self.get_node("Crosshair")
 
 func _ready() -> void:
 	player_num = self.name.right(1)
 	attack = get_node("Attack_" + player_num)
 	timer = get_node("Attack_Timer_" + player_num)
-	crosshair = get_node("P" + player_num + "_cross")
+	crosshair.set_ignore_nodes(ignore_nodes)
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -34,7 +36,6 @@ func _physics_process(delta):
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 
-
 	if not is_on_floor(): 
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
@@ -42,20 +43,25 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _input(event):
-	if event.is_action_pressed("Attack-GamePad" + player_num):
-		if can_shoot:
-			can_shoot = false
-			timer.start(3)
-			for x in attack.get_collision_count():
-				if attack.get_collider(x).is_in_group("enemy"):
-					#TODO: do the actual attack impact
-					print(attack.get_collider(x))
-					attack.get_collider(x).queue_free()
 	if event.is_action_pressed("Ability-GamePad" + player_num):
 		pass
 
-
-
+func shoot():
+	if not can_shoot:
+		return
+	
+	# Get the camera node
+	var camera = get_viewport().get_camera_3d()
+	if not camera:
+		return
+	
+	var crosshair_world_pos = crosshair.get_world_position(camera)
+	
+	var shoot_direction = (crosshair_world_pos - global_transform.origin).normalized()
+	
+	var projectile = preload("res://scenes/ShottyBlast.tscn").instantiate()
+	projectile.global_transform.origin = global_transform.origin
+	get_parent().add_child(projectile)
 
 func _on_attack_timer_0_timeout() -> void:
 	can_shoot = true

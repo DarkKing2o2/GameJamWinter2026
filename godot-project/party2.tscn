@@ -76,16 +76,18 @@ transform = Transform3D(1, 0, 0, 0, 0.4575945, 0.889161, 0, -0.889161, 0.4575945
 shadow_enabled = true
 sky_mode = 1
 
-[node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+[node name="Player_0" parent="." unique_id=307269424 node_paths=PackedStringArray("ignore_nodes") groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
 player_color = Color(0.801582, 0.1534009, 0.101201005, 1)
+ignore_nodes = [NodePath("../WallBottom"), NodePath("../WallTop")]
 
 [node name="Attack_0" type="ShapeCast3D" parent="Player_0" unique_id=1197713913]
 shape = SubResource("SphereShape3D_hihnx")
 
-[node name="Player_1" parent="." unique_id=1198318810 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+[node name="Player_1" parent="." unique_id=1198318810 node_paths=PackedStringArray("ignore_nodes") groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
 player_color = Color(0.29868627, 0.25811613, 1, 1)
+ignore_nodes = [NodePath("../WallBottom")]
 
 [node name="Attack_1" type="ShapeCast3D" parent="Player_1" unique_id=734551945]
 shape = SubResource("SphereShape3D_hihnx")
