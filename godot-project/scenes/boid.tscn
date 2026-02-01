@@ -24,7 +24,7 @@ radius = 1.0043945
 height = 3.9542084
 
 [node name="boid" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("maskA", "maskB", "maskC", "currentMask", "animation")]
-collision_layer = 5
+collision_layer = 4
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
