@@ -31,6 +31,8 @@ func _ready() -> void:
 	timer = get_node("Attack_Timer_" + player_num)
 	crosshair.set_ignore_nodes(ignore_nodes)
 	masks = [ maskA, maskB, maskC ]
+	var maskKeys = ["A", "B", "C"]
+	startingMask = maskKeys[randi_range(0,2)]
 	switch_mask(startingMask)
 
 
