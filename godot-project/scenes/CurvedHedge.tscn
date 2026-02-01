@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://08w021pl6r0m"]
+[gd_scene format=4 uid="uid://dc42g7hu27c6e"]
 
-[ext_resource type="Material" uid="uid://c5ghl86qfab2t" path="res://assets/Environment/BasicMaterial.tres" id="1_5ey1h"]
+[ext_resource type="Material" path="res://assets/Environment/BasicMaterial.tres" id="1_5ey1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nee6a"]
 
@@ -85,6 +85,7 @@ mesh = SubResource("ArrayMesh_4mvq3")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="HedgeCurved2/HedgeCurved" unique_id=672233823]
+constant_linear_velocity = Vector3(1, 1, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HedgeCurved2/HedgeCurved/StaticBody3D" unique_id=891220764]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -5.864371, 0)
