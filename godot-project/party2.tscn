@@ -2,14 +2,11 @@
 
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cryew"]
 [ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
-[ext_resource type="AudioStream" uid="uid://dbytkhqfjqhid" path="res://audio/soundtrack.mp3" id="2_6cd6f"]
-[ext_resource type="AudioStream" uid="uid://1uhmyn2x5t57" path="res://audio/ambient.wav" id="2_cryew"]
-[ext_resource type="Script" uid="uid://pndvxow6js1a" path="res://audio_stream_player.gd" id="3_4e4b1"]
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_6cd6f"]
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
 [ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="5_yd7rt"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
-[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="10_3dg2l"]
+[ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0tn4"]
@@ -38,19 +35,7 @@ size = Vector3(1000, 2, 1000)
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cryew")
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=2053285745]
-stream = ExtResource("2_6cd6f")
-script = ExtResource("3_4e4b1")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=297044198]
-stream = ExtResource("2_cryew")
-volume_db = -14.0
-script = ExtResource("3_4e4b1")
-
-[node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, -1.4964981, 0)
-collision_layer = 3
-collision_mask = 3
+[node name="Cliques" type="Node" parent="." unique_id=769638058]
 
 [node name="CliqueA-middle" type="Node3D" parent="Cliques" unique_id=1524972076 node_paths=PackedStringArray("path")]
 script = ExtResource("4_yg4fq")
