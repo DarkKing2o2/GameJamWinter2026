@@ -6,13 +6,13 @@
 
 [node name="Node2D" type="Node2D" unique_id=50308110]
 
-[node name="P1_cross" type="Sprite2D" parent="." unique_id=1988180335]
+[node name="P0_cross" type="Sprite2D" parent="." unique_id=1988180335]
 position = Vector2(392, 507)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_mim3n")
 script = ExtResource("2_y18ne")
 
-[node name="P2_cross" type="Sprite2D" parent="." unique_id=1443868295]
+[node name="P1_cross" type="Sprite2D" parent="." unique_id=1443868295]
 position = Vector2(1536, 525)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_mim3n")
