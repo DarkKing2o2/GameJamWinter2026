@@ -85,6 +85,7 @@ func shoot():
 
 	var projectile_scene = preload("res://scenes/ShottyBlast.tscn")
 	var projectile = projectile_scene.instantiate()
+	projectile.change_bullet_color(player_color)
 	projectile.connect("END_OF_RELOAD_SIGNAL", self._END_OF_TIMER_RELOAD_LISTENER)
 
 	projectile.global_transform.origin = global_transform.origin
