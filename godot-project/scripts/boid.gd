@@ -142,3 +142,19 @@ func set_current_mask(mask_type: String):
 		currentMask = maskB
 	elif mask_type == 'C':
 		currentMask = maskC
+		
+
+func set_boid_params(
+	af: float,
+	cfr: float,
+	cf: float,
+	sf: float,
+	czf: float,
+	pr: float
+) -> void:
+	alignment_force = af
+	centralization_force_radius = cfr
+	cohesion_force = cf
+	seperation_force = sf
+	centralization_force = czf
+	perception_radius = pr

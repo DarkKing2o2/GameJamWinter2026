@@ -1,15 +1,13 @@
-[gd_scene format=3 uid="uid://csvx68pirmg6b"]
+[gd_scene format=3 uid="uid://cbpgqvey1e2bk"]
 
-[ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cryew"]
-[ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
-[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_6cd6f"]
-[ext_resource type="PackedScene" uid="uid://cpk686y0unttv" path="res://assets/Characters/pcAvatarA.blend" id="3_yg4fq"]
-[ext_resource type="PackedScene" uid="uid://8ruao3nsie43" path="res://assets/Characters/pcAvatarB.blend" id="4_gg2h0"]
-[ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
-[ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="5_yd7rt"]
-[ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
-[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="10_3dg2l"]
-[ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
+[ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_rolmr"]
+[ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_dwpqo"]
+[ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="3_6f865"]
+[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="4_6vied"]
+[ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="5_nins3"]
+[ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="6_ng2qx"]
+[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="7_oell5"]
+[ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="8_c12te"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
@@ -37,7 +35,7 @@ size = Vector3(21.263062, 3.1524048, 1)
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_6cd6f"]
 
 [node name="Root" type="Node" unique_id=1150443290]
-script = ExtResource("1_cryew")
+script = ExtResource("1_rolmr")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
 transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, -1.4964981, 0)
@@ -55,19 +53,13 @@ visible = false
 layers = 524289
 mesh = SubResource("BoxMesh_4fixh")
 
-[node name="Ground2" parent="Ground" unique_id=510521232 instance=ExtResource("2_4e4b1")]
+[node name="Ground2" parent="Ground" unique_id=510521232 instance=ExtResource("2_dwpqo")]
 transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.86197954, 0.00066209154, 0.4151022, 0.003536883, 0.45979574, -10.555, -1.045, 9.454)
 
-[node name="Ground3" parent="Ground" unique_id=2010876845 instance=ExtResource("2_4e4b1")]
+[node name="Ground3" parent="Ground" unique_id=2010876845 instance=ExtResource("2_dwpqo")]
 transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.86197954, 0.00066209154, 0.4151022, 0.003536883, 0.45979574, 117.576, -1.2296526, -118.77979)
 
-[node name="pcAvatarA" parent="Ground" unique_id=1429358640 instance=ExtResource("3_yg4fq")]
-transform = Transform3D(-0.7799912, 0, 0.003689307, 0, 0.78, 0, -0.003689307, 0, -0.7799912, -29.235, 0, -0.189)
-
-[node name="pcAvatarB" parent="Ground" unique_id=477192606 instance=ExtResource("4_gg2h0")]
-transform = Transform3D(-0.6690599, 0, 0.4009475, 0, 0.78, 0, -0.4009475, 0, -0.6690599, -22.375, 0, 6.237)
-
-[node name="pcAvatarC" parent="Ground" unique_id=1418069688 instance=ExtResource("5_yd7rt")]
+[node name="pcAvatarC" parent="Ground" unique_id=1418069688 instance=ExtResource("3_6f865")]
 transform = Transform3D(-0.4870408, 0, 0.60925466, 0, 0.78, 0, -0.60925466, 0, -0.4870408, -16.509, 0, 11.714)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=616759355]
@@ -75,11 +67,11 @@ transform = Transform3D(1, 0, 0, 0, 0.4575945, 0.889161, 0, -0.889161, 0.4575945
 shadow_enabled = true
 sky_mode = 1
 
-[node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+[node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("4_6vied")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.99827, -1.4305115e-06, 0.026323318)
 player_color = Color(0.9980716, 0, 0.11335511, 1)
 
-[node name="Player_1" parent="." unique_id=2068567358 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+[node name="Player_1" parent="." unique_id=2068567358 groups=["enemy"] instance=ExtResource("4_6vied")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
 player_color = Color(0, 0, 1, 1)
 
@@ -92,28 +84,64 @@ size = 98.768715
 
 [node name="Cliques" type="Node" parent="." unique_id=625637828]
 
-[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320 node_paths=PackedStringArray("path")]
-script = ExtResource("4_yg4fq")
-boid_count = 30
-centralization_force_radius = 20.0
-cohesion_force = 1.0
-separation_force = 0.1
-centralization_force = 20.0
+[node name="CliqueA-middle" type="Node3D" parent="Cliques" unique_id=89981320 node_paths=PackedStringArray("path")]
+script = ExtResource("5_nins3")
+boid_count = 12
+centralization_force_radius = 12.95
+cohesion_force = 0.87
+separation_force = 4.14
+centralization_force = 3.5300000000000002
 path = NodePath("../../MiddleAreaPathing")
+pathNodeTolerance = 13.275
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueA-middle3" type="Node3D" parent="Cliques" unique_id=2109005247 node_paths=PackedStringArray("path")]
+script = ExtResource("5_nins3")
+boid_count = 12
+centralization_force_radius = 12.95
+cohesion_force = 0.87
+separation_force = 4.14
+centralization_force = 3.5300000000000002
+path = NodePath("../../MiddleAreaPathing")
+pathNodeTolerance = 13.275
+startPathIndex = 2
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870 node_paths=PackedStringArray("path")]
-script = ExtResource("4_yg4fq")
+script = ExtResource("5_nins3")
 boid_count = 10
 cohesion_force = 1.0
-separation_force = 0.0
+separation_force = 1.6800000000000002
 centralization_force = 1.0
 path = NodePath("../../HedgeHideyPath")
 maskType = "B"
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
+[node name="CliqueB2" type="Node3D" parent="Cliques" unique_id=2106784901 node_paths=PackedStringArray("path")]
+script = ExtResource("5_nins3")
+boid_count = 10
+cohesion_force = 1.0
+separation_force = 1.6800000000000002
+centralization_force = 1.0
+path = NodePath("../../HedgeHideyPath")
+maskType = "B"
+startPathIndex = 2
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueB3" type="Node3D" parent="Cliques" unique_id=803706312 node_paths=PackedStringArray("path")]
+script = ExtResource("5_nins3")
+boid_count = 10
+cohesion_force = 1.0
+separation_force = 1.6800000000000002
+centralization_force = 1.0
+path = NodePath("../../HedgeHideyPath")
+maskType = "B"
+startPathIndex = 5
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
 [node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
-script = ExtResource("4_yg4fq")
+script = ExtResource("5_nins3")
+boid_count = 25
 maskType = "C"
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
@@ -128,138 +156,138 @@ debug_color = Color(1, 1, 1, 0.41960785)
 [node name="Hedges" type="Node3D" parent="WallLeft" unique_id=1176450656]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.0809937, 0, 0)
 
-[node name="Hedge" parent="WallLeft/Hedges" unique_id=1248845170 instance=ExtResource("8_vr2yl")]
+[node name="Hedge" parent="WallLeft/Hedges" unique_id=1248845170 instance=ExtResource("6_ng2qx")]
 
-[node name="Hedge2" parent="WallLeft/Hedges" unique_id=222165891 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="WallLeft/Hedges" unique_id=222165891 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3864193, 0, 3.8937597)
 
-[node name="Hedge3" parent="WallLeft/Hedges" unique_id=365260470 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="WallLeft/Hedges" unique_id=365260470 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8086405)
 
-[node name="Hedge4" parent="WallLeft/Hedges" unique_id=1508370530 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="WallLeft/Hedges" unique_id=1508370530 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14276123, 0, 11.384977)
 
-[node name="Hedge5" parent="WallLeft/Hedges" unique_id=1657318471 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="WallLeft/Hedges" unique_id=1657318471 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.278737)
 
-[node name="Hedge6" parent="WallLeft/Hedges" unique_id=1438412872 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="WallLeft/Hedges" unique_id=1438412872 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.193619)
 
-[node name="Hedge23" parent="WallLeft/Hedges" unique_id=654069563 instance=ExtResource("8_vr2yl")]
+[node name="Hedge23" parent="WallLeft/Hedges" unique_id=654069563 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.699574)
 
-[node name="Hedge7" parent="WallLeft/Hedges" unique_id=1970606140 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="WallLeft/Hedges" unique_id=1970606140 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.021618)
 
-[node name="Hedge8" parent="WallLeft/Hedges" unique_id=303992985 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="WallLeft/Hedges" unique_id=303992985 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.24885)
 
-[node name="Hedge9" parent="WallLeft/Hedges" unique_id=1090023430 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="WallLeft/Hedges" unique_id=1090023430 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.825188)
 
-[node name="Hedge10" parent="WallLeft/Hedges" unique_id=1682143414 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="WallLeft/Hedges" unique_id=1682143414 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.71895)
 
-[node name="Hedge11" parent="WallLeft/Hedges" unique_id=1622073131 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="WallLeft/Hedges" unique_id=1622073131 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
 
-[node name="Hedge12" parent="WallLeft/Hedges" unique_id=669022110 instance=ExtResource("8_vr2yl")]
+[node name="Hedge12" parent="WallLeft/Hedges" unique_id=669022110 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
 
-[node name="Hedge13" parent="WallLeft/Hedges" unique_id=87980129 instance=ExtResource("8_vr2yl")]
+[node name="Hedge13" parent="WallLeft/Hedges" unique_id=87980129 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.527588)
 
-[node name="Hedge14" parent="WallLeft/Hedges" unique_id=613609326 instance=ExtResource("8_vr2yl")]
+[node name="Hedge14" parent="WallLeft/Hedges" unique_id=613609326 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.442467)
 
-[node name="Hedge15" parent="WallLeft/Hedges" unique_id=1533119938 instance=ExtResource("8_vr2yl")]
+[node name="Hedge15" parent="WallLeft/Hedges" unique_id=1533119938 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.018806)
 
-[node name="Hedge16" parent="WallLeft/Hedges" unique_id=1520202583 instance=ExtResource("8_vr2yl")]
+[node name="Hedge16" parent="WallLeft/Hedges" unique_id=1520202583 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.912563)
 
-[node name="Hedge17" parent="WallLeft/Hedges" unique_id=421048929 instance=ExtResource("8_vr2yl")]
+[node name="Hedge17" parent="WallLeft/Hedges" unique_id=421048929 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 58.827446)
 
-[node name="Hedge18" parent="WallLeft/Hedges" unique_id=473689656 instance=ExtResource("8_vr2yl")]
+[node name="Hedge18" parent="WallLeft/Hedges" unique_id=473689656 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 63.967796)
 
-[node name="Hedge19" parent="WallLeft/Hedges" unique_id=1307441729 instance=ExtResource("8_vr2yl")]
+[node name="Hedge19" parent="WallLeft/Hedges" unique_id=1307441729 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 67.882675)
 
-[node name="Hedge20" parent="WallLeft/Hedges" unique_id=1453090512 instance=ExtResource("8_vr2yl")]
+[node name="Hedge20" parent="WallLeft/Hedges" unique_id=1453090512 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.459015)
 
-[node name="Hedge21" parent="WallLeft/Hedges" unique_id=1514014112 instance=ExtResource("8_vr2yl")]
+[node name="Hedge21" parent="WallLeft/Hedges" unique_id=1514014112 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 75.352776)
 
-[node name="Hedge22" parent="WallLeft/Hedges" unique_id=2087179066 instance=ExtResource("8_vr2yl")]
+[node name="Hedge22" parent="WallLeft/Hedges" unique_id=2087179066 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.267654)
 
-[node name="Hedge" parent="WallLeft/Hedges/Hedge22" unique_id=1698378490 instance=ExtResource("8_vr2yl")]
+[node name="Hedge" parent="WallLeft/Hedges/Hedge22" unique_id=1698378490 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120.30286)
 
-[node name="Hedge2" parent="WallLeft/Hedges/Hedge22" unique_id=932544995 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="WallLeft/Hedges/Hedge22" unique_id=932544995 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -116.409096)
 
-[node name="Hedge3" parent="WallLeft/Hedges/Hedge22" unique_id=1620259319 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="WallLeft/Hedges/Hedge22" unique_id=1620259319 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.49422)
 
-[node name="Hedge4" parent="WallLeft/Hedges/Hedge22" unique_id=897545374 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="WallLeft/Hedges/Hedge22" unique_id=897545374 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -108.91788)
 
-[node name="Hedge5" parent="WallLeft/Hedges/Hedge22" unique_id=1640715687 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="WallLeft/Hedges/Hedge22" unique_id=1640715687 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -105.02412)
 
-[node name="Hedge6" parent="WallLeft/Hedges/Hedge22" unique_id=33661062 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="WallLeft/Hedges/Hedge22" unique_id=33661062 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101.10924)
 
-[node name="Hedge7" parent="WallLeft/Hedges/Hedge22" unique_id=1448352355 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="WallLeft/Hedges/Hedge22" unique_id=1448352355 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95.96889)
 
-[node name="Hedge8" parent="WallLeft/Hedges/Hedge22" unique_id=1286748196 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="WallLeft/Hedges/Hedge22" unique_id=1286748196 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -92.05401)
 
-[node name="Hedge9" parent="WallLeft/Hedges/Hedge22" unique_id=1833790257 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="WallLeft/Hedges/Hedge22" unique_id=1833790257 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -88.47767)
 
-[node name="Hedge10" parent="WallLeft/Hedges/Hedge22" unique_id=1917273328 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="WallLeft/Hedges/Hedge22" unique_id=1917273328 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2884388, 0, -84.58391)
 
-[node name="Hedge11" parent="WallLeft/Hedges/Hedge22" unique_id=1940160666 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="WallLeft/Hedges/Hedge22" unique_id=1940160666 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80.66903)
 
-[node name="Hedge" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=817589403 instance=ExtResource("8_vr2yl")]
+[node name="Hedge" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=817589403 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78.60149)
 
-[node name="Hedge2" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=286438810 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=286438810 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -74.707726)
 
-[node name="Hedge3" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1951417131 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1951417131 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.79285)
 
-[node name="Hedge4" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=644377062 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=644377062 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -67.21651)
 
-[node name="Hedge5" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1915467267 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1915467267 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.322746)
 
-[node name="Hedge6" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1286837204 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1286837204 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.407867)
 
-[node name="Hedge7" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1319227295 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1319227295 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.267517)
 
-[node name="Hedge8" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=5588917 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=5588917 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.35264)
 
-[node name="Hedge9" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=340171216 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=340171216 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.7763)
 
-[node name="Hedge10" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=14259877 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=14259877 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.882538)
 
-[node name="Hedge11" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=2071700081 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=2071700081 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
 
 [node name="WallBottom" type="StaticBody3D" parent="." unique_id=1507913582]
@@ -290,139 +318,139 @@ debug_color = Color(1, 1, 1, 0.41960785)
 [node name="Hedges" type="Node3D" parent="WallRight" unique_id=664094220]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146.85214, -3.927, 0)
 
-[node name="Hedge" parent="WallRight/Hedges" unique_id=456744335 instance=ExtResource("8_vr2yl")]
+[node name="Hedge" parent="WallRight/Hedges" unique_id=456744335 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352211, 0, 0)
 
-[node name="Hedge2" parent="WallRight/Hedges" unique_id=837854901 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="WallRight/Hedges" unique_id=837854901 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.8937597)
 
-[node name="Hedge3" parent="WallRight/Hedges" unique_id=540736701 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="WallRight/Hedges" unique_id=540736701 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352211, 0, 7.8086405)
 
-[node name="Hedge4" parent="WallRight/Hedges" unique_id=1530189422 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="WallRight/Hedges" unique_id=1530189422 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.384977)
 
-[node name="Hedge5" parent="WallRight/Hedges" unique_id=1324277612 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="WallRight/Hedges" unique_id=1324277612 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45661736, 0, 15.278737)
 
-[node name="Hedge6" parent="WallRight/Hedges" unique_id=1798275341 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="WallRight/Hedges" unique_id=1798275341 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.193619)
 
-[node name="Hedge7" parent="WallRight/Hedges" unique_id=1567861217 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="WallRight/Hedges" unique_id=1567861217 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.415451)
 
-[node name="Hedge23" parent="WallRight/Hedges" unique_id=450925504 instance=ExtResource("8_vr2yl")]
+[node name="Hedge23" parent="WallRight/Hedges" unique_id=450925504 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3484917, 0, 22.79608)
 
-[node name="Hedge8" parent="WallRight/Hedges" unique_id=941108422 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="WallRight/Hedges" unique_id=941108422 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.24885)
 
-[node name="Hedge9" parent="WallRight/Hedges" unique_id=1872044785 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="WallRight/Hedges" unique_id=1872044785 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.825188)
 
-[node name="Hedge10" parent="WallRight/Hedges" unique_id=585228284 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="WallRight/Hedges" unique_id=585228284 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.71895)
 
-[node name="Hedge11" parent="WallRight/Hedges" unique_id=973045164 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="WallRight/Hedges" unique_id=973045164 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
 
-[node name="Hedge12" parent="WallRight/Hedges" unique_id=1021338287 instance=ExtResource("8_vr2yl")]
+[node name="Hedge12" parent="WallRight/Hedges" unique_id=1021338287 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
 
-[node name="Hedge13" parent="WallRight/Hedges" unique_id=1939331531 instance=ExtResource("8_vr2yl")]
+[node name="Hedge13" parent="WallRight/Hedges" unique_id=1939331531 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.527588)
 
-[node name="Hedge14" parent="WallRight/Hedges" unique_id=377155996 instance=ExtResource("8_vr2yl")]
+[node name="Hedge14" parent="WallRight/Hedges" unique_id=377155996 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.442467)
 
-[node name="Hedge15" parent="WallRight/Hedges" unique_id=1857754032 instance=ExtResource("8_vr2yl")]
+[node name="Hedge15" parent="WallRight/Hedges" unique_id=1857754032 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.018806)
 
-[node name="Hedge16" parent="WallRight/Hedges" unique_id=1564259088 instance=ExtResource("8_vr2yl")]
+[node name="Hedge16" parent="WallRight/Hedges" unique_id=1564259088 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.912563)
 
-[node name="Hedge17" parent="WallRight/Hedges" unique_id=905270816 instance=ExtResource("8_vr2yl")]
+[node name="Hedge17" parent="WallRight/Hedges" unique_id=905270816 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 58.827446)
 
-[node name="Hedge18" parent="WallRight/Hedges" unique_id=1795862955 instance=ExtResource("8_vr2yl")]
+[node name="Hedge18" parent="WallRight/Hedges" unique_id=1795862955 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 63.967796)
 
-[node name="Hedge19" parent="WallRight/Hedges" unique_id=1513396842 instance=ExtResource("8_vr2yl")]
+[node name="Hedge19" parent="WallRight/Hedges" unique_id=1513396842 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 67.882675)
 
-[node name="Hedge20" parent="WallRight/Hedges" unique_id=239023108 instance=ExtResource("8_vr2yl")]
+[node name="Hedge20" parent="WallRight/Hedges" unique_id=239023108 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.459015)
 
-[node name="Hedge21" parent="WallRight/Hedges" unique_id=990181060 instance=ExtResource("8_vr2yl")]
+[node name="Hedge21" parent="WallRight/Hedges" unique_id=990181060 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 75.352776)
 
-[node name="Hedge22" parent="WallRight/Hedges" unique_id=1162074243 instance=ExtResource("8_vr2yl")]
+[node name="Hedge22" parent="WallRight/Hedges" unique_id=1162074243 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.267654)
 
-[node name="Hedge" parent="WallRight/Hedges/Hedge22" unique_id=1196779113 instance=ExtResource("8_vr2yl")]
+[node name="Hedge" parent="WallRight/Hedges/Hedge22" unique_id=1196779113 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120.30286)
 
-[node name="Hedge2" parent="WallRight/Hedges/Hedge22" unique_id=1241868265 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="WallRight/Hedges/Hedge22" unique_id=1241868265 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -116.409096)
 
-[node name="Hedge3" parent="WallRight/Hedges/Hedge22" unique_id=2108724489 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="WallRight/Hedges/Hedge22" unique_id=2108724489 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.49422)
 
-[node name="Hedge4" parent="WallRight/Hedges/Hedge22" unique_id=2123746379 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="WallRight/Hedges/Hedge22" unique_id=2123746379 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -108.91788)
 
-[node name="Hedge5" parent="WallRight/Hedges/Hedge22" unique_id=681436476 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="WallRight/Hedges/Hedge22" unique_id=681436476 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -105.02412)
 
-[node name="Hedge6" parent="WallRight/Hedges/Hedge22" unique_id=1557599297 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="WallRight/Hedges/Hedge22" unique_id=1557599297 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101.10924)
 
-[node name="Hedge7" parent="WallRight/Hedges/Hedge22" unique_id=811756281 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="WallRight/Hedges/Hedge22" unique_id=811756281 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95.96889)
 
-[node name="Hedge8" parent="WallRight/Hedges/Hedge22" unique_id=1022506378 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="WallRight/Hedges/Hedge22" unique_id=1022506378 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -92.05401)
 
-[node name="Hedge9" parent="WallRight/Hedges/Hedge22" unique_id=173029181 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="WallRight/Hedges/Hedge22" unique_id=173029181 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -88.47767)
 
-[node name="Hedge10" parent="WallRight/Hedges/Hedge22" unique_id=1422413119 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="WallRight/Hedges/Hedge22" unique_id=1422413119 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -84.58391)
 
-[node name="Hedge11" parent="WallRight/Hedges/Hedge22" unique_id=815701167 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="WallRight/Hedges/Hedge22" unique_id=815701167 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80.66903)
 
-[node name="Hedge" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1051658355 instance=ExtResource("8_vr2yl")]
+[node name="Hedge" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1051658355 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78.60149)
 
-[node name="Hedge2" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=647081717 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=647081717 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -74.707726)
 
-[node name="Hedge3" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=342271820 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=342271820 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.79285)
 
-[node name="Hedge4" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=615564975 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=615564975 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -67.21651)
 
-[node name="Hedge5" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=2144664808 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=2144664808 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.322746)
 
-[node name="Hedge6" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1638184587 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1638184587 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.407867)
 
-[node name="Hedge7" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1099957601 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1099957601 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.267517)
 
-[node name="Hedge8" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=777285905 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=777285905 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.35264)
 
-[node name="Hedge9" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1321549703 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1321549703 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.7763)
 
-[node name="Hedge10" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=985207864 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=985207864 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.882538)
 
-[node name="Hedge11" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1908560198 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1908560198 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
 
 [node name="HedgeHideyPath" type="Node3D" parent="." unique_id=999605553]
@@ -431,19 +459,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, -7)
 
 [node name="Node3D2" type="Node3D" parent="HedgeHideyPath" unique_id=1290363]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 54.11963)
 
 [node name="Node3D3" type="Node3D" parent="HedgeHideyPath" unique_id=1868785881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.920103, 0, 61.40274)
 
 [node name="Node3D4" type="Node3D" parent="HedgeHideyPath" unique_id=1761353428]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 54)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.560993, 0, 59.384506)
 
 [node name="Node3D5" type="Node3D" parent="HedgeHideyPath" unique_id=1181869123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0, 34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.22013, 0, 42.18419)
 
 [node name="Node3D6" type="Node3D" parent="HedgeHideyPath" unique_id=1116634730]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.332413, 0, -14.958122)
 
 [node name="Node3D7" type="Node3D" parent="HedgeHideyPath" unique_id=1247013445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -24)
@@ -454,51 +482,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -24)
 [node name="MiddleAreaPathing" type="Node3D" parent="." unique_id=1611649465]
 
 [node name="Node3D" type="Node3D" parent="MiddleAreaPathing" unique_id=1707732567]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.606306, 0, 5.166607)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.914337, 0, -18.54612)
 
 [node name="Node3D2" type="Node3D" parent="MiddleAreaPathing" unique_id=202677199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.004034, 0, 7.4045944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.245384, 0, -7.9528027)
 
 [node name="Node3D3" type="Node3D" parent="MiddleAreaPathing" unique_id=1776506512]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.710583, 0, 39.236763)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.054802, 0, 51.231853)
 
 [node name="Node3D4" type="Node3D" parent="MiddleAreaPathing" unique_id=1517582397]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.569391, 0, 38.69027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.85733, 0, 50.319706)
 
-[node name="Palace" parent="." unique_id=1365196345 instance=ExtResource("10_3dg2l")]
+[node name="Palace" parent="." unique_id=1365196345 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -3.2158833, -3.0367098, -50.286045)
 
-[node name="Palace2" parent="." unique_id=1013394723 instance=ExtResource("10_3dg2l")]
+[node name="Palace2" parent="." unique_id=1013394723 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, 36.89966, -3.7254605, -50.113644)
 
-[node name="Palace3" parent="." unique_id=151330816 instance=ExtResource("10_3dg2l")]
+[node name="Palace3" parent="." unique_id=151330816 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -64.40384, -6.9378157, -51.206673)
 
-[node name="Palace4" parent="." unique_id=2127817671 instance=ExtResource("10_3dg2l")]
+[node name="Palace4" parent="." unique_id=2127817671 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, 65.236145, -10.7104225, -49.580116)
 
-[node name="Palace6" parent="." unique_id=863532225 instance=ExtResource("10_3dg2l")]
+[node name="Palace6" parent="." unique_id=863532225 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, 16.030163, -10.7104225, -50.37805)
 
-[node name="Palace7" parent="." unique_id=1768437931 instance=ExtResource("10_3dg2l")]
+[node name="Palace7" parent="." unique_id=1768437931 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -47.606037, -10.7104225, -54.999386)
 
-[node name="Palace5" parent="." unique_id=465412668 instance=ExtResource("10_3dg2l")]
+[node name="Palace5" parent="." unique_id=465412668 instance=ExtResource("7_oell5")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -31.098907, -2.69341, -50.286045)
 
 [node name="Fence" type="Node3D" parent="." unique_id=487257128]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 6.9391212, -5.458125, 84.31326)
 
-[node name="Fence2" parent="Fence" unique_id=918195960 instance=ExtResource("11_31vol")]
+[node name="Fence2" parent="Fence" unique_id=918195960 instance=ExtResource("8_c12te")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.75519, 3.3655243, 0)
 
-[node name="Fence3" parent="Fence" unique_id=1125023637 instance=ExtResource("11_31vol")]
+[node name="Fence3" parent="Fence" unique_id=1125023637 instance=ExtResource("8_c12te")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.769566, 3.3655243, 0)
 
-[node name="Fence4" parent="Fence" unique_id=1993898351 instance=ExtResource("11_31vol")]
+[node name="Fence4" parent="Fence" unique_id=1993898351 instance=ExtResource("8_c12te")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8263817, 3.3655243, 0)
 
-[node name="Fence5" parent="Fence" unique_id=607432704 instance=ExtResource("11_31vol")]
+[node name="Fence5" parent="Fence" unique_id=607432704 instance=ExtResource("8_c12te")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.15924, 3.3655243, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Fence" unique_id=1242759535]
@@ -508,76 +536,76 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.538026, 0)
 transform = Transform3D(7.749683, 0, 0, 0, 2.5948792, 0, 0, 0, 1.1442686, -11.573906, 1.0873499, 0)
 shape = SubResource("BoxShape3D_qsfla")
 
-[node name="Hedge6" parent="." unique_id=620779253 instance=ExtResource("8_vr2yl")]
+[node name="Hedge6" parent="." unique_id=620779253 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -11.676033, -1.9488859, 54.826378)
 
-[node name="Hedge8" parent="." unique_id=1311119298 instance=ExtResource("8_vr2yl")]
+[node name="Hedge8" parent="." unique_id=1311119298 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -19.676033, -1.9488859, 54.826378)
 
-[node name="Hedge21" parent="." unique_id=254929209 instance=ExtResource("8_vr2yl")]
+[node name="Hedge21" parent="." unique_id=254929209 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 6.711177, -1.9488859, 55.263546)
 
-[node name="Hedge22" parent="." unique_id=424426260 instance=ExtResource("8_vr2yl")]
+[node name="Hedge22" parent="." unique_id=424426260 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 15.5469675, -1.9488859, 55.263546)
 
-[node name="Hedge2" parent="." unique_id=1216196589 instance=ExtResource("8_vr2yl")]
+[node name="Hedge2" parent="." unique_id=1216196589 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.606396, -2.5942287, -1.2702389)
 
-[node name="Hedge13" parent="." unique_id=187849278 instance=ExtResource("8_vr2yl")]
+[node name="Hedge13" parent="." unique_id=187849278 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.810303, -3.3489246, -11.002676)
 
-[node name="Hedge7" parent="." unique_id=810974367 instance=ExtResource("8_vr2yl")]
+[node name="Hedge7" parent="." unique_id=810974367 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -35.435623, -2.594221, 20.75322)
 
-[node name="Hedge24" parent="." unique_id=101867300 instance=ExtResource("8_vr2yl")]
+[node name="Hedge24" parent="." unique_id=101867300 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -35.63953, -3.348917, 11.020782)
 
-[node name="Hedge9" parent="." unique_id=924138709 instance=ExtResource("8_vr2yl")]
+[node name="Hedge9" parent="." unique_id=924138709 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -2.1097336, -2.594221, 20.75322)
 
-[node name="Hedge25" parent="." unique_id=689881611 instance=ExtResource("8_vr2yl")]
+[node name="Hedge25" parent="." unique_id=689881611 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -2.3136406, -3.348917, 11.020782)
 
-[node name="Hedge11" parent="." unique_id=869167497 instance=ExtResource("8_vr2yl")]
+[node name="Hedge11" parent="." unique_id=869167497 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 29.764236, -2.594221, 20.75322)
 
-[node name="Hedge26" parent="." unique_id=40019398 instance=ExtResource("8_vr2yl")]
+[node name="Hedge26" parent="." unique_id=40019398 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 29.56033, -3.348917, 11.020782)
 
-[node name="Hedge14" parent="." unique_id=206473346 instance=ExtResource("8_vr2yl")]
+[node name="Hedge14" parent="." unique_id=206473346 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.533676, -1.9488859, 42.39576)
 
-[node name="Hedge15" parent="." unique_id=13275051 instance=ExtResource("8_vr2yl")]
+[node name="Hedge15" parent="." unique_id=13275051 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.578236, -1.9488859, 33.556957)
 
-[node name="Hedge17" parent="." unique_id=1505645988 instance=ExtResource("8_vr2yl")]
+[node name="Hedge17" parent="." unique_id=1505645988 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 51.07855, -1.9488859, 42.39576)
 
-[node name="Hedge23" parent="." unique_id=290255171 instance=ExtResource("8_vr2yl")]
+[node name="Hedge23" parent="." unique_id=290255171 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 51.07855, -1.9488859, 33.556957)
 
-[node name="Hedge19" parent="." unique_id=695485354 instance=ExtResource("8_vr2yl")]
+[node name="Hedge19" parent="." unique_id=695485354 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, -1.9488859, 60.154667)
 
-[node name="Hedge20" parent="." unique_id=1067169915 instance=ExtResource("8_vr2yl")]
+[node name="Hedge20" parent="." unique_id=1067169915 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, -1.9488859, 51.315865)
 
-[node name="Hedge3" parent="." unique_id=1266483003 instance=ExtResource("8_vr2yl")]
+[node name="Hedge3" parent="." unique_id=1266483003 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -12.214094, -1.9488859, -24.1019)
 
-[node name="Hedge5" parent="." unique_id=268079799 instance=ExtResource("8_vr2yl")]
+[node name="Hedge5" parent="." unique_id=268079799 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -20.916584, -1.9488859, -24.1019)
 
-[node name="Hedge4" parent="." unique_id=1070601050 instance=ExtResource("8_vr2yl")]
+[node name="Hedge4" parent="." unique_id=1070601050 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 7.5528793, -1.9488859, -24.1019)
 
-[node name="Hedge16" parent="." unique_id=5142868 instance=ExtResource("8_vr2yl")]
+[node name="Hedge16" parent="." unique_id=5142868 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 15.361179, -1.9488859, -24.1019)
 
-[node name="Hedge10" parent="." unique_id=33332322 instance=ExtResource("8_vr2yl")]
+[node name="Hedge10" parent="." unique_id=33332322 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 50.844692, -1.9488859, -9.83502)
 
-[node name="Hedge18" parent="." unique_id=843546418 instance=ExtResource("8_vr2yl")]
+[node name="Hedge18" parent="." unique_id=843546418 instance=ExtResource("6_ng2qx")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 50.738724, -1.9488859, -1.8985863)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=429520268]
