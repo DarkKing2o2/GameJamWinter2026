@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://csvx68pirmg6b"]
+[gd_scene format=3 uid="uid://cv8qm5hhii7ut"]
 
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cryew"]
 [ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="7_wusah"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
 [ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="9_ela8p"]
-[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="10_3dg2l"]
+[ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
@@ -37,13 +37,6 @@ size = Vector3(1000, 1000, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q0tn4"]
 size = Vector3(2, 1000, 1000)
-
-[sub_resource type="Curve3D" id="Curve3D_av4hy"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 29.686527, 0, -19.6555, 0, 0, 0, 0, 0, 0, -30.546818, 0, -13.9112015),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qsfla"]
 size = Vector3(21.263062, 3.1524048, 1)
@@ -96,19 +89,25 @@ size = 98.768715
 
 [node name="Cliques" type="Node" parent="." unique_id=625637828]
 
-[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320]
+[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320 node_paths=PackedStringArray("path")]
 script = ExtResource("4_yg4fq")
 boid_scene = ExtResource("5_gg2h0")
 boid_count = 30
+centralization_force_radius = 20.0
+cohesion_force = 1.0
+separation_force = 0.1
+centralization_force = 20.0
+path = NodePath("../../MiddleAreaPathing")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
-[node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870]
+[node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870 node_paths=PackedStringArray("path")]
 script = ExtResource("4_yg4fq")
 boid_scene = ExtResource("6_yd7rt")
 boid_count = 10
 cohesion_force = 1.0
 separation_force = 0.0
 centralization_force = 1.0
+path = NodePath("../../HedgeHideyPath")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
@@ -270,7 +269,7 @@ shape = SubResource("BoxShape3D_vjem8")
 debug_color = Color(1, 1, 1, 0.41960785)
 
 [node name="WallTop" type="StaticBody3D" parent="." unique_id=1036025485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, -79.18242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, -41.18242)
 physics_material_override = SubResource("PhysicsMaterial_q0tn4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallTop" unique_id=55186816]
@@ -428,10 +427,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
 
 [node name="Node2D" parent="Crosshair_overlay" unique_id=50308110 instance=ExtResource("9_ela8p")]
 
-[node name="FountainPath" type="Node3D" parent="." unique_id=999605553]
+[node name="HedgeHideyPath" type="Node3D" parent="." unique_id=999605553]
 
-[node name="Path3D" type="Path3D" parent="FountainPath" unique_id=2122229667]
-curve = SubResource("Curve3D_av4hy")
+[node name="Node3D" type="Node3D" parent="HedgeHideyPath" unique_id=1178643253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0, -7)
+
+[node name="Node3D2" type="Node3D" parent="HedgeHideyPath" unique_id=1290363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 0, 36)
+
+[node name="Node3D3" type="Node3D" parent="HedgeHideyPath" unique_id=1868785881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 54)
+
+[node name="Node3D4" type="Node3D" parent="HedgeHideyPath" unique_id=1761353428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 54)
+
+[node name="Node3D5" type="Node3D" parent="HedgeHideyPath" unique_id=1181869123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0, 34)
+
+[node name="Node3D6" type="Node3D" parent="HedgeHideyPath" unique_id=1116634730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -7)
+
+[node name="Node3D7" type="Node3D" parent="HedgeHideyPath" unique_id=1247013445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -24)
+
+[node name="Node3D8" type="Node3D" parent="HedgeHideyPath" unique_id=103788505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -24)
+
+[node name="MiddleAreaPathing" type="Node3D" parent="." unique_id=1611649465]
+
+[node name="Node3D" type="Node3D" parent="MiddleAreaPathing" unique_id=1707732567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.606306, 0, 5.166607)
+
+[node name="Node3D2" type="Node3D" parent="MiddleAreaPathing" unique_id=202677199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.004034, 0, 7.4045944)
+
+[node name="Node3D3" type="Node3D" parent="MiddleAreaPathing" unique_id=1776506512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.710583, 0, 39.236763)
+
+[node name="Node3D4" type="Node3D" parent="MiddleAreaPathing" unique_id=1517582397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.569391, 0, 38.69027)
 
 [node name="Palace" parent="." unique_id=1365196345 instance=ExtResource("10_3dg2l")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -3.2158833, -3.7254605, -50.113644)
