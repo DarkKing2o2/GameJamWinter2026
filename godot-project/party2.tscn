@@ -60,6 +60,9 @@ mesh = SubResource("BoxMesh_4fixh")
 [node name="Ground2" parent="Ground" unique_id=510521232 instance=ExtResource("2_4e4b1")]
 transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.86197954, 0.00066209154, 0.4151022, 0.003536883, 0.45979574, -10.555, -1.045, 9.454)
 
+[node name="Ground3" parent="Ground" unique_id=2010876845 instance=ExtResource("2_4e4b1")]
+transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.86197954, 0.00066209154, 0.4151022, 0.003536883, 0.45979574, 117.576, -1.2296526, -118.77979)
+
 [node name="pcAvatarA" parent="Ground" unique_id=1656660398 instance=ExtResource("3_yg4fq")]
 transform = Transform3D(-0.7799912, 0, 0.003689307, 0, 0.78, 0, -0.003689307, 0, -0.7799912, -29.235, 0, -0.189)
 
@@ -468,13 +471,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.710583, 0, 39.236763)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.569391, 0, 38.69027)
 
 [node name="Palace" parent="." unique_id=1365196345 instance=ExtResource("10_3dg2l")]
-transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -3.2158833, -3.7254605, -50.113644)
+transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -3.2158833, -3.0367098, -50.286045)
 
 [node name="Palace2" parent="." unique_id=1013394723 instance=ExtResource("10_3dg2l")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, 36.89966, -3.7254605, -50.113644)
 
 [node name="Palace3" parent="." unique_id=151330816 instance=ExtResource("10_3dg2l")]
-transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -64.40384, -9.504789, -50.564133)
+transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -64.40384, -6.9378157, -51.206673)
 
 [node name="Palace4" parent="." unique_id=2127817671 instance=ExtResource("10_3dg2l")]
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, 65.236145, -10.7104225, -49.580116)
@@ -486,7 +489,7 @@ transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -
 transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -47.606037, -10.7104225, -54.999386)
 
 [node name="Palace5" parent="." unique_id=465412668 instance=ExtResource("10_3dg2l")]
-transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -31.098907, -3.3821607, -50.113644)
+transform = Transform3D(-3.103509e-08, 0, -0.71000004, 0.17240174, 0.68875086, -7.53592e-09, 0.68875086, -0.17240174, -3.0106257e-08, -31.098907, -2.69341, -50.286045)
 
 [node name="Fence" type="Node3D" parent="." unique_id=487257128]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 6.9391212, -5.458125, 84.31326)
@@ -511,34 +514,52 @@ transform = Transform3D(7.749683, 0, 0, 0, 2.5948792, 0, 0, 0, 1.1442686, -11.57
 shape = SubResource("BoxShape3D_qsfla")
 
 [node name="Hedge6" parent="." unique_id=620779253 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -11.676033, -1.9488859, 54.826378)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -11.676033, -1.9488859, 54.826378)
 
 [node name="Hedge8" parent="." unique_id=1311119298 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -19.676033, -1.9488859, 54.826378)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -19.676033, -1.9488859, 54.826378)
 
 [node name="Hedge21" parent="." unique_id=254929209 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 6.711177, -1.9488859, 55.263546)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 6.711177, -1.9488859, 55.263546)
 
 [node name="Hedge22" parent="." unique_id=424426260 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 15.5469675, -1.9488859, 55.263546)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 15.5469675, -1.9488859, 55.263546)
 
 [node name="Hedge2" parent="." unique_id=1216196589 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -52.606396, -2.5942287, -1.2702389)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.606396, -2.5942287, -1.2702389)
 
 [node name="Hedge13" parent="." unique_id=187849278 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -52.810303, -2.5942287, -10.109041)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.810303, -3.3489246, -11.002676)
+
+[node name="Hedge7" parent="." unique_id=810974367 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -35.435623, -2.594221, 20.75322)
+
+[node name="Hedge24" parent="." unique_id=101867300 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -35.63953, -3.348917, 11.020782)
+
+[node name="Hedge9" parent="." unique_id=924138709 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -2.1097336, -2.594221, 20.75322)
+
+[node name="Hedge25" parent="." unique_id=689881611 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -2.3136406, -3.348917, 11.020782)
+
+[node name="Hedge11" parent="." unique_id=869167497 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 29.764236, -2.594221, 20.75322)
+
+[node name="Hedge26" parent="." unique_id=40019398 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 29.56033, -3.348917, 11.020782)
 
 [node name="Hedge14" parent="." unique_id=206473346 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -52.533676, -1.9488859, 42.39576)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.533676, -1.9488859, 42.39576)
 
 [node name="Hedge15" parent="." unique_id=13275051 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -52.578236, -1.9488859, 33.556957)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, -52.578236, -1.9488859, 33.556957)
 
 [node name="Hedge17" parent="." unique_id=1505645988 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 51.07855, -1.9488859, 42.39576)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 51.07855, -1.9488859, 42.39576)
 
 [node name="Hedge23" parent="." unique_id=290255171 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 51.07855, -1.9488859, 33.556957)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 51.07855, -1.9488859, 33.556957)
 
 [node name="Hedge19" parent="." unique_id=695485354 instance=ExtResource("8_vr2yl")]
 transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, -1.9488859, 60.154667)
@@ -547,19 +568,19 @@ transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, -1.9488
 transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, -1.9488859, 51.315865)
 
 [node name="Hedge3" parent="." unique_id=1266483003 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -12.214094, -1.9488859, -24.1019)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -12.214094, -1.9488859, -24.1019)
 
 [node name="Hedge5" parent="." unique_id=268079799 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -20.916584, -1.9488859, -24.1019)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, -20.916584, -1.9488859, -24.1019)
 
 [node name="Hedge4" parent="." unique_id=1070601050 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 7.5528793, -1.9488859, -24.1019)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 7.5528793, -1.9488859, -24.1019)
 
 [node name="Hedge16" parent="." unique_id=5142868 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 15.361179, -1.9488859, -24.1019)
+transform = Transform3D(-1.101527e-07, 0, -2.52, 0, 2.52, 0, 2.52, 0, -1.101527e-07, 15.361179, -1.9488859, -24.1019)
 
 [node name="Hedge10" parent="." unique_id=33332322 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 50.844692, -1.9488859, -9.83502)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 50.844692, -1.9488859, -9.83502)
 
 [node name="Hedge18" parent="." unique_id=843546418 instance=ExtResource("8_vr2yl")]
-transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 50.738724, -1.9488859, -1.8985863)
+transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 50.738724, -1.9488859, -1.8985863)
