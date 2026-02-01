@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bw8nhkakia2xp"]
+
+[ext_resource type="Texture2D" uid="uid://bo2hwyx5ohbb7" path="res://assets/ui/scroll.png" id="1_52min"]
+
+[node name="typing text" type="Node2D" unique_id=1523115683]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1114545903]
+offset_right = 2000.0
+offset_bottom = 1135.0
+color = Color(0, 0, 0, 1)
+
+[node name="Scroll_spr" type="Sprite2D" parent="." unique_id=1570415852]
+position = Vector2(960, 540)
+texture = ExtResource("1_52min")
