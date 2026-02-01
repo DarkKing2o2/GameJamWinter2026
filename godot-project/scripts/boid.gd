@@ -20,7 +20,7 @@ var model = null
 func _ready():
 	randomize()
 	position = Vector3(randf_range(-20, 20), 0, randf_range(-20, 20))
-
+	self.add_to_group("enemy")
 
 func _process(delta):
 	var target_velocity = Vector3.ZERO

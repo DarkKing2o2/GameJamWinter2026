@@ -46,8 +46,9 @@ func _process(delta):
 			
 			var near_count = 0
 			for boid in boids:
-				if boid.position.distance_to(movingToPoint) < pathNodeTolerance:
-					near_count += 1
+				if boid != null:
+					if boid.position.distance_to(movingToPoint) < pathNodeTolerance:
+						near_count += 1
 
 			if near_count >= (boid_count / 2.0):
 				near_count = 0
@@ -57,11 +58,13 @@ func _process(delta):
 			target = movingToPoint
  
 	for boid in boids:
-		boid.set_prey_position(target)
+		if boid != null:
+			boid.set_prey_position(target)
 
 func get_neighbors(boid: Boid, view_radius: float) -> Array:
 	var neighbors = []
 	for other_boid in boids:
-		if other_boid != boid and boid.position.distance_to(other_boid.position) <= view_radius:
-			neighbors.append(other_boid)
+		if other_boid != null:
+			if other_boid != boid and boid.position.distance_to(other_boid.position) <= view_radius:
+				neighbors.append(other_boid)
 	return neighbors
