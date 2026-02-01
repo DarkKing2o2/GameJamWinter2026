@@ -94,7 +94,7 @@ func shoot():
 	projectile.global_transform = new_transform.translated(global_transform.origin)
 
 	## Calling shoot() on shottyBlast
-	projectile_scene.shoot()
+	projectile.shoot()
 
 	projectile.set_ignore_nodes([self as CharacterBody3D] as Array[CharacterBody3D])
 
@@ -117,5 +117,5 @@ func switch_mask(mask):
 		currentMask = maskC
 	currentMask.visible = true
 
-func _END_OF_RELOAD_LISTENER() :
+func _END_OF_TIMER_RELOAD_LISTENER() :
 	pass
