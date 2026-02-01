@@ -10,7 +10,7 @@ class_name Clique
 @export var centralization_force: float = 0.5
 @export var perception_radius: float = 200
 @export var path: Node3D
-@export var target = Vector3(1, 0, 0) 
+@export var target = Vector3(1, 0, 0)
 @export var pathNodeTolerance = 7.0
 var movingToPoint: Vector3
 var current_index = 0
@@ -43,7 +43,7 @@ func _process(delta):
 		if points.size() > 0:
 			if movingToPoint == null:
 				movingToPoint = points[0]
-			
+
 			var near_count = 0
 			for boid in boids:
 				if boid != null:
@@ -56,7 +56,7 @@ func _process(delta):
 				movingToPoint = points[current_index].position
 
 			target = movingToPoint
- 
+
 	for boid in boids:
 		if boid != null:
 			boid.set_prey_position(target)

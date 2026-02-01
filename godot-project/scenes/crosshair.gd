@@ -18,7 +18,7 @@ func _process(delta):
 
 	var half_width = (texture.get_width() * scale.x) / 4.0
 	var half_height = (texture.get_height() * scale.y) / 4.0
-	
+
 	position.x = clamp(position.x, half_width, screen_rect.size.x - half_width)
 	position.y = clamp(position.y, half_height, screen_rect.size.y - half_height)
 
@@ -37,12 +37,12 @@ func get_world_position(camera: Camera3D) -> Vector3:
 	var viewport_pos = get_viewport_transform().basis_xform(position)
 	var ray_origin = camera.project_ray_origin(viewport_pos)
 	var ray_direction = camera.project_ray_normal(viewport_pos)
-	
+
 	var space_state = player.get_world_3d().direct_space_state
 	var physics_query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * 1000)
 	physics_query.collision_mask = 1 << 1
 	var result = space_state.intersect_ray(physics_query)
-	
+
 	if result.has("position"):
 		return result.position
 	else:
