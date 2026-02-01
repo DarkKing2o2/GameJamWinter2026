@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c6c5h1tqs5c3f" path="res://scenes/shotty_blast.gd" id="1_24sex"]
 [ext_resource type="Texture2D" uid="uid://b2owol6awk6e" path="res://assets/VFX/MuzzleSpriteSheet/MuzzleSpriteSheet.png" id="2_4sow4"]
-[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_1buy6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v66fs"]
 size = Vector3(2.6185837, 1, 23.540894)
@@ -140,8 +139,6 @@ amount = 1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_4sow4")
 draw_pass_1 = SubResource("QuadMesh_1buy6")
-
-[node name="Player" parent="." unique_id=307269424 instance=ExtResource("3_1buy6")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1764248648]
 visible = false
