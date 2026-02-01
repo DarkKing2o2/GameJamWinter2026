@@ -1,8 +1,7 @@
-[gd_scene format=3 uid="uid://bbgblccm4yxy4"]
+[gd_scene format=3 uid="uid://c2t1jqmadjyfg"]
 
-[ext_resource type="Script" uid="uid://b6m20h0r1npfi" path="res://intro.gd" id="1_yjqpq"]
-[ext_resource type="AudioStream" uid="uid://cqrn7exfxy45i" path="res://audio/Intro.wav" id="2_4bx60"]
-[ext_resource type="Texture2D" uid="uid://bo2hwyx5ohbb7" path="res://assets/ui/scroll.png" id="3_4bx60"]
+[ext_resource type="Script" uid="uid://b6m20h0r1npfi" path="res://intro.gd" id="1_5qnx8"]
+[ext_resource type="AudioStream" uid="uid://cypdbnwtr8l27" path="res://audio/Duncanwin.wav" id="2_sj6do"]
 
 [sub_resource type="Animation" id="Animation_g4887"]
 length = 0.001
@@ -54,28 +53,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1272607153]
-z_index = 5
 layout_mode = 0
 offset_left = 318.0
 offset_top = 184.0
 offset_right = 1674.0
 offset_bottom = 663.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
-text = "Once upon day when Nick, Harris, Duncan, and Vlod were out for a walk in the park when they stumbled across a party to which they were not invited, now furious at each other for leading them into this place of unwelcome, they overreacted a bit and Vlod fired a blunderbuss from his pocket barely missing his former friends, they found some spare masks worn by the party goers and put them on to hide, chaos then ensued."
+text = "Duncan is alive, he went home not wanting anything to do with the party, upon entering his apartment he hit his head on the door frame and died."
 context_menu_enabled = true
 vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=848013852 node_paths=PackedStringArray("audioPlayer")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=848013852]
 libraries/ = SubResource("AnimationLibrary_ayt76")
-script = ExtResource("1_yjqpq")
-audioPlayer = NodePath("AudioStreamPlayer")
+script = ExtResource("1_5qnx8")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1875866623]
-stream = ExtResource("2_4bx60")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1833890501]
-position = Vector2(966, 424)
-texture = ExtResource("3_4bx60")
+stream = ExtResource("2_sj6do")

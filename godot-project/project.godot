@@ -15,20 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="GameJamWinter2026"
-run/main_scene="uid://c2wwe7bh8ex7t"
+run/main_scene="uid://dw3w1ws3hsgr2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout=""
-
-[autoload]
-
-SceneManager="*res://scripts/scene_manager.gd"
-MusicManager="*res://old_scenes/music_manager.tscn"
-Enums="*res://scripts/enums.gd"
-RefVendor="*res://scripts/Static/reference_vendor.gd"
 
 [display]
 

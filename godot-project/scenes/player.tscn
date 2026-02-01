@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://klg2tl65agr5" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://82sbo8km5vbc" path="res://assets/Characters/Peep.glb" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://blgslr3pmx84n" path="res://assets/Crosshairs/ReticuleWhite.png" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://dabx86uwt2h44" path="res://scenes/crosshair.gd" id="4_dqkch"]
+[ext_resource type="Script" path="res://scenes/crosshair.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 1.0043945
@@ -21,10 +21,10 @@ maskC = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskC")
 
 [node name="Peep" parent="Pivot" unique_id=105271952 instance=ExtResource("2_dqkch")]
 
-[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1786053995) index="2" unique_id=738282647]
+[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1002969356) index="2" unique_id=1518295951]
 visible = false
 
-[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1786053995) index="3" unique_id=741301747]
+[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1002969356) index="3" unique_id=260561170]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]

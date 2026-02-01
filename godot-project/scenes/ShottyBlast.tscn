@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://chyfnccwwkf3g"]
 
-[ext_resource type="Script" uid="uid://c6c5h1tqs5c3f" path="res://scenes/shotty_blast.gd" id="1_24sex"]
-[ext_resource type="Texture2D" uid="uid://b2owol6awk6e" path="res://assets/VFX/MuzzleSpriteSheet/MuzzleSpriteSheet.png" id="2_4sow4"]
+[ext_resource type="Script" path="res://scenes/shotty_blast.gd" id="1_24sex"]
+[ext_resource type="AudioStream" uid="uid://cmhhg12wtddcd" path="res://audio/gunshot.wav" id="2_1buy6"]
+[ext_resource type="Script" uid="uid://c12qrwsopjqq3" path="res://scenes/audio_stream_player.gd" id="2_4sow4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v66fs"]
 size = Vector3(2.6185837, 1, 23.540894)
@@ -107,6 +108,10 @@ orientation = 1
 script = ExtResource("1_24sex")
 particles = NodePath("Bullets")
 reloadTimer = NodePath("ReloadTimer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1430454510]
+stream = ExtResource("2_1buy6")
+script = ExtResource("2_4sow4")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1144240538]
 collision_layer = 0
