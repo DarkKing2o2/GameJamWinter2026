@@ -17,10 +17,14 @@ var avoidance_force = 30.0
 var centralization_force = 0.5
 var prey_position: Vector3 = Vector3.ZERO
 var maskType = 'A'
+var randomized = false
+
+var dead: bool = false
 
 var model = null
 var fall_acceleration = 75
 @export var currentMask: MeshInstance3D = null
+@export var animation: AnimationPlayer
 
 func _ready():
 	randomize()
@@ -29,6 +33,9 @@ func _ready():
 	currentMask.visible = true
 
 func _process(delta):
+	if dead:
+		move_and_collide(velocity * delta)
+		return
 	var target_velocity = Vector3.ZERO
 	var neighbors = self.get_parent().get_neighbors(self, perception_radius)
 
@@ -39,6 +46,17 @@ func _process(delta):
 
 	if direction != Vector3.ZERO:
 		$Pivot.basis = Basis.looking_at(direction)
+		if animation.current_animation != "Walk":
+			animation.play("Walk")
+			# random phase offset
+			if !randomized:
+				print_debug('walk')
+				randomized = true
+				var len := animation.get_animation("Walk").length
+				animation.seek(randf() * len, false)  # true = update immediately
+	else:
+		if animation.current_animation != "Idle":
+			animation.play("Idle")
 
 	target_velocity += direction * delta
 	target_velocity = target_velocity.limit_length(move_speed)
@@ -105,7 +123,16 @@ func steer(target):
 
 	return steer
 
-func hit():
+func hit(force: Vector3):
+	self.dead = true
+	$CollisionShape3D.disabled = true
+	var bones_sim = self.get_node("Pivot/Peep/Armature/Skeleton3D/PhysicalBoneSimulator3D")
+	bones_sim.physical_bones_start_simulation()
+	bones_sim.active = true
+	self.velocity = force
+	self.get_node("Pivot/Peep/Armature/Gun").visible = false
+	self.get_parent().remove_boid(self)
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 
 func set_current_mask(mask_type: String):
@@ -115,3 +142,19 @@ func set_current_mask(mask_type: String):
 		currentMask = maskB
 	elif mask_type == 'C':
 		currentMask = maskC
+		
+
+func set_boid_params(
+	af: float,
+	cfr: float,
+	cf: float,
+	sf: float,
+	czf: float,
+	pr: float
+) -> void:
+	alignment_force = af
+	centralization_force_radius = cfr
+	cohesion_force = cf
+	seperation_force = sf
+	centralization_force = czf
+	perception_radius = pr

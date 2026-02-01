@@ -67,7 +67,7 @@ func _input(event):
 		if currentMask == maskA:
 			switch_mask("B")
 		elif currentMask == maskB:
-			switch_mask("C")	
+			switch_mask("C")
 		elif currentMask == maskC:
 			switch_mask("A")
 
@@ -85,28 +85,42 @@ func shoot():
 
 	var projectile_scene = preload("res://scenes/ShottyBlast.tscn")
 	var projectile = projectile_scene.instantiate()
+	projectile.connect("END_OF_RELOAD_SIGNAL", self._END_OF_TIMER_RELOAD_LISTENER)
 
 	projectile.global_transform.origin = global_transform.origin
 
 	var projectile_transform = projectile.global_transform
 	var new_transform = Transform3D.IDENTITY.looking_at(shoot_direction, Vector3.UP)
 	projectile.global_transform = new_transform.translated(global_transform.origin)
+	
+	## Calling shoot() on shottyBlast
+	projectile.shoot()
+
 	projectile.set_ignore_nodes([self as CharacterBody3D] as Array[CharacterBody3D])
 
 	get_parent().add_child(projectile)
+	$Crosshair/reloading_lbl.visible = true
+	await get_tree().create_timer(5).timeout
+	$Crosshair/reloading_lbl.visible = false
 
-func hit():
+func hit(force):
 	print("Player", player_num, "hit!")
 	queue_free()
 	can_shoot = true
 
 func switch_mask(mask):
-	if currentMask != null:
-		currentMask.visible = false
+	for m in masks:
+		if m:
+			m.visible = false
 	if mask == "A":
 		currentMask = maskA
 	elif mask == "B":
-		currentMask = maskB	
+		currentMask = maskB
 	elif mask == "C":
 		currentMask = maskC
 	currentMask.visible = true
+
+func _END_OF_TIMER_RELOAD_LISTENER():
+	$Crosshair/reloading_lbl.visible = false
+	print("timer done")
+	pass

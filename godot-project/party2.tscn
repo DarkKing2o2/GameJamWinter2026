@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
 [ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="5_yd7rt"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
-[ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
+[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]

@@ -68,9 +68,10 @@ vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=848013852]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=848013852 node_paths=PackedStringArray("audioPlayer")]
 libraries/ = SubResource("AnimationLibrary_ayt76")
 script = ExtResource("1_yjqpq")
+audioPlayer = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1875866623]
 stream = ExtResource("2_4bx60")
