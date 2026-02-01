@@ -12,6 +12,8 @@ var _canShoot : bool = true
 var collision_area = null
 var ignore_nodes: Array[CharacterBody3D] = []
 
+var color: Color = Color.BLUE
+
 func _ready():
 	collision_area = $Area3D
 	await get_tree().create_timer(0.2).timeout
@@ -52,3 +54,6 @@ func shoot():
 
 func _RELOAD_TIMER_SIGNAL_LISTENER():
 	self._canShoot = true
+
+func change_bullet_color(new_color: Color) -> void:
+	$Bullets.draw_pass_1.material.albedo_color = new_color
