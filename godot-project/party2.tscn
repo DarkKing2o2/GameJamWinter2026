@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://cv8qm5hhii7ut"]
+[gd_scene format=3 uid="uid://csvx68pirmg6b"]
 
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cryew"]
 [ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
+[ext_resource type="AudioStream" uid="uid://dbytkhqfjqhid" path="res://audio/soundtrack.mp3" id="2_6cd6f"]
+[ext_resource type="AudioStream" uid="uid://1uhmyn2x5t57" path="res://audio/ambient.wav" id="2_cryew"]
+[ext_resource type="Script" uid="uid://pndvxow6js1a" path="res://audio_stream_player.gd" id="3_4e4b1"]
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_6cd6f"]
 [ext_resource type="PackedScene" uid="uid://cpk686y0unttv" path="res://assets/Characters/pcAvatarA.blend" id="3_yg4fq"]
 [ext_resource type="PackedScene" uid="uid://8ruao3nsie43" path="res://assets/Characters/pcAvatarB.blend" id="4_gg2h0"]
@@ -38,6 +41,15 @@ size = Vector3(21.263062, 3.1524048, 1)
 
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cryew")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=2053285745]
+stream = ExtResource("2_6cd6f")
+script = ExtResource("3_4e4b1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=297044198]
+stream = ExtResource("2_cryew")
+volume_db = -14.0
+script = ExtResource("3_4e4b1")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
 transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, -1.4964981, 0)

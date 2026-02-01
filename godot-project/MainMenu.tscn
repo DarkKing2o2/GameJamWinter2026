@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bcfjlkf4unkdc" path="res://button.gd" id="1_i26rj"]
 [ext_resource type="Texture2D" uid="uid://6y471ulo3tkw" path="res://logo.png" id="2_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://evbpf8k48kaw" path="res://assets/Environment/CherryTree2.png" id="4_qoqlk"]
+[ext_resource type="AudioStream" uid="uid://dl26jgh4jb5ed" path="res://audio/menu_music.mp3" id="5_7r1g0"]
+[ext_resource type="Script" uid="uid://pndvxow6js1a" path="res://audio_stream_player.gd" id="6_cqjrg"]
 
 [node name="MainMenu" type="Node2D" unique_id=48811155]
 
@@ -33,6 +35,10 @@ texture = ExtResource("2_eiy7p")
 position = Vector2(326.00003, 816)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_qoqlk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=449364706]
+stream = ExtResource("5_7r1g0")
+script = ExtResource("6_cqjrg")
 
 [connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
