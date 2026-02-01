@@ -1,0 +1,512 @@
+[gd_scene format=3 uid="uid://csvx68pirmg6b"]
+
+[ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cryew"]
+[ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
+[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_6cd6f"]
+[ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
+[ext_resource type="PackedScene" uid="uid://hnn52d5t5jfl" path="res://scenes/boidA.tscn" id="5_gg2h0"]
+[ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="6_yd7rt"]
+[ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="7_wusah"]
+[ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
+[ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="9_ela8p"]
+[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="10_3dg2l"]
+[ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
+size = Vector3(1000, 2, 1000)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
+size = Vector3(1000, 2, 1000)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hihnx"]
+radius = 10.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0tn4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1o7i"]
+size = Vector3(2, 1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjem8"]
+size = Vector3(1000, 1000, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2ddg"]
+size = Vector3(1000, 1000, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q0tn4"]
+size = Vector3(2, 1000, 1000)
+
+[sub_resource type="Curve3D" id="Curve3D_av4hy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 29.686527, 0, -19.6555, 0, 0, 0, 0, 0, 0, -30.546818, 0, -13.9112015),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qsfla"]
+size = Vector3(21.263062, 3.1524048, 1)
+
+[node name="Root" type="Node" unique_id=1150443290]
+script = ExtResource("1_cryew")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, -1.4964981, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=43832264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26710728, -0.056479573)
+shape = SubResource("BoxShape3D_qxq04")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1805015175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23489124, -0.61740494, 0.9583994)
+mesh = SubResource("BoxMesh_4fixh")
+
+[node name="Ground2" parent="Ground" unique_id=1459774201 instance=ExtResource("2_4e4b1")]
+transform = Transform3D(0.54379815, 0, -0.5639324, 0, 0.795, 0, 0.543798, 0, 0.56393254, -20.984211, 1.5018845, 19.88282)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=616759355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.12432, 0)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
+
+[node name="Attack_0" type="ShapeCast3D" parent="Player_0" unique_id=1197713913]
+shape = SubResource("SphereShape3D_hihnx")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
+transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932044, 0, -0.62932044, 0.777146, -0.11648226, 61.269485, 81.024124)
+projection = 1
+current = true
+fov = 21.8
+size = 98.768715
+
+[node name="Cliques" type="Node" parent="." unique_id=625637828]
+
+[node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320]
+script = ExtResource("4_yg4fq")
+boid_scene = ExtResource("5_gg2h0")
+boid_count = 30
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870]
+script = ExtResource("4_yg4fq")
+boid_scene = ExtResource("6_yd7rt")
+boid_count = 10
+cohesion_force = 1.0
+separation_force = 0.0
+centralization_force = 1.0
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
+script = ExtResource("4_yg4fq")
+boid_scene = ExtResource("7_wusah")
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="WallLeft" type="StaticBody3D" parent="." unique_id=1403890510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.34005, 1, 0)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft" unique_id=655097700]
+shape = SubResource("BoxShape3D_v1o7i")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Hedges" type="Node3D" parent="WallLeft" unique_id=1176450656]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.0809937, 0, 0)
+
+[node name="Hedge" parent="WallLeft/Hedges" unique_id=1248845170 instance=ExtResource("8_vr2yl")]
+
+[node name="Hedge2" parent="WallLeft/Hedges" unique_id=222165891 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3864193, 0, 3.8937597)
+
+[node name="Hedge3" parent="WallLeft/Hedges" unique_id=365260470 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8086405)
+
+[node name="Hedge4" parent="WallLeft/Hedges" unique_id=1508370530 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14276123, 0, 11.384977)
+
+[node name="Hedge5" parent="WallLeft/Hedges" unique_id=1657318471 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.278737)
+
+[node name="Hedge6" parent="WallLeft/Hedges" unique_id=1438412872 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.193619)
+
+[node name="Hedge23" parent="WallLeft/Hedges" unique_id=654069563 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.699574)
+
+[node name="Hedge7" parent="WallLeft/Hedges" unique_id=1970606140 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.021618)
+
+[node name="Hedge8" parent="WallLeft/Hedges" unique_id=303992985 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.24885)
+
+[node name="Hedge9" parent="WallLeft/Hedges" unique_id=1090023430 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.825188)
+
+[node name="Hedge10" parent="WallLeft/Hedges" unique_id=1682143414 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.71895)
+
+[node name="Hedge11" parent="WallLeft/Hedges" unique_id=1622073131 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
+
+[node name="Hedge12" parent="WallLeft/Hedges" unique_id=669022110 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
+
+[node name="Hedge13" parent="WallLeft/Hedges" unique_id=87980129 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.527588)
+
+[node name="Hedge14" parent="WallLeft/Hedges" unique_id=613609326 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.442467)
+
+[node name="Hedge15" parent="WallLeft/Hedges" unique_id=1533119938 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.018806)
+
+[node name="Hedge16" parent="WallLeft/Hedges" unique_id=1520202583 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.912563)
+
+[node name="Hedge17" parent="WallLeft/Hedges" unique_id=421048929 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 58.827446)
+
+[node name="Hedge18" parent="WallLeft/Hedges" unique_id=473689656 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 63.967796)
+
+[node name="Hedge19" parent="WallLeft/Hedges" unique_id=1307441729 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 67.882675)
+
+[node name="Hedge20" parent="WallLeft/Hedges" unique_id=1453090512 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.459015)
+
+[node name="Hedge21" parent="WallLeft/Hedges" unique_id=1514014112 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 75.352776)
+
+[node name="Hedge22" parent="WallLeft/Hedges" unique_id=2087179066 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.267654)
+
+[node name="Hedge" parent="WallLeft/Hedges/Hedge22" unique_id=1698378490 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120.30286)
+
+[node name="Hedge2" parent="WallLeft/Hedges/Hedge22" unique_id=932544995 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -116.409096)
+
+[node name="Hedge3" parent="WallLeft/Hedges/Hedge22" unique_id=1620259319 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.49422)
+
+[node name="Hedge4" parent="WallLeft/Hedges/Hedge22" unique_id=897545374 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -108.91788)
+
+[node name="Hedge5" parent="WallLeft/Hedges/Hedge22" unique_id=1640715687 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -105.02412)
+
+[node name="Hedge6" parent="WallLeft/Hedges/Hedge22" unique_id=33661062 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101.10924)
+
+[node name="Hedge7" parent="WallLeft/Hedges/Hedge22" unique_id=1448352355 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95.96889)
+
+[node name="Hedge8" parent="WallLeft/Hedges/Hedge22" unique_id=1286748196 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -92.05401)
+
+[node name="Hedge9" parent="WallLeft/Hedges/Hedge22" unique_id=1833790257 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -88.47767)
+
+[node name="Hedge10" parent="WallLeft/Hedges/Hedge22" unique_id=1917273328 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2884388, 0, -84.58391)
+
+[node name="Hedge11" parent="WallLeft/Hedges/Hedge22" unique_id=1940160666 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80.66903)
+
+[node name="Hedge" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=817589403 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78.60149)
+
+[node name="Hedge2" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=286438810 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -74.707726)
+
+[node name="Hedge3" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1951417131 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.79285)
+
+[node name="Hedge4" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=644377062 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -67.21651)
+
+[node name="Hedge5" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1915467267 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.322746)
+
+[node name="Hedge6" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1286837204 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.407867)
+
+[node name="Hedge7" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=1319227295 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.267517)
+
+[node name="Hedge8" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=5588917 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.35264)
+
+[node name="Hedge9" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=340171216 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.7763)
+
+[node name="Hedge10" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=14259877 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.882538)
+
+[node name="Hedge11" parent="WallLeft/Hedges/Hedge22/Hedge11" unique_id=2071700081 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
+
+[node name="WallBottom" type="StaticBody3D" parent="." unique_id=1507913582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 68.63933)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBottom" unique_id=1665518802]
+shape = SubResource("BoxShape3D_vjem8")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallTop" type="StaticBody3D" parent="." unique_id=1036025485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, -79.18242)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallTop" unique_id=55186816]
+shape = SubResource("BoxShape3D_f2ddg")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="WallRight" type="StaticBody3D" parent="." unique_id=256672466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 1, 0)
+physics_material_override = SubResource("PhysicsMaterial_q0tn4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight" unique_id=329806588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.07387, 0, 0)
+shape = SubResource("BoxShape3D_q0tn4")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Hedges" type="Node3D" parent="WallRight" unique_id=664094220]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146.85214, 0, 0)
+
+[node name="Hedge" parent="WallRight/Hedges" unique_id=456744335 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352211, 0, 0)
+
+[node name="Hedge2" parent="WallRight/Hedges" unique_id=837854901 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.8937597)
+
+[node name="Hedge3" parent="WallRight/Hedges" unique_id=540736701 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352211, 0, 7.8086405)
+
+[node name="Hedge4" parent="WallRight/Hedges" unique_id=1530189422 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.384977)
+
+[node name="Hedge5" parent="WallRight/Hedges" unique_id=1324277612 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45661736, 0, 15.278737)
+
+[node name="Hedge6" parent="WallRight/Hedges" unique_id=1798275341 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.193619)
+
+[node name="Hedge7" parent="WallRight/Hedges" unique_id=1567861217 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.415451)
+
+[node name="Hedge23" parent="WallRight/Hedges" unique_id=450925504 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3484917, 0, 22.79608)
+
+[node name="Hedge8" parent="WallRight/Hedges" unique_id=941108422 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.24885)
+
+[node name="Hedge9" parent="WallRight/Hedges" unique_id=1872044785 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.825188)
+
+[node name="Hedge10" parent="WallRight/Hedges" unique_id=585228284 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.71895)
+
+[node name="Hedge11" parent="WallRight/Hedges" unique_id=973045164 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
+
+[node name="Hedge12" parent="WallRight/Hedges" unique_id=1021338287 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 39.633827)
+
+[node name="Hedge13" parent="WallRight/Hedges" unique_id=1939331531 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.527588)
+
+[node name="Hedge14" parent="WallRight/Hedges" unique_id=377155996 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 47.442467)
+
+[node name="Hedge15" parent="WallRight/Hedges" unique_id=1857754032 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.018806)
+
+[node name="Hedge16" parent="WallRight/Hedges" unique_id=1564259088 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.912563)
+
+[node name="Hedge17" parent="WallRight/Hedges" unique_id=905270816 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 58.827446)
+
+[node name="Hedge18" parent="WallRight/Hedges" unique_id=1795862955 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 63.967796)
+
+[node name="Hedge19" parent="WallRight/Hedges" unique_id=1513396842 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 67.882675)
+
+[node name="Hedge20" parent="WallRight/Hedges" unique_id=239023108 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.459015)
+
+[node name="Hedge21" parent="WallRight/Hedges" unique_id=990181060 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 75.352776)
+
+[node name="Hedge22" parent="WallRight/Hedges" unique_id=1162074243 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 79.267654)
+
+[node name="Hedge" parent="WallRight/Hedges/Hedge22" unique_id=1196779113 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120.30286)
+
+[node name="Hedge2" parent="WallRight/Hedges/Hedge22" unique_id=1241868265 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -116.409096)
+
+[node name="Hedge3" parent="WallRight/Hedges/Hedge22" unique_id=2108724489 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -112.49422)
+
+[node name="Hedge4" parent="WallRight/Hedges/Hedge22" unique_id=2123746379 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -108.91788)
+
+[node name="Hedge5" parent="WallRight/Hedges/Hedge22" unique_id=681436476 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -105.02412)
+
+[node name="Hedge6" parent="WallRight/Hedges/Hedge22" unique_id=1557599297 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -101.10924)
+
+[node name="Hedge7" parent="WallRight/Hedges/Hedge22" unique_id=811756281 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -95.96889)
+
+[node name="Hedge8" parent="WallRight/Hedges/Hedge22" unique_id=1022506378 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -92.05401)
+
+[node name="Hedge9" parent="WallRight/Hedges/Hedge22" unique_id=173029181 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -88.47767)
+
+[node name="Hedge10" parent="WallRight/Hedges/Hedge22" unique_id=1422413119 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -84.58391)
+
+[node name="Hedge11" parent="WallRight/Hedges/Hedge22" unique_id=815701167 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80.66903)
+
+[node name="Hedge" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1051658355 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78.60149)
+
+[node name="Hedge2" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=647081717 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -74.707726)
+
+[node name="Hedge3" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=342271820 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.79285)
+
+[node name="Hedge4" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=615564975 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -67.21651)
+
+[node name="Hedge5" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=2144664808 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.322746)
+
+[node name="Hedge6" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1638184587 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.407867)
+
+[node name="Hedge7" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1099957601 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -54.267517)
+
+[node name="Hedge8" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=777285905 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.35264)
+
+[node name="Hedge9" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1321549703 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.7763)
+
+[node name="Hedge10" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=985207864 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.882538)
+
+[node name="Hedge11" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1908560198 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
+
+[node name="Crosshair_overlay" type="CanvasLayer" parent="." unique_id=280428861]
+
+[node name="Node2D" parent="Crosshair_overlay" unique_id=50308110 instance=ExtResource("9_ela8p")]
+
+[node name="FountainPath" type="Node3D" parent="." unique_id=999605553]
+
+[node name="Path3D" type="Path3D" parent="FountainPath" unique_id=2122229667]
+curve = SubResource("Curve3D_av4hy")
+
+[node name="Palace" parent="." unique_id=1365196345 instance=ExtResource("10_3dg2l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.144102, 0.8765793, -43.418644)
+
+[node name="Palace2" parent="." unique_id=1013394723 instance=ExtResource("10_3dg2l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36.89966, 0.8765793, -43.418644)
+
+[node name="Palace3" parent="." unique_id=151330816 instance=ExtResource("10_3dg2l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -60.28018, -11.123421, -43.418644)
+
+[node name="Palace4" parent="." unique_id=2127817671 instance=ExtResource("10_3dg2l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 57.85768, -10.123421, -43.418644)
+
+[node name="Palace5" parent="." unique_id=465412668 instance=ExtResource("10_3dg2l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -32.041946, 0.8765793, -43.418644)
+
+[node name="Fence" type="Node3D" parent="." unique_id=487257128]
+transform = Transform3D(1.49, 0, 0, 0, 1.49, 0, 0, 0, 1.49, 6.9391212, 0, 89.77408)
+
+[node name="Fence2" parent="Fence" unique_id=918195960 instance=ExtResource("11_31vol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.75519, 3.3655243, 0)
+
+[node name="Fence3" parent="Fence" unique_id=1125023637 instance=ExtResource("11_31vol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.769566, 3.3655243, 0)
+
+[node name="Fence4" parent="Fence" unique_id=1993898351 instance=ExtResource("11_31vol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8263817, 3.3655243, 0)
+
+[node name="Fence5" parent="Fence" unique_id=607432704 instance=ExtResource("11_31vol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.15924, 3.3655243, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Fence" unique_id=1242759535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.538026, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fence/StaticBody3D" unique_id=303141010]
+transform = Transform3D(7.749683, 0, 0, 0, 2.5948792, 0, 0, 0, 1.1442686, -11.573906, 1.0873499, 0)
+shape = SubResource("BoxShape3D_qsfla")
+
+[node name="Hedge6" parent="." unique_id=620779253 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -18.519547, 0, 78.23261)
+
+[node name="Hedge8" parent="." unique_id=1311119298 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -26.519547, 0, 78.23261)
+
+[node name="Hedge21" parent="." unique_id=254929209 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 15.171417, 0, 78.23261)
+
+[node name="Hedge22" parent="." unique_id=424426260 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 24.171417, 0, 78.23261)
+
+[node name="Hedge2" parent="." unique_id=1216196589 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -68.45977, 0, 9.752323)
+
+[node name="Hedge13" parent="." unique_id=187849278 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -68.45977, 0, 0.9135208)
+
+[node name="Hedge14" parent="." unique_id=206473346 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -68.45977, 0, 60.154667)
+
+[node name="Hedge15" parent="." unique_id=13275051 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, -68.45977, 0, 51.315865)
+
+[node name="Hedge19" parent="." unique_id=695485354 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, 0, 60.154667)
+
+[node name="Hedge20" parent="." unique_id=1067169915 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.97193, 0, 51.315865)
+
+[node name="Hedge3" parent="." unique_id=1266483003 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -30.173334, 0, -18.508678)
+
+[node name="Hedge4" parent="." unique_id=1070601050 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -21.173334, 0, -18.508678)
+
+[node name="Hedge16" parent="." unique_id=5142868 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, -12.314886, 0, -18.508678)
+
+[node name="Hedge11" parent="." unique_id=1205980910 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 16.708513, 0, -18.508678)
+
+[node name="Hedge17" parent="." unique_id=1619645103 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 9.178947, 0, -18.508678)
+
+[node name="Hedge12" parent="." unique_id=687614167 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(-9.3760924e-08, 0, -2.145, 0, 2.145, 0, 2.145, 0, -9.3760924e-08, 25.394613, 0, -18.508678)
+
+[node name="Hedge10" parent="." unique_id=33332322 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.43011, 0, -0.88482475)
+
+[node name="Hedge18" parent="." unique_id=843546418 instance=ExtResource("8_vr2yl")]
+transform = Transform3D(2.145, 0, 0, 0, 2.145, 0, 0, 0, 2.145, 66.43011, 0, 9.118162)
