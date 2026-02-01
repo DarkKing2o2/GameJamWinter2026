@@ -4,6 +4,15 @@ extends CharacterBody3D
 @export var fall_acceleration = 75
 @export var player_color = Color(1, 1, 1)
 @export var ignore_nodes: Array[CollisionObject3D] = []
+@export var animation: AnimationPlayer
+@export var maskA: MeshInstance3D
+@export var maskB: MeshInstance3D
+@export var maskC: MeshInstance3D
+@export var startingMask = "A"
+
+
+var masks: Array[MeshInstance3D]
+
 
 var target_velocity = Vector3.ZERO
 
@@ -12,6 +21,7 @@ var can_shoot = true
 var player_num
 var attack
 var timer
+var currentMask = maskA;
 
 @onready var crosshair = self.get_node("Crosshair")
 
@@ -20,6 +30,9 @@ func _ready() -> void:
 	attack = get_node("Attack_" + player_num)
 	timer = get_node("Attack_Timer_" + player_num)
 	crosshair.set_ignore_nodes(ignore_nodes)
+	masks = [ maskA, maskB, maskC ]
+	switch_mask(startingMask)
+	
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -28,6 +41,13 @@ func _physics_process(delta):
 
 	direction.x = inputVector.x
 	direction.z = -inputVector.y
+	
+	if inputVector.length() < 0.5:
+		if animation.current_animation != "Idle":
+			animation.play("Idle")
+	else:
+		if animation.current_animation != "Walk":
+			animation.play("Walk")
 
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
@@ -73,3 +93,14 @@ func shoot():
 func hit():
 	print("Player", player_num, "hit!")
 	queue_free()
+	can_shoot = true
+	
+func switch_mask(mask):
+		m.visible = false
+	if mask == "A":
+		currentMask = maskA
+	elif mask == "B":
+		currentMask = maskB
+	elif mask == "C":
+		currentMask = maskC
+	currentMask.visible = true
