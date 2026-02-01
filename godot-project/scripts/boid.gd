@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Boid
 
+@export var maskA: MeshInstance3D
+@export var maskB: MeshInstance3D
+@export var maskC: MeshInstance3D
+
 var move_speed = 14
 var perception_radius = 50
 var centralization_force_radius = 10
@@ -12,15 +16,19 @@ var seperation_force = 1.0
 var avoidance_force = 30.0
 var centralization_force = 0.5
 var prey_position: Vector3 = Vector3.ZERO
+var maskType = 'A'
+var randomized = false
 
 var model = null
-
-@export var fall_acceleration = 75
+var fall_acceleration = 75
+@export var currentMask: MeshInstance3D = null
+@export var animation: AnimationPlayer
 
 func _ready():
 	randomize()
 	position = Vector3(randf_range(-20, 20), 0, randf_range(-20, 20))
 	self.add_to_group("enemy")
+	currentMask.visible = true
 
 func _process(delta):
 	var target_velocity = Vector3.ZERO
@@ -33,6 +41,17 @@ func _process(delta):
 
 	if direction != Vector3.ZERO:
 		$Pivot.basis = Basis.looking_at(direction)
+		if animation.current_animation != "Walk":
+			animation.play("Walk")
+			# random phase offset
+			if !randomized:
+				print_debug('walk')
+				randomized = true
+				var len := animation.get_animation("Walk").length
+				animation.seek(randf() * len, false)  # true = update immediately
+	else:
+		if animation.current_animation != "Idle":
+			animation.play("Idle")
 
 	target_velocity += direction * delta
 	target_velocity = target_velocity.limit_length(move_speed)
@@ -101,3 +120,11 @@ func steer(target):
 
 func hit():
 	queue_free()
+
+func set_current_mask(mask_type: String):
+	if mask_type == 'A':
+		currentMask = maskA
+	elif mask_type == 'B':
+		currentMask = maskB
+	elif mask_type == 'C':
+		currentMask = maskC

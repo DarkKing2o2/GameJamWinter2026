@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpk686y0unttv" path="res://assets/Characters/pcAvatarA.blend" id="3_yg4fq"]
 [ext_resource type="PackedScene" uid="uid://8ruao3nsie43" path="res://assets/Characters/pcAvatarB.blend" id="4_gg2h0"]
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
-[ext_resource type="PackedScene" uid="uid://hnn52d5t5jfl" path="res://scenes/boidA.tscn" id="5_gg2h0"]
 [ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="5_yd7rt"]
-[ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="6_yd7rt"]
-[ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="7_wusah"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
 [ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
@@ -97,7 +94,6 @@ size = 98.768715
 
 [node name="CliqueA" type="Node3D" parent="Cliques" unique_id=89981320 node_paths=PackedStringArray("path")]
 script = ExtResource("4_yg4fq")
-boid_scene = ExtResource("5_gg2h0")
 boid_count = 30
 centralization_force_radius = 20.0
 cohesion_force = 1.0
@@ -108,17 +104,17 @@ metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueB" type="Node3D" parent="Cliques" unique_id=2083754870 node_paths=PackedStringArray("path")]
 script = ExtResource("4_yg4fq")
-boid_scene = ExtResource("6_yd7rt")
 boid_count = 10
 cohesion_force = 1.0
 separation_force = 0.0
 centralization_force = 1.0
 path = NodePath("../../HedgeHideyPath")
+maskType = "B"
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
 script = ExtResource("4_yg4fq")
-boid_scene = ExtResource("7_wusah")
+maskType = "C"
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="WallLeft" type="StaticBody3D" parent="." unique_id=1403890510]
