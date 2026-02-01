@@ -31,10 +31,10 @@ func _physics_process(delta):
 	for body in hit_players:
 		print("Hit player:", body.name)
 		if body.has_method("hit"):
-			print(ignore_nodes)
-			print(body.get_node("CollisionShape3D"))
 			if body not in ignore_nodes:
-				body.hit()
+				var force_direction = -global_transform.basis.z
+				print(force_direction)
+				body.hit(force_direction * 30)
 
 ## +Function() for shooting the gun
 ## Particle effects are set to one-shot.
