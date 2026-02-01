@@ -50,7 +50,6 @@ func shoot():
 	if not can_shoot:
 		return
 	
-	# Get the camera node
 	var camera = get_viewport().get_camera_3d()
 	if not camera:
 		return
@@ -59,8 +58,15 @@ func shoot():
 	
 	var shoot_direction = (crosshair_world_pos - global_transform.origin).normalized()
 	
-	var projectile = preload("res://scenes/ShottyBlast.tscn").instantiate()
+	var projectile_scene = preload("res://scenes/ShottyBlast.tscn")
+	var projectile = projectile_scene.instantiate()
+	
 	projectile.global_transform.origin = global_transform.origin
+	
+	var projectile_transform = projectile.global_transform
+	var new_transform = Transform3D.IDENTITY.looking_at(shoot_direction, Vector3.UP)
+	projectile.global_transform = new_transform.translated(global_transform.origin)
+	
 	get_parent().add_child(projectile)
 
 func _on_attack_timer_0_timeout() -> void:
