@@ -20,7 +20,6 @@ var model = null
 func _ready():
 	randomize()
 	position = Vector3(randf_range(-20, 20), 0, randf_range(-20, 20))
-	velocity = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)).normalized() * move_speed
 
 
 func _process(delta):

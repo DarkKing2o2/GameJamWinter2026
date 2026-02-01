@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bew52ds47fc4j" path="res://assets/Characters/pcAvatar.blend" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
-radius = 2.0874023
+radius = 1.0043945
 height = 4.294159
 
 [node name="Player" type="CharacterBody3D" unique_id=307269424]
