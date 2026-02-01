@@ -5,14 +5,22 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_v66fs"]
 size = Vector3(2.6185837, 1, 23.540894)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_24sex"]
+spread = 8.636
+initial_velocity_min = 38.8
+initial_velocity_max = 50.559998
+gravity = Vector3(0, 0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24sex"]
 albedo_color = Color(0.06666667, 0.30980393, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_24sex"]
 material = SubResource("StandardMaterial3D_24sex")
 
-[node name="ShottyBlast" type="Node3D" unique_id=680179206]
+[node name="ShottyBlast" type="Node3D" unique_id=680179206 node_paths=PackedStringArray("particles", "reloadTimer")]
 script = ExtResource("1_24sex")
+particles = NodePath("GPUParticles3D")
+reloadTimer = NodePath("ReloadTimer")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1144240538]
 collision_layer = 0
@@ -24,6 +32,14 @@ shape = SubResource("BoxShape3D_v66fs")
 debug_color = Color(0.9757013, 0.15133554, 0, 1)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=48093631]
+transform = Transform3D(0.02280948, -9.482111e-11, 0.99973977, 0.09948489, 0.9950365, -0.002269789, -0.9947777, 0.099510804, 0.022696266, 0, 0, 0)
+emitting = false
 amount = 22
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.88
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_24sex")
 draw_pass_1 = SubResource("SphereMesh_24sex")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1468255934]

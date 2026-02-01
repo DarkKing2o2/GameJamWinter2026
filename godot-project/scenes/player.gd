@@ -32,7 +32,7 @@ func _ready() -> void:
 	crosshair.set_ignore_nodes(ignore_nodes)
 	masks = [ maskA, maskB, maskC ]
 	switch_mask(startingMask)
-	
+
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 	direction.x = inputVector.x
 	direction.z = -inputVector.y
-	
+
 	if inputVector.length() < 0.5:
 		if animation.current_animation != "Idle":
 			animation.play("Idle")
@@ -94,7 +94,7 @@ func hit():
 	print("Player", player_num, "hit!")
 	queue_free()
 	can_shoot = true
-	
+
 func switch_mask(mask):
 	currentMask.visible = false
 	if mask == "A":

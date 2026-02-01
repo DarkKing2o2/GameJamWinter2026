@@ -1,11 +1,20 @@
 extends Node3D
 
+## Var for holding a reference to the GPUParticles node in the scene tree.
+@export var particles : GPUParticles3D
+@export var reloadTimer : Timer
+
 var collision_area = null
 var ignore_nodes: Array[CharacterBody3D] = []
 
 func _ready():
 	collision_area = $Area3D
 	await get_tree().create_timer(0.1).timeout
+
+	# Connect the timeout (timer gets started, X seconds go by, timer
+	#	emits a signal) signal of the ReloadTimer to our function which resets
+	#	the boolean allowng gun to shoot again.
+
 	queue_free()
 
 func set_ignore_nodes(nodes: Array[CharacterBody3D]) -> void:
@@ -20,3 +29,8 @@ func _physics_process(delta):
 			print(body.get_node("CollisionShape3D"))
 			if body not in ignore_nodes:
 				body.hit()
+
+## +Function() for shooting the gun
+## Particle effects are set to one-shot.
+func shoot():
+	particles.emitting = true
