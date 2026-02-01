@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="6_yd7rt"]
 [ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="7_wusah"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
-[ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="9_ela8p"]
 [ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
 
@@ -79,8 +78,16 @@ sky_mode = 1
 
 [node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
+player_color = Color(0.801582, 0.1534009, 0.101201005, 1)
 
 [node name="Attack_0" type="ShapeCast3D" parent="Player_0" unique_id=1197713913]
+shape = SubResource("SphereShape3D_hihnx")
+
+[node name="Player_1" parent="." unique_id=1198318810 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
+player_color = Color(0.29868627, 0.25811613, 1, 1)
+
+[node name="Attack_1" type="ShapeCast3D" parent="Player_1" unique_id=734551945]
 shape = SubResource("SphereShape3D_hihnx")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
@@ -425,10 +432,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.882538)
 
 [node name="Hedge11" parent="WallRight/Hedges/Hedge22/Hedge11" unique_id=1908560198 instance=ExtResource("8_vr2yl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
-
-[node name="Crosshair_overlay" type="CanvasLayer" parent="." unique_id=280428861]
-
-[node name="Node2D" parent="Crosshair_overlay" unique_id=50308110 instance=ExtResource("9_ela8p")]
 
 [node name="HedgeHideyPath" type="Node3D" parent="." unique_id=999605553]
 

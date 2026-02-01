@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var speed = 14
 @export var fall_acceleration = 75
+@export var player_color = Color(1, 1, 1)
 
 var target_velocity = Vector3.ZERO
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 	attack = get_node("Attack_" + player_num)
 	timer = get_node("Attack_Timer_" + player_num)
 	crosshair = get_node("P" + player_num + "_cross")
+
 func _physics_process(delta):
 	var direction = Vector3.ZERO
 	
@@ -47,6 +49,7 @@ func _input(event):
 			for x in attack.get_collision_count():
 				if attack.get_collider(x).is_in_group("enemy"):
 					#TODO: do the actual attack impact
+					print(attack.get_collider(x))
 					attack.get_collider(x).queue_free()
 	if event.is_action_pressed("Ability-GamePad" + player_num):
 		pass
