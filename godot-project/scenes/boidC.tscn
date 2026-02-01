@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="2_22bbr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7tpg7"]
-radius = 2.0874023
+radius = 1.1240234
 height = 4.294159
 
 [node name="Boid" type="CharacterBody3D" unique_id=505796717]
+collision_layer = 5
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

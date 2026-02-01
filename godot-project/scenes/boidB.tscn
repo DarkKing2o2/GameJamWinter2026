@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://8ruao3nsie43" path="res://assets/Characters/pcAvatarB.blend" id="2_2kmy5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7tpg7"]
-radius = 2.0874023
-height = 4.294159
+radius = 1.0029297
+height = 5.3789597
 
 [node name="Boid" type="CharacterBody3D" unique_id=505796717]
+collision_layer = 5
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -18,5 +19,5 @@ script = ExtResource("1_iqun0")
 [node name="pcAvatarB" parent="Pivot" unique_id=13046990 instance=ExtResource("2_2kmy5")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1580594339]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.025947, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3946261, 0)
 shape = SubResource("CapsuleShape3D_7tpg7")
