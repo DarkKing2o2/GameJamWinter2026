@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c6c5h1tqs5c3f" path="res://scenes/shotty_blast.gd" id="1_24sex"]
 [ext_resource type="Texture2D" uid="uid://b2owol6awk6e" path="res://assets/VFX/MuzzleSpriteSheet/MuzzleSpriteSheet.png" id="2_4sow4"]
+[ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_1buy6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v66fs"]
 size = Vector3(2.6185837, 1, 23.540894)
@@ -18,29 +19,74 @@ albedo_color = Color(0.06666667, 0.30980393, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_24sex"]
 material = SubResource("StandardMaterial3D_24sex")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4sow4"]
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0, 0)
-anim_offset_min = 1.0
-anim_offset_max = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sow4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1buy6"]
 transparency = 1
 shading_mode = 0
+diffuse_mode = 3
 specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_4sow4")
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
+[sub_resource type="Curve" id="Curve_1buy6"]
+_data = [Vector2(0.011450388, 0.02240014), 0.0, 0.0, 0, 0, Vector2(0.49618322, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3wyol"]
+curve = SubResource("Curve_1buy6")
+
+[sub_resource type="Gradient" id="Gradient_1buy6"]
+offsets = PackedFloat32Array(0.029661017, 0.13559322, 0.9194915, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3wyol"]
+gradient = SubResource("Gradient_1buy6")
+
+[sub_resource type="Curve" id="Curve_3wyol"]
+_data = [Vector2(0.01908397, 0.06400013), 0.0, 0.0, 0, 0, Vector2(0.14122137, 0.61520004), 2.791258, 2.791258, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_00nkq"]
+curve = SubResource("Curve_3wyol")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4sow4"]
+angle_min = 84.000015
+angle_max = 84.000015
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 0.19999999
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_00nkq")
+color = Color(1, 1, 1, 0.16862746)
+color_ramp = SubResource("GradientTexture1D_3wyol")
+alpha_curve = SubResource("CurveTexture_3wyol")
+anim_offset_max = 1.0
+
 [sub_resource type="QuadMesh" id="QuadMesh_1buy6"]
-material = SubResource("StandardMaterial3D_4sow4")
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wyol"]
+cull_mode = 2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1buy6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3wyol"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_00nkq"]
 
 [node name="ShottyBlast" type="Node3D" unique_id=680179206 node_paths=PackedStringArray("particles", "reloadTimer")]
 script = ExtResource("1_24sex")
-particles = NodePath("GPUParticles3D")
+particles = NodePath("Bullets")
 reloadTimer = NodePath("ReloadTimer")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1144240538]
@@ -52,7 +98,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047771454, 0, -11.793247)
 shape = SubResource("BoxShape3D_v66fs")
 debug_color = Color(0.9757013, 0.15133554, 0, 1)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=48093631]
+[node name="Bullets" type="GPUParticles3D" parent="." unique_id=48093631]
 transform = Transform3D(0.02280948, -9.482111e-11, 0.99973977, 0.09948489, 0.9950365, -0.002269789, -0.9947777, 0.099510804, 0.022696266, 0, 0, 0)
 emitting = false
 amount = 22
@@ -66,6 +112,18 @@ draw_pass_1 = SubResource("SphereMesh_24sex")
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1468255934]
 
 [node name="Smoke" type="GPUParticles3D" parent="." unique_id=218084490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25871122, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, -0.9941132, 0.10834631, -4.3454072e-08, -0.10834631, -0.9941132, -4.735968e-09, 1.1156516, 0.8536471, -2.6437774)
+material_override = SubResource("StandardMaterial3D_1buy6")
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_4sow4")
 draw_pass_1 = SubResource("QuadMesh_1buy6")
+
+[node name="Player" parent="." unique_id=307269424 instance=ExtResource("3_1buy6")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1764248648]
+material_override = SubResource("StandardMaterial3D_3wyol")
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_1buy6")
+draw_passes = 2
+draw_pass_1 = SubResource("QuadMesh_3wyol")
+draw_pass_2 = SubResource("QuadMesh_00nkq")

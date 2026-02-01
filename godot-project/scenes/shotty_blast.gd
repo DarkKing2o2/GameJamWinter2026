@@ -41,9 +41,12 @@ func _physics_process(delta):
 func shoot():
 
 	if self._canShoot == true :
+		self._canShoot = false
 		particles.emitting = true
 		self.reloadTimer.start(5)
 	else :
+		return
 
 
 func _RELOAD_TIMER_SIGNAL_LISTENER():
+	self._canShoot = true
