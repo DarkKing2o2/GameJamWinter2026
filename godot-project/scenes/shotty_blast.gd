@@ -37,7 +37,6 @@ func _physics_process(delta):
 		if body.has_method("hit"):
 			if body not in ignore_nodes:
 				var force_direction = -global_transform.basis.z
-				print(force_direction)
 				body.hit(force_direction * 30)
 
 ## +Function() for shooting the gun

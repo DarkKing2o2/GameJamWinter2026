@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://pn4oiisdpets" path="res://assets/Environment/Ground.glb" id="2_4e4b1"]
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="3_6cd6f"]
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="4_yg4fq"]
-[ext_resource type="PackedScene" uid="uid://41pqeq1bi6qm" path="res://assets/Characters/pcAvatarC.blend" id="5_yd7rt"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_vr2yl"]
 [ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="10_3dg2l"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_31vol"]
@@ -98,18 +97,20 @@ boid_count = 25
 maskType = "C"
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
+[node name="PlayerContainer" type="Node" parent="." unique_id=1270386035]
+
+[node name="Player_0" parent="PlayerContainer" unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.99827, -1.4305115e-06, 0.026323318)
+player_color = Color(0.9980716, 0, 0.11335511, 1)
+
+[node name="Player_1" parent="PlayerContainer" unique_id=2068567358 groups=["enemy"] instance=ExtResource("3_6cd6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
+player_color = Color(0, 0, 1, 1)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=616759355]
 transform = Transform3D(1, 0, 0, 0, 0.4575945, 0.889161, 0, -0.889161, 0.4575945, 0, 32.12432, 59.24501)
 shadow_enabled = true
 sky_mode = 1
-
-[node name="Player_0" parent="." unique_id=307269424 groups=["enemy"] instance=ExtResource("3_6cd6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.99827, -1.4305115e-06, 0.026323318)
-player_color = Color(0.9980716, 0, 0.11335511, 1)
-
-[node name="Player_1" parent="." unique_id=2068567358 groups=["enemy"] instance=ExtResource("3_6cd6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
-player_color = Color(0, 0, 1, 1)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
 transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932044, 0, -0.62932044, 0.777146, -0.11648226, 61.269485, 81.024124)
@@ -608,6 +609,3 @@ transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.8
 
 [node name="Ground3" parent="Ground" unique_id=2010876845 instance=ExtResource("2_4e4b1")]
 transform = Transform3D(0.41542938, 0.004781943, -0.45942715, -0.0040079006, 0.86197954, 0.00066209154, 0.4151022, 0.003536883, 0.45979574, 117.576, -1.2296526, -118.77979)
-
-[node name="pcAvatarC" parent="Ground" unique_id=1418069688 instance=ExtResource("5_yd7rt")]
-transform = Transform3D(-0.4870408, 0, 0.60925466, 0, 0.78, 0, -0.60925466, 0, -0.4870408, -16.509, 0, 11.714)
