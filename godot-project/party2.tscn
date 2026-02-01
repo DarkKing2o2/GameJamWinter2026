@@ -20,9 +20,6 @@ size = Vector3(1000, 2, 1000)
 [sub_resource type="BoxMesh" id="BoxMesh_4fixh"]
 size = Vector3(1000, 2, 1000)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_hihnx"]
-radius = 10.0
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0tn4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1o7i"]
@@ -86,16 +83,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06,
 player_color = Color(0.801582, 0.1534009, 0.101201005, 1)
 ignore_nodes = [NodePath("../WallBottom"), NodePath("../WallTop")]
 
-[node name="Attack_0" type="ShapeCast3D" parent="Player_0" unique_id=1197713913]
-shape = SubResource("SphereShape3D_hihnx")
-
 [node name="Player_1" parent="." unique_id=1198318810 node_paths=PackedStringArray("ignore_nodes") groups=["enemy"] instance=ExtResource("3_6cd6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
 player_color = Color(0.29868627, 0.25811613, 1, 1)
 ignore_nodes = [NodePath("../WallBottom")]
-
-[node name="Attack_1" type="ShapeCast3D" parent="Player_1" unique_id=734551945]
-shape = SubResource("SphereShape3D_hihnx")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1053675484]
 transform = Transform3D(1, 0, 0, 0, 0.777146, 0.62932044, 0, -0.62932044, 0.777146, -0.11648226, 61.269485, 81.024124)

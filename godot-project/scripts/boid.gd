@@ -98,3 +98,6 @@ func steer(target):
 	steer = steer.normalized() * steer_force
 	
 	return steer
+
+func hit():
+	queue_free()
