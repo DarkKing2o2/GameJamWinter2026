@@ -21,10 +21,10 @@ maskC = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskC")
 
 [node name="Peep" parent="Pivot" unique_id=105271952 instance=ExtResource("2_dqkch")]
 
-[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1269653587) index="2" unique_id=90908123]
+[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1954026606) index="2" unique_id=1750904885]
 visible = false
 
-[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1269653587) index="3" unique_id=397906672]
+[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1954026606) index="3" unique_id=1159305470]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]

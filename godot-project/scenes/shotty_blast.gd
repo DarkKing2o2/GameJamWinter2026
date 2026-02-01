@@ -4,6 +4,11 @@ extends Node3D
 @export var particles : GPUParticles3D
 @export var reloadTimer : Timer
 
+signal END_OF_RELOAD_SIGNAL
+
+## Var for checking if we can shoot again.
+var _canShoot : bool = true
+
 var collision_area = null
 var ignore_nodes: Array[CharacterBody3D] = []
 
@@ -14,6 +19,7 @@ func _ready():
 	# Connect the timeout (timer gets started, X seconds go by, timer
 	#	emits a signal) signal of the ReloadTimer to our function which resets
 	#	the boolean allowng gun to shoot again.
+	reloadTimer.connect("timeout", self._RELOAD_TIMER_SIGNAL_LISTENER)
 
 	queue_free()
 
@@ -33,4 +39,11 @@ func _physics_process(delta):
 ## +Function() for shooting the gun
 ## Particle effects are set to one-shot.
 func shoot():
-	particles.emitting = true
+
+	if self._canShoot == true :
+		particles.emitting = true
+		self.reloadTimer.start(5)
+	else :
+
+
+func _RELOAD_TIMER_SIGNAL_LISTENER():

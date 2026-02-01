@@ -80,12 +80,17 @@ func shoot():
 
 	var projectile_scene = preload("res://scenes/ShottyBlast.tscn")
 	var projectile = projectile_scene.instantiate()
+	projectile.connect("END_OF_RELOAD_SIGNAL", self._END_OF_TIMER_RELOAD_LISTENER)
 
 	projectile.global_transform.origin = global_transform.origin
 
 	var projectile_transform = projectile.global_transform
 	var new_transform = Transform3D.IDENTITY.looking_at(shoot_direction, Vector3.UP)
 	projectile.global_transform = new_transform.translated(global_transform.origin)
+
+	## Calling shoot() on shottyBlast
+	projectile_scene.shoot()
+
 	projectile.set_ignore_nodes([self as CharacterBody3D] as Array[CharacterBody3D])
 
 	get_parent().add_child(projectile)
@@ -101,7 +106,10 @@ func switch_mask(mask):
 	if mask == "A":
 		currentMask = maskA
 	elif mask == "B":
-		currentMask = maskB	
+		currentMask = maskB
 	elif mask == "C":
 		currentMask = maskC
 	currentMask.visible = true
+
+func _END_OF_RELOAD_LISTENER() :
+	pass
