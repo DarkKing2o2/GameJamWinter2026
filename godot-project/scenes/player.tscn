@@ -3,16 +3,18 @@
 [ext_resource type="Script" uid="uid://klg2tl65agr5" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://82sbo8km5vbc" path="res://assets/Characters/Peep.glb" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://blgslr3pmx84n" path="res://assets/Crosshairs/ReticuleWhite.png" id="3_qhqgy"]
-[ext_resource type="Script" path="res://scenes/crosshair.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dabx86uwt2h44" path="res://scenes/crosshair.gd" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dllnyfym1ucjf" path="res://audio/Switch-masks.wav" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 1.0043945
 height = 4.294159
 
-[node name="Player" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("animation", "maskA", "maskB", "maskC")]
+[node name="Player" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("animation", "audio", "maskA", "maskB", "maskC")]
 collision_layer = 4
 script = ExtResource("1_3vyb7")
 animation = NodePath("Pivot/Peep/AnimationPlayer")
+audio = NodePath("AudioStreamPlayer")
 maskA = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskA")
 maskB = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskB")
 maskC = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskC")
@@ -21,10 +23,19 @@ maskC = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskC")
 
 [node name="Peep" parent="Pivot" unique_id=105271952 instance=ExtResource("2_dqkch")]
 
-[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1002969356) index="2" unique_id=1518295951]
+[node name="Skeleton3D" parent="Pivot/Peep/Armature" parent_id_path=PackedInt32Array(105271952, 1030520946) index="1" unique_id=1786053995]
+bones/0/rotation = Quaternion(-2.9802326e-08, 1.1920928e-07, -2.5243543e-29, 1)
+bones/1/rotation = Quaternion(-3.5527103e-15, 1.7763568e-14, -4.0389676e-28, 1)
+bones/2/rotation = Quaternion(-4.923571e-07, -1.0587517e-07, 0.8842352, -0.46704188)
+bones/4/rotation = Quaternion(-3.5527103e-15, -1.0658141e-14, -3.0292256e-28, 1)
+bones/7/rotation = Quaternion(0.9842179, 5.6249796e-09, 2.6594066e-07, 0.1769611)
+bones/8/rotation = Quaternion(-0.024581544, 0.18188582, 0.9762396, -0.1151939)
+bones/9/rotation = Quaternion(0.050088823, -0.15965025, 0.9794223, 0.11284992)
+
+[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" index="2" unique_id=738282647]
 visible = false
 
-[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1002969356) index="3" unique_id=260561170]
+[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" index="3" unique_id=741301747]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
@@ -46,5 +57,9 @@ scale = Vector2(5, 5)
 text = "RELOADING"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=715556380]
+stream = ExtResource("5_qlg0r")
+volume_db = 1.56
 
 [editable path="Pivot/Peep"]

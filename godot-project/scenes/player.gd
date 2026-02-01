@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var player_color = Color(1, 1, 1)
 @export var ignore_nodes: Array[CollisionObject3D] = []
 @export var animation: AnimationPlayer
+@export var audio: AudioStreamPlayer
 @export var maskA: MeshInstance3D
 @export var maskB: MeshInstance3D
 @export var maskC: MeshInstance3D
@@ -72,6 +73,7 @@ func _input(event):
 			switch_mask("C")
 		elif currentMask == maskC:
 			switch_mask("A")
+		play_masksfx()
 
 func shoot():
 	if not can_shoot:
@@ -123,7 +125,12 @@ func switch_mask(mask):
 		currentMask = maskB
 	elif mask == "C":
 		currentMask = maskC
+	
 	currentMask.visible = true
+	
+func play_masksfx():
+	if audio and not audio.playing:
+		audio.play()
 
 func _END_OF_TIMER_RELOAD_LISTENER():
 	$Crosshair/reloading_lbl.visible = false
