@@ -14,13 +14,15 @@ var ignore_nodes: Array[CharacterBody3D] = []
 
 func _ready():
 	collision_area = $Area3D
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
+	collision_area.monitoring = true
 
 	# Connect the timeout (timer gets started, X seconds go by, timer
 	#	emits a signal) signal of the ReloadTimer to our function which resets
 	#	the boolean allowng gun to shoot again.
 	reloadTimer.connect("timeout", self._RELOAD_TIMER_SIGNAL_LISTENER)
 
+	await get_tree().create_timer(3).timeout
 	queue_free()
 
 func set_ignore_nodes(nodes: Array[CharacterBody3D]) -> void:
