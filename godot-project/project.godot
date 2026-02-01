@@ -23,13 +23,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout=""
 
-[autoload]
-
-SceneManager="*res://scripts/scene_manager.gd"
-MusicManager="*res://old_scenes/music_manager.tscn"
-Enums="*res://scripts/enums.gd"
-RefVendor="*res://scripts/Static/reference_vendor.gd"
-
 [display]
 
 window/size/viewport_width=1920
