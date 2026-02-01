@@ -34,8 +34,9 @@ func _process(delta):
 			# Check if enough boids are near the current target
 			var near_count = 0
 			for boid in boids:
-				if boid.position.distance_to(pointCurrentlyAt) < pathNodeTolerance:
-					near_count += 1
+				if boid != null:
+					if boid.position.distance_to(pointCurrentlyAt) < pathNodeTolerance:
+						near_count += 1
 
 			if near_count >= boid_count / 2:  # Move to the next point if half the boids are near
 				var current_index = points.find(pointCurrentlyAt)
@@ -47,11 +48,13 @@ func _process(delta):
 			target = pointCurrentlyAt  # Update the target for the boids
 
 	for boid in boids:
-		boid.set_prey_position(target)
+		if boid != null:
+			boid.set_prey_position(target)
 
 func get_neighbors(boid: Boid, view_radius: float) -> Array:
 	var neighbors = []
 	for other_boid in boids:
-		if other_boid != boid and boid.position.distance_to(other_boid.position) <= view_radius:
-			neighbors.append(other_boid)
+		if other_boid != null:
+			if other_boid != boid and boid.position.distance_to(other_boid.position) <= view_radius:
+				neighbors.append(other_boid)
 	return neighbors

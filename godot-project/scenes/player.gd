@@ -6,9 +6,11 @@ extends CharacterBody3D
 var target_velocity = Vector3.ZERO
 
 var player_num
+var attack
 
 func _ready() -> void:
 	player_num = self.name.right(1)
+	attack = get_node("Attack_" + player_num)
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -33,5 +35,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _input(event):
-	if event.is_action_pressed("Attack-Gamepad" + "player_num"):
+	if event.is_action_pressed("Attack-GamePad" + player_num):
+		for x in attack.get_collision_count():
+			if attack.get_collider(x).is_in_group("enemy"):
+				attack.get_collider(x).queue_free()
+	if event.is_action_pressed("Ability-GamePad" + player_num):
 		pass
