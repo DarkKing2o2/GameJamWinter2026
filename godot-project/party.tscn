@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="5_av4hy"]
 [ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="6_hihnx"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_hihnx"]
-[ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="9_hihnx"]
+[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="9_hihnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
 size = Vector3(1000, 2, 1000)
