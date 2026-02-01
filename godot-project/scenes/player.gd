@@ -66,8 +66,10 @@ func shoot():
 	var projectile_transform = projectile.global_transform
 	var new_transform = Transform3D.IDENTITY.looking_at(shoot_direction, Vector3.UP)
 	projectile.global_transform = new_transform.translated(global_transform.origin)
+	projectile.set_ignore_nodes([self as CharacterBody3D] as Array[CharacterBody3D])
 	
 	get_parent().add_child(projectile)
 
-func _on_attack_timer_0_timeout() -> void:
-	can_shoot = true
+func hit():
+	print("Player", player_num, "hit!")
+	queue_free()

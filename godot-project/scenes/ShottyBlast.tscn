@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://chyfnccwwkf3g"]
 
+[ext_resource type="Script" uid="uid://c6c5h1tqs5c3f" path="res://scenes/shotty_blast.gd" id="1_24sex"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_v66fs"]
-size = Vector3(2.6185837, 1, 6.5166016)
+size = Vector3(2.6185837, 1, 23.540894)
 
 [node name="ShottyBlast" type="Node3D" unique_id=680179206]
+script = ExtResource("1_24sex")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1144240538]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=28649234]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047771454, 0, -3.2811012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047771454, 0, -11.793247)
 shape = SubResource("BoxShape3D_v66fs")
 debug_color = Color(0.9757013, 0.15133554, 0, 1)

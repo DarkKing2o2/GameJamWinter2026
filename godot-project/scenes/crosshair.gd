@@ -42,8 +42,6 @@ func get_world_position(camera: Camera3D) -> Vector3:
 	var physics_query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * 1000)
 	physics_query.collision_mask = 1 << 1
 	var result = space_state.intersect_ray(physics_query)
-	draw_debug_line(ray_origin, ray_origin + ray_direction * 1000)
-
 	
 	if result.has("position"):
 		return result.position

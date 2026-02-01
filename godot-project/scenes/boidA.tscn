@@ -8,6 +8,7 @@ radius = 0.8046875
 height = 3.1959076
 
 [node name="Boid" type="CharacterBody3D" unique_id=505796717]
+collision_layer = 5
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
