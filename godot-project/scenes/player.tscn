@@ -10,7 +10,7 @@ radius = 1.0043945
 height = 4.294159
 
 [node name="Player" type="CharacterBody3D" unique_id=307269424 node_paths=PackedStringArray("animation", "maskA", "maskB", "maskC")]
-collision_layer = 5
+collision_layer = 4
 script = ExtResource("1_3vyb7")
 animation = NodePath("Pivot/Peep/AnimationPlayer")
 maskA = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskA")
@@ -21,10 +21,10 @@ maskC = NodePath("Pivot/Peep/Armature/Skeleton3D/MaskC")
 
 [node name="Peep" parent="Pivot" unique_id=105271952 instance=ExtResource("2_dqkch")]
 
-[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1012542483) index="2" unique_id=1418737724]
+[node name="MaskB" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1786053995) index="2" unique_id=738282647]
 visible = false
 
-[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1012542483) index="3" unique_id=498861974]
+[node name="MaskC" parent="Pivot/Peep/Armature/Skeleton3D" parent_id_path=PackedInt32Array(105271952, 1786053995) index="3" unique_id=741301747]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
