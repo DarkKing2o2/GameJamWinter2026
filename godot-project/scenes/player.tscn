@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://klg2tl65agr5" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://bew52ds47fc4j" path="res://assets/Characters/pcAvatar.blend" id="2_g2els"]
-[ext_resource type="Texture2D" uid="uid://blgslr3pmx84n" path="res://assets/Crosshairs/ReticuleWhite.png" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://dabx86uwt2h44" path="res://scenes/crosshair.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 1.0043945
@@ -19,8 +17,3 @@ script = ExtResource("1_3vyb7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243580443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.025947, 0)
 shape = SubResource("CapsuleShape3D_u8vuu")
-
-[node name="Crosshair" type="Sprite2D" parent="." unique_id=16191575]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_qhqgy")
-script = ExtResource("4_dqkch")
