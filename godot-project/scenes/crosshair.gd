@@ -11,6 +11,10 @@ func _ready():
 	modulate = player.player_color
 	player.add_child(debug_mesh)
 	debug_mesh.mesh = ImmediateMesh.new()
+	var positionX = randf_range(200,1200)
+	var positionY = randf_range(200,800)
+	position.x = positionX
+	position.y = positionY
 
 func _process(delta):
 
@@ -34,7 +38,7 @@ func _input(event):
 		modulate = player.player_color
 
 func get_world_position(camera: Camera3D) -> Vector3:
-	var viewport_pos = get_viewport_transform().basis_xform(position)
+	var viewport_pos = self.position
 	var ray_origin = camera.project_ray_origin(viewport_pos)
 	var ray_direction = camera.project_ray_normal(viewport_pos)
 

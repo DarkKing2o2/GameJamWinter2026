@@ -50,7 +50,6 @@ func _process(delta):
 			animation.play("Walk")
 			# random phase offset
 			if !randomized:
-				print_debug('walk')
 				randomized = true
 				var len := animation.get_animation("Walk").length
 				animation.seek(randf() * len, false)  # true = update immediately

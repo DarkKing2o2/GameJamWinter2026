@@ -5,10 +5,13 @@ extends CharacterBody3D
 @export var player_color = Color(1, 1, 1)
 @export var ignore_nodes: Array[CollisionObject3D] = []
 @export var animation: AnimationPlayer
+@export var audio: AudioStreamPlayer
 @export var maskA: MeshInstance3D
 @export var maskB: MeshInstance3D
 @export var maskC: MeshInstance3D
 @export var startingMask = "A"
+
+var dead: bool = false
 
 
 var masks: Array[MeshInstance3D]
@@ -23,6 +26,8 @@ var attack
 var timer
 var currentMask = maskA;
 
+signal winning_player()
+
 @onready var crosshair = self.get_node("Crosshair")
 
 func _ready() -> void:
@@ -31,10 +36,15 @@ func _ready() -> void:
 	timer = get_node("Attack_Timer_" + player_num)
 	crosshair.set_ignore_nodes(ignore_nodes)
 	masks = [ maskA, maskB, maskC ]
+	var maskKeys = ["A", "B", "C"]
+	startingMask = maskKeys[randi_range(0,2)]
 	switch_mask(startingMask)
 
 
 func _physics_process(delta):
+	if(dead):
+		move_and_collide(velocity * delta)
+		return
 	var direction = Vector3.ZERO
 
 	var inputVector = Input.get_vector("Move_Left-GamePad" + player_num, "Move_Right-GamePad" + player_num, "Move_Down-GamePad" + player_num, "Move_Up-GamePad" + player_num)
@@ -70,6 +80,7 @@ func _input(event):
 			switch_mask("C")
 		elif currentMask == maskC:
 			switch_mask("A")
+		play_masksfx()
 
 func shoot():
 	if not can_shoot:
@@ -100,14 +111,27 @@ func shoot():
 	projectile.set_ignore_nodes([self as CharacterBody3D] as Array[CharacterBody3D])
 
 	get_parent().add_child(projectile)
+	self.can_shoot = false
 	$Crosshair/reloading_lbl.visible = true
 	await get_tree().create_timer(5).timeout
 	$Crosshair/reloading_lbl.visible = false
+	self.can_shoot = true
 
 func hit(force):
-	print("Player", player_num, "hit!")
+	self.dead = true
+	$CollisionShape3D.disabled = true
+	var bones_sim = self.get_node("Pivot/Peep/Armature/Skeleton3D/PhysicalBoneSimulator3D")
+	bones_sim.physical_bones_start_simulation()
+	bones_sim.active = true
+	self.velocity = force
+	self.get_node("Pivot/Peep/Armature/Gun").visible = false
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 	can_shoot = true
+	#await get_tree().create_timer(3).timeout
+	emit_signal("winning_player")
+	get_tree().change_scene_to_file("res://EndScreen.tscn")
+	
 
 func switch_mask(mask):
 	for m in masks:
@@ -119,7 +143,12 @@ func switch_mask(mask):
 		currentMask = maskB
 	elif mask == "C":
 		currentMask = maskC
+	
 	currentMask.visible = true
+	
+func play_masksfx():
+	if audio and not audio.playing:
+		audio.play()
 
 func _END_OF_TIMER_RELOAD_LISTENER():
 	$Crosshair/reloading_lbl.visible = false
