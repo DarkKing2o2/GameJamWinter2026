@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://chyfnccwwkf3g"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v66fs"]
-radius = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_v66fs"]
+size = Vector3(2.6185837, 1, 6.5166016)
 
 [node name="ShottyBlast" type="Node3D" unique_id=680179206]
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1144240538]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=646049881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_v66fs")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=28649234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047771454, 0, -3.2811012)
+shape = SubResource("BoxShape3D_v66fs")
+debug_color = Color(0.9757013, 0.15133554, 0, 1)

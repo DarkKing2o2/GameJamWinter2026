@@ -40,20 +40,25 @@ size = Vector3(2, 1000, 1000)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qsfla"]
 size = Vector3(21.263062, 3.1524048, 1)
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_6cd6f"]
+
 [node name="Root" type="Node" unique_id=1150443290]
 script = ExtResource("1_cryew")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=248793241]
 transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, -1.4964981, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=43832264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26710728, -0.056479573)
 shape = SubResource("BoxShape3D_qxq04")
-debug_color = Color(1, 1, 1, 1)
+debug_color = Color(0.03529412, 0.13333334, 1, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1805015175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23489124, -0.61740494, 0.9583994)
 visible = false
+layers = 524289
 mesh = SubResource("BoxMesh_4fixh")
 
 [node name="Ground2" parent="Ground" unique_id=510521232 instance=ExtResource("2_4e4b1")]
@@ -85,7 +90,7 @@ ignore_nodes = [NodePath("../WallBottom"), NodePath("../WallTop")]
 shape = SubResource("SphereShape3D_hihnx")
 
 [node name="Player_1" parent="." unique_id=1198318810 node_paths=PackedStringArray("ignore_nodes") groups=["enemy"] instance=ExtResource("3_6cd6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0017299652, -1.4305115e-06, 0.026323318)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.157938, -1.4305115e-06, 0.026323318)
 player_color = Color(0.29868627, 0.25811613, 1, 1)
 ignore_nodes = [NodePath("../WallBottom")]
 
@@ -589,3 +594,6 @@ transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 50.844692, -1.948885
 
 [node name="Hedge18" parent="." unique_id=843546418 instance=ExtResource("8_vr2yl")]
 transform = Transform3D(2.52, 0, 0, 0, 2.52, 0, 0, 0, 2.52, 50.738724, -1.9488859, -1.8985863)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=429520268]
+mesh = SubResource("ImmediateMesh_6cd6f")
