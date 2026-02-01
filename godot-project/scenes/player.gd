@@ -10,6 +10,8 @@ extends CharacterBody3D
 @export var maskC: MeshInstance3D
 @export var startingMask = "A"
 
+var dead: bool = false
+
 
 var masks: Array[MeshInstance3D]
 
@@ -37,6 +39,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
+	if(dead):
+		move_and_collide(velocity * delta)
+		return
 	var direction = Vector3.ZERO
 
 	var inputVector = Input.get_vector("Move_Left-GamePad" + player_num, "Move_Right-GamePad" + player_num, "Move_Down-GamePad" + player_num, "Move_Up-GamePad" + player_num)
@@ -109,7 +114,14 @@ func shoot():
 	self.can_shoot = true
 
 func hit(force):
-	print("Player", player_num, "hit!")
+	self.dead = true
+	$CollisionShape3D.disabled = true
+	var bones_sim = self.get_node("Pivot/Peep/Armature/Skeleton3D/PhysicalBoneSimulator3D")
+	bones_sim.physical_bones_start_simulation()
+	bones_sim.active = true
+	self.velocity = force
+	self.get_node("Pivot/Peep/Armature/Gun").visible = false
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 	can_shoot = true
 
