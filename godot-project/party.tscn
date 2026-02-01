@@ -3,11 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c2wwe7bh8ex7t" path="res://scenes/player.tscn" id="1_4fixh"]
 [ext_resource type="Script" uid="uid://drnkafslrh6hg" path="res://main.gd" id="1_cb1p0"]
 [ext_resource type="Script" uid="uid://78x38hlu4cdx" path="res://scenes/Clique.gd" id="3_v1o7i"]
+[ext_resource type="PackedScene" uid="uid://hnn52d5t5jfl" path="res://scenes/boidA.tscn" id="4_3j17g"]
 [ext_resource type="PackedScene" uid="uid://bnf5ltfbi6xao" path="res://crosshairs.tscn" id="4_v1o7i"]
 [ext_resource type="PackedScene" uid="uid://ifdscbmwf5nh" path="res://scenes/boidB.tscn" id="5_av4hy"]
+[ext_resource type="PackedScene" uid="uid://bfkpjomx3k3jk" path="res://scenes/boidC.tscn" id="6_hihnx"]
 [ext_resource type="PackedScene" uid="uid://ibfdn352303q" path="res://assets/Environment/Hedge.glb" id="8_hihnx"]
-[ext_resource type="PackedScene" path="res://scenes/Palace.tscn" id="9_hihnx"]
-[ext_resource type="PackedScene" uid="uid://08w021pl6r0m" path="res://scenes/CurvedHedge.tscn" id="10_oowc3"]
+[ext_resource type="PackedScene" uid="uid://bes2oaepvtm8m" path="res://scenes/Palace.tscn" id="9_hihnx"]
+[ext_resource type="PackedScene" path="res://scenes/CurvedHedge.tscn" id="10_oowc3"]
 [ext_resource type="PackedScene" uid="uid://ds7flmlyl6wkv" path="res://assets/Environment/Fence.glb" id="11_gp6og"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxq04"]
@@ -90,12 +92,14 @@ metadata/_custom_type_script = "uid://78x38hlu4cdx"
 script = ExtResource("3_v1o7i")
 boid_scene = ExtResource("5_av4hy")
 boid_count = 10
-alignment_force = 0.2
-centralization_force_radius = 5.0
-cohesion_force = 0.85
-separation_force = 0.1
-centralization_force = 0.8
-path = NodePath("../../OutsidePath")
+cohesion_force = 1.0
+separation_force = 0.0
+centralization_force = 1.0
+metadata/_custom_type_script = "uid://78x38hlu4cdx"
+
+[node name="CliqueC" type="Node3D" parent="Cliques" unique_id=1653502790]
+script = ExtResource("3_v1o7i")
+boid_scene = ExtResource("6_hihnx")
 metadata/_custom_type_script = "uid://78x38hlu4cdx"
 
 [node name="WallLeft" type="StaticBody3D" parent="." unique_id=1403890510]
@@ -405,13 +409,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.96766)
 
 [node name="FountainPath" type="Node3D" parent="." unique_id=999605553]
 
-[node name="OutsidePath" type="Node3D" parent="." unique_id=1753270406]
-
-[node name="Node3D" type="Node3D" parent="OutsidePath" unique_id=624259652]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.475395, 0, -4.520462)
-
-[node name="Node3D2" type="Node3D" parent="OutsidePath" unique_id=1917902981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.115044, 0, 47.223007)
+[node name="Path3D" type="Path3D" parent="FountainPath" unique_id=2122229667]
+curve = SubResource("Curve3D_av4hy")
 
 [node name="Palace" parent="." unique_id=1365196345 instance=ExtResource("9_hihnx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.144102, 0, -43.418644)
@@ -445,7 +444,6 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 38
 
 [node name="CurvedHedge4" parent="." unique_id=740415927 instance=ExtResource("10_oowc3")]
 transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 38.985497, 0, 6.4756966)
-[connection signal="timeout" from="Player_0/Attack_Timer_0" to="Player_0" method="_on_attack_timer_0_timeout"]
 
 [node name="Fence" type="Node3D" parent="." unique_id=487257128]
 transform = Transform3D(1.49, 0, 0, 0, 1.49, 0, 0, 0, 1.49, 6.9391212, 0, 89.77408)
@@ -468,3 +466,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.538026, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fence/StaticBody3D" unique_id=303141010]
 transform = Transform3D(7.749683, 0, 0, 0, 2.5948792, 0, 0, 0, 1.1442686, -11.573906, 1.0873499, 0)
 shape = SubResource("BoxShape3D_qsfla")
+
+[connection signal="timeout" from="Player_0/Attack_Timer_0" to="Player_0" method="_on_attack_timer_0_timeout"]
