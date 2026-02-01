@@ -72,3 +72,6 @@ func get_neighbors(boid: Boid, view_radius: float) -> Array:
 			if other_boid != boid and boid.position.distance_to(other_boid.position) <= view_radius:
 				neighbors.append(other_boid)
 	return neighbors
+
+func remove_boid(boid: Boid) -> void:
+	boids.erase(boid)

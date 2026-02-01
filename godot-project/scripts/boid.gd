@@ -18,6 +18,8 @@ var centralization_force = 0.5
 var prey_position: Vector3 = Vector3.ZERO
 var maskType = 'A'
 
+var dead: bool = false
+
 var model = null
 var fall_acceleration = 75
 @export var currentMask: MeshInstance3D = null
@@ -29,6 +31,9 @@ func _ready():
 	currentMask.visible = true
 
 func _process(delta):
+	if dead:
+		move_and_collide(velocity * delta)
+		return
 	var target_velocity = Vector3.ZERO
 	var neighbors = self.get_parent().get_neighbors(self, perception_radius)
 
@@ -105,7 +110,16 @@ func steer(target):
 
 	return steer
 
-func hit():
+func hit(force: Vector3):
+	self.dead = true
+	$CollisionShape3D.disabled = true
+	var bones_sim = self.get_node("Pivot/Peep/Armature/Skeleton3D/PhysicalBoneSimulator3D")
+	bones_sim.physical_bones_start_simulation()
+	bones_sim.active = true
+	self.velocity = force
+	self.get_node("Pivot/Peep/Armature/Gun").visible = false
+	self.get_parent().remove_boid(self)
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 
 func set_current_mask(mask_type: String):
